@@ -1,0 +1,49 @@
+
+
+<div (click)="hideDropdown()" class="overlay"></div>
+      
+<!--Navigation & Intro-->
+
+
+    <!--Navbar-->
+<div class="fixed-top header" style="background: #349800">
+
+    <nav id="upBanner">
+        <div class="container " style="height: 110px;">
+            <div class="d-flex justify-content-between mt-1" id="banner">
+              <a >
+                <img src="assets/Image/logo.png" class="logo">
+            </a>
+             <img src="assets/Image/visa-service-country.png" class="right img img-responsive">
+        </div>
+        </div>
+    </nav>
+
+
+
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+       
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div class="nav-links">
+          <a >Home</a>
+          <a >About Us</a>
+          <a (click)="toggleDropdown()" class="dropdown">Visa Services   <i class="fa fa-caret-down"></i></a>
+          <div class="dropdown-content" *ngIf="dropdownVisible">
+            <a>Kuwait</a>
+          </div>
+          <a>Contact</a>
+        </div>
+      </div>
+      
+      
+
+</div>
+    <!--/Navbar-->
