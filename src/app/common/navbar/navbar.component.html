@@ -3,9 +3,7 @@
 <div (click)="hideDropdown()" class="overlay"></div>
       
 <!--Navigation & Intro-->
-
-
-    <!--Navbar-->
+ <!--Navbar-->
 <div class="fixed-top header" style="background: #349800">
 
     <nav id="upBanner">
@@ -18,9 +16,6 @@
         </div>
         </div>
     </nav>
-
-
-
     <div class="nav">
         <input type="checkbox" id="nav-check">
        
@@ -30,20 +25,16 @@
             <span></span>
             <span></span>
           </label>
-        </div>
-        
+        </div>   
         <div class="nav-links">
-          <a >Home</a>
-          <a >About Us</a>
+          <a routerLink="/home">Home</a>
+          <a routerLink="/aboutUs">About Us</a>
           <a (click)="toggleDropdown()" class="dropdown">Visa Services   <i class="fa fa-caret-down"></i></a>
           <div class="dropdown-content" *ngIf="dropdownVisible">
-            <a>Kuwait</a>
+            <a routerLink="/kuwaitVisaServices">Kuwait</a>
           </div>
           <a>Contact</a>
         </div>
       </div>
-      
-      
-
 </div>
     <!--/Navbar-->

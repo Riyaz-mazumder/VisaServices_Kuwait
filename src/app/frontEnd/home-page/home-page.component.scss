@@ -1,14 +1,35 @@
-
+@keyframes slidy {
+    0% { left: 0%; }
+    20% { left: 0%; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -200%; }
+    70% { left: -200%; }
+    75% { left: -300%; }
+    95% { left: -300%; }
+    100% { left: -400%; }
+    }
+    
+    body { margin: 0; } 
+    div#slider { overflow: hidden; }
+    div#slider figure img { width: 20%; float: left; }
+    div#slider figure { 
+      position: relative;
+      width: 500%;
+      margin: 0;
+      left: 0;
+      text-align: left;
+      font-size: 0;
+      animation: 30s slidy infinite; 
+    }
 
 // documentation there is a layer in the full page
 
 .visaServices{
     text-align: center;
     margin: 25px 50px;
-    
-    margin-top: 400px;
+    margin-top: 50px;
 }
-
 
 .cartHolder{
     margin-top: 50px;
@@ -54,3 +75,66 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+.homePage{
+    max-width: 100%;
+    background-color: #f5f5f5;
+}
+
+.last{
+    margin: 50px 8em;
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .content{
+       width: 70%;
+    }
+
+    #card{
+    width: 360px; 
+    height: 390px;
+    padding: 25px;
+	overflow: hidden;
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+	text-align: center;
+	-webkit-transition: .1s ease-in-out;
+	transition: .1s ease-in-out;
+    z-index: 200;
+
+    #cardContent{
+        button{
+            width: 248px;
+            height: 54px;
+            color: #007BFF;
+            border: 1px solid #383838e1;
+        }
+    }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .last{
+        display: block;
+        margin:50px 10px;
+
+        .content{
+            width: 100%;
+            padding-left: 25px;
+         }
+       
+    }
+
+    #card{
+        width: 300px; 
+        height: 390px;
+        #cardContent{
+            button{
+                width: 230px;
+            }
+        }
+    }
+}

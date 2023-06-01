@@ -1,0 +1,24 @@
+.banner{
+    display: grid;
+    place-items: center;
+}
+
+.card{
+    width: 60%;
+    padding: 50px;
+    margin-top: 40px;
+    line-height: 2;
+    z-index: 200;
+}
+#clickToGoVisaService{
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+    .card{
+        width: 90%;
+        padding: 50px;
+        margin-top: 40px;
+        line-height: 2;
+        z-index: 200;
+    }
+}
