@@ -1,0 +1,56 @@
+
+
+// documentation there is a layer in the full page
+
+.visaServices{
+    text-align: center;
+    margin: 25px 50px;
+    
+    margin-top: 400px;
+}
+
+
+.cartHolder{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.card{
+	width: 375px; 
+    height: 410px;
+    padding: 25px;
+	overflow: hidden;
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+	text-align: center;
+	-webkit-transition: .1s ease-in-out;
+	transition: .1s ease-in-out;
+    z-index: 200;
+}
+.card h2{
+    margin-top: 45px;
+}
+.card .p-first{
+    margin-top: 40px;
+}
+
+.card button{
+    margin-top: 10px;
+    background-color: #00C851;
+    color: #FFFFFF;
+    border-radius: 4px;
+    width: 151px;
+    height: 47px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: .1s ease-in-out;
+	transition: .1s ease-in-out;
+}
+
+.card button:hover{
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
