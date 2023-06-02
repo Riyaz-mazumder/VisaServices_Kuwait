@@ -1,0 +1,79 @@
+.pageHolder{
+    margin: 50px;
+}
+.logoCard{
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 50px;
+}
+.card{
+    width: 280px;
+    height: 250px;
+    display: grid;
+    place-items: center;
+    padding: 10px;
+    z-index: 200;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn {
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+   }
+  
+  /* Demo Stuff End -> */
+  
+  /* <- Magic Stuff Start */
+  
+  .btn:hover {
+    background-position: right center; /* change the direction of the change here */
+  }
+
+  .btn-3 {
+    background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+  }
+  section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cardHlders{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+  }
+  .textHolder{
+    width: 45%;
+    audio{
+        z-index: 200;
+        margin-top: 25px;
+    }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    section{
+        display: block;
+        .card{
+            margin-bottom: 25px;
+        }
+       
+      }
+      .cardHlders{
+        display: block;
+      }
+      .textHolder{
+        width: 100%;
+        // audio{
+        //     z-index: 200;
+        //     margin-top: 25px;
+        // }
+      }
+  }

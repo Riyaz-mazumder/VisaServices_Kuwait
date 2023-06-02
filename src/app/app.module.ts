@@ -9,6 +9,10 @@ import { HomePageComponent } from './frontEnd/home-page/home-page.component';
 import { LandingPageComponent } from './common/landing-page/landing-page.component';
 import { KuwaitVisaServicesComponent } from './frontEnd/kuwait-visa-services/kuwait-visa-services.component';
 import { AboutUsComponent } from './frontEnd/about-us/about-us.component';
+import { ContactComponent } from './frontEnd/contact/contact.component';
+import { AdminLoginComponent } from './common/admin-login/admin-login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { AboutUsComponent } from './frontEnd/about-us/about-us.component';
     HomePageComponent,
     LandingPageComponent,
     KuwaitVisaServicesComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

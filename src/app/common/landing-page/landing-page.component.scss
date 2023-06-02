@@ -1,14 +1,24 @@
 .banner{
     display: grid;
     place-items: center;
+    margin-bottom: 30px;
 }
 
 .card{
-    width: 60%;
-    padding: 50px;
+    width: 70%;
+   
     margin-top: 40px;
     line-height: 2;
     z-index: 200;
+}
+.cartHeader{
+    background-color: #e0dedef1;
+    padding: 10px 40px;
+}
+.cartBody{
+    padding: 10px 40px 40px 40px;
+    margin-top: 20px;
+
 }
 #clickToGoVisaService{
   cursor: pointer;
@@ -16,7 +26,6 @@
 @media only screen and (max-width: 768px) {
     .card{
         width: 90%;
-        padding: 50px;
         margin-top: 40px;
         line-height: 2;
         z-index: 200;

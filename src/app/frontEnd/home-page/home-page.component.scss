@@ -20,7 +20,7 @@
       left: 0;
       text-align: left;
       font-size: 0;
-      animation: 30s slidy infinite; 
+      animation: 27s slidy infinite; 
     }
 
 // documentation there is a layer in the full page
@@ -115,6 +115,52 @@
     }
     }
 }
+
+// Medium desktops: 992px to 1199px
+
+// @media only screen and (max-width: 1300px){
+//     .last{
+//         // margin: 50px 5em;
+//         display: flex;
+//         width: 100%;
+//        justify-content: center;
+//        align-items: center;
+      
+//         flex-wrap: wrap;
+       
+//         .content{
+//            width: 50%;
+//            margin-right: 300px;
+//         }
+//         .cartHolder{
+//             width: 50%;
+            
+//         }
+
+//         #card{
+//             width: 250px; 
+//             height: 380px;
+//             padding: 25px;
+//             overflow: hidden;
+//             background-color: #FFFFFF;
+//             border-radius: 5px;
+//             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+//             text-align: center;
+//             -webkit-transition: .1s ease-in-out;
+//             transition: .1s ease-in-out;
+//             z-index: 200;
+        
+//             #cardContent{
+//                 button{
+//                     width: 200px;
+//                     height: 54px;
+//                     color: #007BFF;
+//                     border: 1px solid #383838e1;
+//                 }
+//             }
+//             }
+//     }
+// }
 
 @media only screen and (max-width: 768px) {
     .last{

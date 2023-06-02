@@ -1,6 +1,6 @@
 
 
-<div (click)="hideDropdown()" class="overlay"></div>
+<!-- <div (click)="hideDropdown()" class="overlay"></div> -->
       
 <!--Navigation & Intro-->
  <!--Navbar-->
@@ -17,23 +17,23 @@
         </div>
     </nav>
     <div class="nav">
-        <input type="checkbox" id="nav-check">
+        <input type="checkbox" (click)="toggleCheckbox()" [checked]="isChecked"  id="nav-check">
        
         <div class="nav-btn">
-          <label for="nav-check">
+          <label id="iii" for="nav-check">
             <span></span>
             <span></span>
             <span></span>
           </label>
         </div>   
         <div class="nav-links">
-          <a routerLink="/home">Home</a>
-          <a routerLink="/aboutUs">About Us</a>
+          <a class="closes" (click)="toggleCheckbox()" (click)="hideDropdown()" routerLink="/home">Home</a>
+          <a class="closes" (click)="toggleCheckbox()" (click)="hideDropdown()" routerLink="/aboutUs">About Us</a>
           <a (click)="toggleDropdown()" class="dropdown">Visa Services   <i class="fa fa-caret-down"></i></a>
           <div class="dropdown-content" *ngIf="dropdownVisible">
-            <a routerLink="/kuwaitVisaServices">Kuwait</a>
+            <a class="closes" (click)="toggleCheckbox()" (click)="hideDropdown()" routerLink="/kuwaitVisaServices">Kuwait</a>
           </div>
-          <a>Contact</a>
+          <a class="closes" (click)="hideDropdown()" (click)="toggleCheckbox()" routerLink="/contactUs">Contact</a>
         </div>
       </div>
 </div>
