@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -6,9 +6,14 @@ import { NgForm } from '@angular/forms';
   templateUrl: './add-visa-form.component.html',
   styleUrls: ['./add-visa-form.component.scss']
 })
-export class AddVisaFormComponent {
+export class AddVisaFormComponent implements OnInit{
 
-  
+  storedValue!: any;
+  ngOnInit(): void {
+    this.storedValue = sessionStorage.getItem('admin');
+  }
+
+
   submit(d: NgForm) {
     console.log(d.value);
     // this.service.addNewProduct(d.value).subscribe({
@@ -20,7 +25,7 @@ export class AddVisaFormComponent {
     //     alert(err);
     //   },
     // });
-    alert('Product Has Been Added');
+    alert('Visa Has Been Added');
     d.reset();
   }
 }

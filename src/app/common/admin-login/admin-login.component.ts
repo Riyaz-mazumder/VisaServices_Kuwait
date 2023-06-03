@@ -14,7 +14,11 @@ export class AdminLoginComponent {
   ) {}
 
 
-  allUser!: any;
+  allUser = [
+    {"userName": "admin"},
+    {"password": "$visa$"},
+  ];
+
   ngOnInit(): void {
     // this.service.getAllUsers().subscribe({
     //   next: (r) => {
@@ -29,26 +33,32 @@ export class AdminLoginComponent {
   message:string = "";
 
   formSubmit(data: NgForm) {
-    console.log(data.value);
-    console.log(this.allUser);
+    console.log(data.value.name);
+    console.log(data.value.password);
 
-    let foundUser = this.allUser.find((e: any) => {
-      return e.email === data.value.email && e.password === data.value.password;
-    });
+    console.log(this.allUser.at(0)?.userName);
+    console.log(this.allUser.at(1)?.password);
+    console.log();
+    
+    
+    
+    // console.log(this.allUser);
 
 
-    // if (foundUser) {
-    //   this.authService.saveUser(foundUser);
+    if (this.allUser.at(0)?.userName === data.value.name && this.allUser.at(1)?.password === data.value.password) {
 
-    //   this.message = "Welcome Back ' + data.value.name + ' ! ❤️"
-    //   this.showMessage();
+      sessionStorage.removeItem('admin');
+      sessionStorage.setItem('admin', data.value);
 
-    //   this.router.navigate(['/home']);
+      this.message = "Login Successfull! "
+      this.showMessage();
 
-    // } else {
-    //   this.message = 'User Name Or Password Is InCorrect..'
-    //   alert( 'User Name Or Password Is InCorrect..')
-    // }
+      this.router.navigate(['/admin/dashboard']);
+
+    } else {
+      this.message = 'User Name Or Password Is InCorrect..'
+      alert( 'User Name Or Password Is InCorrect..')
+    }
   }
 
   
