@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { RouterModule } from '@angular/router';
+import { ViewVisaPdfComponent } from './view-visa-pdf/view-visa-pdf.component';
 
 
 
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
     DashbordComponent,
     AddVisaFormComponent,
     AdminComponent,
+    ViewVisaPdfComponent,
   ],
   imports: [
     CommonModule,
