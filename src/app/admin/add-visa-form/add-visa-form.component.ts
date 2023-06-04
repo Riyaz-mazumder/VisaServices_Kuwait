@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { HttpClient } from '@angular/common/http';
+
+import { PDFDocument } from 'pdf-lib';
+import { PdfDataSenderService } from '../pdf-data-sender.service';
+
+
 @Component({
   selector: 'app-add-visa-form',
   templateUrl: './add-visa-form.component.html',
@@ -8,12 +14,22 @@ import { NgForm } from '@angular/forms';
 })
 export class AddVisaFormComponent implements OnInit{
 
+
+  constructor(
+    private httpClient: HttpClient,
+    private pdfDataService: PdfDataSenderService
+    
+    ) {}
+
   storedValue!: any;
   ngOnInit(): void {
     this.storedValue = sessionStorage.getItem('admin');
   }
 
   submit(d: NgForm) {
+
+    this.pdfDataService.setData(d.value);
+
     const formValues = d.value;
     console.log(formValues);
   
@@ -68,9 +84,10 @@ export class AddVisaFormComponent implements OnInit{
     alert('Visa Has Been Added');
     d.reset();
   }
-  
+
 
   
+
   selectedCountry!: string;
   countries: { name: string, arabic: string }[] = [
     { name: 'Afghanistan', arabic: 'أفغانستان' },

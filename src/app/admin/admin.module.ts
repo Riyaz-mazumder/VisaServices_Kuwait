@@ -24,6 +24,7 @@ import { ViewVisaPdfComponent } from './view-visa-pdf/view-visa-pdf.component';
     HttpClientModule,
     AdminRoutingModule,
     RouterModule
-  ]
+  ],
+  // providers: [PdfDataSenderService], // Add the service here
 })
 export class AdminModule { }
