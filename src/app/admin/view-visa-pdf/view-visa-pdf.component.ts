@@ -5,7 +5,9 @@ import { PDFDocument} from 'pdf-lib'
 
 import * as PDFLib from 'pdf-lib';
 
-import * as fontkit from '@pdf-lib/fontkit';
+// import * as fontkit from '@pdf-lib/fontkit';
+
+declare var fontkit: any;
 
 
 import { PdfDataSenderService } from '../pdf-data-sender.service';
@@ -93,11 +95,13 @@ export class ViewVisaPdfComponent implements OnInit{
     // console.log('holderPlaceOfIssue:', holderPlaceOfIssue);
 
 
-        this.genaratePdf("245397868", "سمة دخول عمل اهلى")
+        this.genaratePdf("245397868", "سمة دخول عمل اهلى", "Private Sector Work Visa", "عمل", "Work", "2022-09-07",
+         "2022-12-06", " ادارة عمل محافظة الفروانية")
    }
 
 
-   genaratePdf = async (visaNumber: string, visaTypeInArabic: string) => {
+   genaratePdf = async (visaNumber: string, visaTypeInArabic: string, visaTypeInEnglish: string, visaPurposeInArabic: string, visaPurposeInEnglish: string, dateOfIssue: any, 
+    dateOfExpiry: any, placeOfIssue: string) => {
     const {PDFDocument, rgb} = PDFLib;
 
     const exBytes = await fetch("./assets/pdf/visa.pdf").then(res=>{
@@ -112,32 +116,84 @@ export class ViewVisaPdfComponent implements OnInit{
   const pages = pdfDoc.getPages();
   const firstPage = pages[0];
 
-  // firstPage.drawText(visaNumber,{
-  //   x: 272,
-  //   y: 674,
-  //   size: 9.5,
-  // })
+  // const englishFont = await fetch("./assets/font/Roboto-Regular.ttf").then(res =>{
+  //   return res.arrayBuffer();
+  // });
+  //  pdfDoc.registerFontkit(fontkit);
+  //  const RobotoFont = await pdfDoc.embedFont(englishFont);
 
-  pdfDoc.setLanguage(' ')
+  const arabicFont = await fetch("./assets/font/Cairo-ExtraBold.ttf").then(res =>{
+    return res.arrayBuffer();
+  });
+   pdfDoc.registerFontkit(fontkit);
+   const CairoFont = await pdfDoc.embedFont(arabicFont);
 
-    const arabicFont = await fetch("assets/font/Cairo-ExtraLight.ttf").then(res =>{
-      return res.arrayBuffer();
-    });
+   const textColor = rgb(82 / 255, 95 / 255, 127 / 255); // RGB percentages for "525F7F"
 
-  //   const arabicFontPath = './assets/font/Cairo-ExtraLight.ttf';
-  // const arabicFontBytes = await fetch(arabicFontPath).then(res => res.arrayBuffer());
-
-  // const arabicFont = await pdfDoc.embedFont(arabicFontBytes);
-
-     pdfDoc.registerFontkit(fontkit);
-     const CairoFont = await pdfDoc.embedFont(arabicFont);
+  firstPage.drawText(visaNumber,{
+    x: 272,
+    y: 674,
+    size: 10,
+    font: CairoFont,
+    color: textColor,
+  })
 
     // firstPage.setFont(CairoFont);
   firstPage.drawText(visaTypeInArabic,{
-    x: 272,
-    y: 654,
-    size: 9.5,
+    x: 252,
+    y: 655,
+    size: 10,
     font: CairoFont,
+    color: textColor,
+  })
+
+
+  firstPage.drawText(visaTypeInEnglish,{
+    x: 252,
+    y: 640,
+    size: 10,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(visaPurposeInArabic,{
+    x: 289,
+    y: 620,
+    size: 10,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(visaPurposeInEnglish,{
+    x: 289,
+    y: 605,
+    size: 10,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(dateOfIssue,{
+    x: 276,
+    y: 585,
+    size: 10,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(dateOfExpiry,{
+    x: 276,
+    y: 567,
+    size: 10,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(placeOfIssue,{
+    x: 241,
+    y: 547,
+    size: 10,
+    font: CairoFont,
+    color: textColor,
   })
 
 
