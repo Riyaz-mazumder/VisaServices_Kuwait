@@ -4,6 +4,10 @@ import { DomSanitizer} from '@angular/platform-browser';
 import { PDFDocument} from 'pdf-lib'
 
 import * as PDFLib from 'pdf-lib';
+
+import * as fontkit from '@pdf-lib/fontkit';
+
+
 import { PdfDataSenderService } from '../pdf-data-sender.service';
 
 
@@ -100,30 +104,40 @@ export class ViewVisaPdfComponent implements OnInit{
       return res.arrayBuffer();
     });
 
-    // const font = await fetch("./").then(res =>{
-    //   return res.arrayBuffer();
-    // });
-
+  
 
    const pdfDoc = await PDFDocument.load(exBytes);
 
-  //  pdfDoc.registerFontkit(fontKit);
-
-  // const myFont = await pdfDoc.embedFont(font);
-
+ 
   const pages = pdfDoc.getPages();
   const firstPage = pages[0];
 
   // firstPage.drawText(visaNumber,{
   //   x: 272,
   //   y: 674,
-  //   size: 10,
+  //   size: 9.5,
   // })
 
+  pdfDoc.setLanguage(' ')
+
+    const arabicFont = await fetch("assets/font/Cairo-ExtraLight.ttf").then(res =>{
+      return res.arrayBuffer();
+    });
+
+  //   const arabicFontPath = './assets/font/Cairo-ExtraLight.ttf';
+  // const arabicFontBytes = await fetch(arabicFontPath).then(res => res.arrayBuffer());
+
+  // const arabicFont = await pdfDoc.embedFont(arabicFontBytes);
+
+     pdfDoc.registerFontkit(fontkit);
+     const CairoFont = await pdfDoc.embedFont(arabicFont);
+
+    // firstPage.setFont(CairoFont);
   firstPage.drawText(visaTypeInArabic,{
     x: 272,
     y: 654,
-    size: 10,
+    size: 9.5,
+    font: CairoFont,
   })
 
 
@@ -144,3 +158,45 @@ export class ViewVisaPdfComponent implements OnInit{
   }
 
 }
+
+
+// Assuming you have separate Arabic and English font files in the assets folder
+
+// import * as fs from 'fs'; // If using Node.js
+// import path from 'path'; // If using Node.js
+
+// // ...
+
+// genaratePdf = async (visaNumber: string, visaTypeInArabic: string) => {
+//   // ...
+
+//   // Load the Arabic and English font files as array buffers
+//   const arabicFontPath = './assets/ArabicFont.ttf';
+//   const arabicFontBytes = await fetch(arabicFontPath).then(res => res.arrayBuffer());
+
+//   const englishFontPath = './assets/EnglishFont.ttf';
+//   const englishFontBytes = await fetch(englishFontPath).then(res => res.arrayBuffer());
+
+//   // Embed the Arabic and English fonts in the PDF document
+//   const arabicFont = await pdfDoc.embedFont(arabicFontBytes);
+//   const englishFont = await pdfDoc.embedFont(englishFontBytes);
+
+//   // Use the Arabic font for Arabic text
+//   firstPage.setFont(arabicFont);
+//   firstPage.drawText(visaTypeInArabic, {
+//     x: 272,
+//     y: 654,
+//     size: 10,
+//   });
+
+//   // Use the English font for English text
+//   const englishText = 'English Text';
+//   firstPage.setFont(englishFont);
+//   firstPage.drawText(englishText, {
+//     x: 100,
+//     y: 100,
+//     size: 12,
+//   });
+
+//   // ...
+// }
