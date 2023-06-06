@@ -98,17 +98,37 @@
                     <div class="row align-items-center">
                         <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                             <!-- Title -->
-                            <h1 class="h2 mb-0 ls-tight">Admin Dashboard</h1>
+                            <form style="width: 350px;" class="form-inline col-sm-6 col-12 mb-4 mb-sm-0" class="serch_f" (ngSubmit)="searchProducts(f)" #f="ngForm">
+                                <input
+                                ngModel
+                                name="search"
+                                  class="form-control mr-sm-2"
+                                  type="search"
+                                  placeholder="Search"
+                                  aria-label="Search"
+                                />
+                                <button id="search-btn" style="border: 1px solid #4A4DC4;" type="submit" class="btn  my-2 my-sm-0" type="submit">
+                                  <span style="margin-right: 5px">Search</span>
+                                  <i
+                                    style="display: inline"
+                                    class="fa fa-search"
+                                    aria-hidden="true"
+                                  ></i>
+                                </button>
+                              </form>
                         </div>
+
+                       
+                        
                         <!-- Actions -->
                         <div class="col-sm-6 col-12 text-sm-end">
                             <div class="mx-n1">
-                                <a  class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                                <!-- <a  class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
                                     <span class=" pe-2">
                                         <i class="bi bi-pencil"></i>
                                     </span>
                                     <span>Edit</span>
-                                </a>
+                                </a> -->
                                 <a  routerLink="/admin/dashboard/addVisa" class="btn d-inline-flex btn-sm btn-primary mx-1">
                                     <span class=" pe-2">
                                         <i class="bi bi-plus"></i>

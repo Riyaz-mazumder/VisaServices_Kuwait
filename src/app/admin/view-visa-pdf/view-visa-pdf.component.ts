@@ -128,12 +128,14 @@ export class ViewVisaPdfComponent implements OnInit{
    pdfDoc.registerFontkit(fontkit);
    const CairoFont = await pdfDoc.embedFont(arabicFont);
 
-   const textColor = rgb(82 / 255, 95 / 255, 127 / 255); // RGB percentages for "525F7F"
+   const textColor = rgb(46 / 255, 83 / 255, 150 / 255); // RGB percentages for hex
+   const fontSize = 10;
+
 
   firstPage.drawText(visaNumber,{
     x: 272,
     y: 674,
-    size: 10,
+    size: fontSize,
     font: CairoFont,
     color: textColor,
   })
@@ -142,7 +144,7 @@ export class ViewVisaPdfComponent implements OnInit{
   firstPage.drawText(visaTypeInArabic,{
     x: 252,
     y: 655,
-    size: 10,
+    size: fontSize,
     font: CairoFont,
     color: textColor,
   })
@@ -151,7 +153,7 @@ export class ViewVisaPdfComponent implements OnInit{
   firstPage.drawText(visaTypeInEnglish,{
     x: 252,
     y: 640,
-    size: 10,
+    size: fontSize,
     font: CairoFont,
     color: textColor,
   })
@@ -159,7 +161,7 @@ export class ViewVisaPdfComponent implements OnInit{
   firstPage.drawText(visaPurposeInArabic,{
     x: 289,
     y: 620,
-    size: 10,
+    size: fontSize,
     font: CairoFont,
     color: textColor,
   })
@@ -167,7 +169,7 @@ export class ViewVisaPdfComponent implements OnInit{
   firstPage.drawText(visaPurposeInEnglish,{
     x: 289,
     y: 605,
-    size: 10,
+    size: fontSize,
     font: CairoFont,
     color: textColor,
   })
@@ -175,7 +177,7 @@ export class ViewVisaPdfComponent implements OnInit{
   firstPage.drawText(dateOfIssue,{
     x: 276,
     y: 585,
-    size: 10,
+    size: fontSize,
     font: CairoFont,
     color: textColor,
   })
@@ -183,7 +185,7 @@ export class ViewVisaPdfComponent implements OnInit{
   firstPage.drawText(dateOfExpiry,{
     x: 276,
     y: 567,
-    size: 10,
+    size: fontSize,
     font: CairoFont,
     color: textColor,
   })
@@ -191,7 +193,7 @@ export class ViewVisaPdfComponent implements OnInit{
   firstPage.drawText(placeOfIssue,{
     x: 241,
     y: 547,
-    size: 10,
+    size: fontSize,
     font: CairoFont,
     color: textColor,
   })

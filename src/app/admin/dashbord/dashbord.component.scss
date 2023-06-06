@@ -11,3 +11,18 @@
 .navbar-nav li{
   cursor: pointer;
 }
+
+
+// 
+.serch_f {
+  display: flex;
+
+  margin: 0% 5rem;
+  button {
+    margin-left: 0.5rem;
+    &:hover{
+      background-color: #4E52d0;
+      color: #fff;
+    }
+  }
+}
