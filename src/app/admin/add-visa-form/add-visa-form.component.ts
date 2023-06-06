@@ -1,10 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, ElementRef, OnInit, Pipe, PipeTransform, Renderer2, ViewChild } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
+
+import { PDFDocument} from 'pdf-lib'
+
+import * as PDFLib from 'pdf-lib';
 import { NgForm } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 
-import { PDFDocument } from 'pdf-lib';
 import { PdfDataSenderService } from '../pdf-data-sender.service';
+
+
+
+// import * as fontkit from '@pdf-lib/fontkit';
+
+declare var fontkit: any;
+
 
 
 @Component({
@@ -17,7 +29,7 @@ export class AddVisaFormComponent implements OnInit{
 
   constructor(
     private httpClient: HttpClient,
-    private pdfDataService: PdfDataSenderService
+    private pdfDataService: PdfDataSenderService,
     
     ) {}
 
@@ -33,29 +45,31 @@ export class AddVisaFormComponent implements OnInit{
     const formValues = d.value;
     console.log(formValues);
   
-    const visaNumber = formValues.visaNumber;
+    const visaNumber = formValues.visaNumber.toString();
     const visaTypeInArabic = formValues.visaTypeInArabic;
     const visaType = formValues.visaType;
     const visaPurposeInArabic = formValues.visaPurposeInArabic;
     const visaPurpose = formValues.visaPurpose;
-    const dateOfExpiry = formValues.dateOfExpiry;
-    const dateOfIssue = formValues.dateOfIssue;
+    const dateOfExpiry = formValues.dateOfExpiry.toString();
+    const dateOfIssue = formValues.dateOfIssue.toString();
     const employerFullName = formValues.employerFullName;
-    const employerMOIReference = formValues.employerMOIReference;
-    const employerMobileNumber = formValues.employerMobileNumber;
-    const holderDateOfBirth = formValues.holderDateOfBirth;
-    const holderDateOfIssue = formValues.holderDateOfIssue;
-    const holderExpiryDate = formValues.holderExpiryDate;
+    const employerMOIReference = formValues.employerMOIReference.toString();
+    const employerMobileNumber = formValues.employerMobileNumber.toString();
+    const holderDateOfBirth = formValues.holderDateOfBirth.toString();
+    const holderDateOfIssue = formValues.holderDateOfIssue.toString();
+    const holderExpiryDate = formValues.holderExpiryDate.toString();
     const holderFullName = formValues.holderFullName;
     const holderFullNameInArabic = formValues.holderFullNameInArabic;
     const holderGender = formValues.holderGender;
-    const holderMOIReference = formValues.holderMOIReference;
+    const holderMOIReference = formValues.holderMOIReference.toString();
     const holderNationality = formValues.holderNationality;
     const holderOccupation = formValues.holderOccupation;
     const holderOccupationInArabic = formValues.holderOccupationInArabic;
-    const holderPassportNo = formValues.holderPassportNo;
+    const holderPassportNo = formValues.holderPassportNo.toString();
     const holderPassportType = formValues.holderPassportType;
     const holderPlaceOfIssue = formValues.holderPlaceOfIssue;
+    const employerFullNameinArabic = formValues.employerFullNameinArabic;
+    const placeOfIssue = formValues.placeOfIssue;
   
     console.log('visaNumber:', visaNumber);
     console.log('visaTypeInArabic:', visaTypeInArabic);
@@ -80,9 +94,21 @@ export class AddVisaFormComponent implements OnInit{
     console.log('holderPassportNo:', holderPassportNo);
     console.log('holderPassportType:', holderPassportType);
     console.log('holderPlaceOfIssue:', holderPlaceOfIssue);
+    console.log('employerFullNameinArabic:', employerFullNameinArabic);
+    console.log('placeOfIssue:', placeOfIssue);
   
     alert('Visa Has Been Added');
     d.reset();
+
+
+    this.genaratePdf(visaNumber, visaTypeInArabic, visaType, visaPurposeInArabic, visaPurpose, dateOfIssue,
+   dateOfExpiry, placeOfIssue, holderFullNameInArabic, holderFullName, holderMOIReference, holderNationality, holderDateOfIssue,
+   holderGender, holderOccupationInArabic, holderOccupation, holderDateOfBirth, holderPassportNo, holderPlaceOfIssue, holderPassportType, holderExpiryDate, employerFullName, employerFullNameinArabic,
+    employerMOIReference, employerMobileNumber
+    )
+    
+
+    
   }
 
 
@@ -495,5 +521,319 @@ statusTranslations: { [key: string]: string } = {
   Official: 'رسمي',
   Normal: 'عادي'
 };
+
+
+
+// visa pdf
+genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglish: string, visaPurposeInArabic: string, visaPurposeInEnglish: string, dateOfIssue: any, 
+  dateOfExpiry: any, placeOfIssue: string, holderFullNameInArabic: string, holderFullName: string, holderMOIReference: string, holderNationality: any, holderDateOfIssue: any,
+  holderGender: any, holderOccupationInArabic: any, holderOccupation: any, holderDateOfBirth: any, holderPassportNo: any, holderPlaceOfIssue: any, holderPassportType: any,
+  holderExpiryDate: any, employerFullName: any, employerFullNameinArabic: any, employerMOIReference: any, employerMobileNumber: any
+  ) => {
+  const {PDFDocument, rgb} = PDFLib;
+
+  const exBytes = await fetch("./assets/pdf/visa.pdf").then(res=>{
+    return res.arrayBuffer();
+  });
+
+
+
+ const pdfDoc = await PDFDocument.load(exBytes);
+
+
+const pages = pdfDoc.getPages();
+const firstPage = pages[0];
+
+// const englishFont = await fetch("./assets/font/Roboto-Regular.ttf").then(res =>{
+//   return res.arrayBuffer();
+// });
+//  pdfDoc.registerFontkit(fontkit);
+//  const RobotoFont = await pdfDoc.embedFont(englishFont);
+
+const arabicFont = await fetch("./assets/font/Cairo-ExtraBold.ttf").then(res =>{
+  return res.arrayBuffer();
+});
+ pdfDoc.registerFontkit(fontkit);
+ const CairoFont = await pdfDoc.embedFont(arabicFont);
+
+ const textColor = rgb(46 / 255, 83 / 255, 150 / 255); // RGB percentages for hex
+ const fontSize = 10;
+
+
+ const textWidth = CairoFont.widthOfTextAtSize(visaNumber, fontSize);
+
+  const pageWidth = firstPage.getWidth();
+
+  const centerXvisaNumber = (pageWidth - textWidth) / 2;
+
+firstPage.drawText(visaNumber,{
+  x: centerXvisaNumber,
+  y: 674,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+const textWidthvisaTypeInArabic = CairoFont.widthOfTextAtSize(visaTypeInArabic, fontSize);
+
+const centerXvisaTypeInArabic = (pageWidth - textWidthvisaTypeInArabic) / 2;
+
+  // firstPage.setFont(CairoFont);
+firstPage.drawText(visaTypeInArabic,{
+  x: centerXvisaTypeInArabic,
+  y: 655,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidthvisaTypeInEnglish = CairoFont.widthOfTextAtSize(visaTypeInEnglish, fontSize);
+
+const centerXvisaTypeInEnglish = (pageWidth - textWidthvisaTypeInEnglish) / 2;
+
+
+firstPage.drawText(visaTypeInEnglish,{
+  x: centerXvisaTypeInEnglish,
+  y: 640,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+const textWidthvisaPurposeInArabic = CairoFont.widthOfTextAtSize(visaPurposeInArabic, fontSize);
+
+const centerXvisaPurposeInArabic = (pageWidth - textWidthvisaPurposeInArabic) / 2;
+
+firstPage.drawText(visaPurposeInArabic,{
+  x: centerXvisaPurposeInArabic,
+  y: 620,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidthvisaPurposeInEnglish = CairoFont.widthOfTextAtSize(visaPurposeInEnglish, fontSize);
+
+const centerXvisaPurposeInEnglish = (pageWidth - textWidthvisaPurposeInEnglish) / 2;
+
+
+firstPage.drawText(visaPurposeInEnglish,{
+  x: centerXvisaPurposeInEnglish,
+  y: 605,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidthdateOfIssue = CairoFont.widthOfTextAtSize(dateOfIssue, fontSize);
+
+const centerXdateOfIssue = (pageWidth - textWidthdateOfIssue) / 2;
+
+firstPage.drawText(dateOfIssue,{
+  x: centerXdateOfIssue,
+  y: 585,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidthdateOfExpiry = CairoFont.widthOfTextAtSize(dateOfExpiry, fontSize);
+
+const centerXdateOfExpiry = (pageWidth - textWidthdateOfExpiry) / 2;
+
+firstPage.drawText(dateOfExpiry,{
+  x: centerXdateOfExpiry,
+  y: 567,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidthplaceOfIssue = CairoFont.widthOfTextAtSize(placeOfIssue, fontSize);
+
+const centerXplaceOfIssue = (pageWidth - textWidthplaceOfIssue) / 2;
+
+
+firstPage.drawText(placeOfIssue,{
+  x: centerXplaceOfIssue,
+  y: 547,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+const textWidthholderFullNameInArabic = CairoFont.widthOfTextAtSize(holderFullNameInArabic, fontSize);
+
+const centerXholderFullNameInArabic = (pageWidth - textWidthholderFullNameInArabic) / 2;
+
+
+firstPage.drawText(holderFullNameInArabic,{
+  x: centerXholderFullNameInArabic,
+  y: 492,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidthholderFullName = CairoFont.widthOfTextAtSize(holderFullName, fontSize);
+
+const centerXholderFullName = (pageWidth - textWidthholderFullName) / 2;
+
+
+
+firstPage.drawText(holderFullName,{
+  x: centerXholderFullName,
+  y: 476,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidthholderMOIReference = CairoFont.widthOfTextAtSize(holderMOIReference, fontSize);
+
+const centerXholderMOIReference= (pageWidth - textWidthholderMOIReference) / 2;
+
+
+firstPage.drawText(holderMOIReference,{
+  x: centerXholderMOIReference,
+  y: 456,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderNationality,{
+  x: 253,
+  y: 436,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderDateOfIssue,{
+  x: 279,
+  y: 417,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderGender,{
+  x: 279,
+  y: 397,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderOccupation,{
+  x: 241,
+  y: 377,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderOccupationInArabic,{
+  x: 292,
+  y: 377,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderDateOfBirth,{
+  x: 279,
+  y: 357,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderPassportNo,{
+  x: 279,
+  y: 337,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderPlaceOfIssue,{
+  x: 279,
+  y: 317,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+firstPage.drawText(holderPassportType,{
+  x: 272,
+  y: 297,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(holderExpiryDate,{
+  x: 279,
+  y: 277,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(employerFullName,{
+  x: 241,
+  y: 209,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(employerFullNameinArabic,{
+  x: 241,
+  y: 194,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(employerMOIReference,{
+  x: 292,
+  y: 173,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+firstPage.drawText(employerMobileNumber,{
+  x: 280,
+  y: 152,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+ const uri = await pdfDoc.saveAsBase64({dataUri: true});
+
+
+ let pdf = document.querySelector('#myPdf') as HTMLElement;
+
+//  pdf.setAttribute('src', uri)
+    window.open(uri,  "_blank");
+  
+
+    
+
+}
+
 
 }

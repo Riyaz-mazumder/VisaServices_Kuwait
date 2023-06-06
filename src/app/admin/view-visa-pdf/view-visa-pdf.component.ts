@@ -69,6 +69,7 @@ export class ViewVisaPdfComponent implements OnInit{
     // const holderPassportNo = formValues.holderPassportNo;
     // const holderPassportType = formValues.holderPassportType;
     // const holderPlaceOfIssue = formValues.holderPlaceOfIssue;
+   // const employerFullNameinArabic = formValues.employerFullNameinArabic;
   
     // console.log('visaNumber:', visaNumber);
     // console.log('visaTypeInArabic:', visaTypeInArabic);
@@ -93,15 +94,22 @@ export class ViewVisaPdfComponent implements OnInit{
     // console.log('holderPassportNo:', holderPassportNo);
     // console.log('holderPassportType:', holderPassportType);
     // console.log('holderPlaceOfIssue:', holderPlaceOfIssue);
+    // console.log('employerFullNameinArabic:', employerFullNameinArabic);
 
 
         this.genaratePdf("245397868", "سمة دخول عمل اهلى", "Private Sector Work Visa", "عمل", "Work", "2022-09-07",
-         "2022-12-06", " ادارة عمل محافظة الفروانية")
+         "2022-12-06", " ادارة عمل محافظة الفروانية", "اﻣﺪﻳﻌﺮﻳﻔﺎﺳﻼم  -  اﻣﺪﻳﺨﺎزاﻣﻴﺎ ", "MIA KHAZA MD ISLAM ARIFUL MD", "345096836", "BANGLADESH  ﺑﻨﺠﻼدﻳﺶ", "2022-09-07",
+         "Male	ذﻛﺮ", "ﻋﺎﻣﻞ ﺗﻨﻈﻴﻒ / ﻣﻜﺎﺗﺐ", "CLEANER", "1999-01-01", "B00494110", "ﺑﻨﺠﻼدﻳﺶ", "Normal  ﻋﺎدي ", "2027-07-04", "MIA KHAZA MD ISLAM ARIFUL MD", "ﺷﺮﻛﻪ اﻟﻔﻴﺼﻞ ﻟﺤﺮاﺳﻪ اﻟﻤﻨﺸﺎت",
+         "303122", "01626293706"
+         )
    }
 
 
    genaratePdf = async (visaNumber: string, visaTypeInArabic: string, visaTypeInEnglish: string, visaPurposeInArabic: string, visaPurposeInEnglish: string, dateOfIssue: any, 
-    dateOfExpiry: any, placeOfIssue: string) => {
+    dateOfExpiry: any, placeOfIssue: string, holderFullNameInArabic: string, holderFullName: string, holderMOIReference: string, holderNationality: string, holderDateOfIssue: any,
+    holderGender: any, holderOccupationInArabic: any, holderOccupation: any, holderDateOfBirth: any, holderPassportNo: any, holderPlaceOfIssue: any, holderPassportType: any,
+    holderExpiryDate: any, employerFullName: any, employerFullNameinArabic: any, employerMOIReference: any, employerMobileNumber: any
+    ) => {
     const {PDFDocument, rgb} = PDFLib;
 
     const exBytes = await fetch("./assets/pdf/visa.pdf").then(res=>{
@@ -198,20 +206,150 @@ export class ViewVisaPdfComponent implements OnInit{
     color: textColor,
   })
 
+  firstPage.drawText(holderFullNameInArabic,{
+    x: 241,
+    y: 492,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
 
+  firstPage.drawText(holderFullName,{
+    x: 241,
+    y: 476,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
 
+  firstPage.drawText(holderMOIReference,{
+    x: 279,
+    y: 456,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderNationality,{
+    x: 253,
+    y: 436,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderDateOfIssue,{
+    x: 279,
+    y: 417,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderGender,{
+    x: 279,
+    y: 397,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderOccupation,{
+    x: 241,
+    y: 377,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderOccupationInArabic,{
+    x: 292,
+    y: 377,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderDateOfBirth,{
+    x: 279,
+    y: 357,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderPassportNo,{
+    x: 279,
+    y: 337,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderPlaceOfIssue,{
+    x: 279,
+    y: 317,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  
+  firstPage.drawText(holderPassportType,{
+    x: 272,
+    y: 297,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(holderExpiryDate,{
+    x: 279,
+    y: 277,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(employerFullName,{
+    x: 241,
+    y: 209,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(employerFullNameinArabic,{
+    x: 241,
+    y: 194,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(employerMOIReference,{
+    x: 292,
+    y: 173,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
+
+  firstPage.drawText(employerMobileNumber,{
+    x: 280,
+    y: 152,
+    size: fontSize,
+    font: CairoFont,
+    color: textColor,
+  })
 
    const uri = await pdfDoc.saveAsBase64({dataUri: true});
 
 
    let pdf = document.querySelector('#myPdf') as HTMLElement;
 
-   pdf.setAttribute('src', uri);
-
-
-
-    
-
+  //  pdf.setAttribute('src', uri)
+      window.open(uri);
 
   }
 
