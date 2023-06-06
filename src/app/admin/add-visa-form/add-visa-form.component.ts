@@ -709,64 +709,108 @@ firstPage.drawText(holderMOIReference,{
   color: textColor,
 })
 
+const textWidth_holderNationality = CairoFont.widthOfTextAtSize(holderNationality, fontSize);
+
+const centerX_holderNationality= (pageWidth - textWidth_holderNationality) / 2;
+
 firstPage.drawText(holderNationality,{
-  x: 253,
+  x: centerX_holderNationality,
   y: 436,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_holderDateOfIssue = CairoFont.widthOfTextAtSize(holderDateOfIssue, fontSize);
+
+const centerX_holderDateOfIssue= (pageWidth - textWidth_holderDateOfIssue) / 2;
+
+
 firstPage.drawText(holderDateOfIssue,{
-  x: 279,
+  x: centerX_holderDateOfIssue,
   y: 417,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_holderGender = CairoFont.widthOfTextAtSize(holderGender, fontSize);
+
+const centerX_holderGender= (pageWidth - textWidth_holderGender) / 2;
+
+
 firstPage.drawText(holderGender,{
-  x: 279,
+  x: centerX_holderGender,
   y: 397,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_holderOccupation = CairoFont.widthOfTextAtSize(holderOccupation, fontSize);
+
+const centerX_holderOccupation = (pageWidth - textWidth_holderOccupation) / 2;
+
+
 firstPage.drawText(holderOccupation,{
-  x: 241,
+  x: centerX_holderOccupation,
   y: 377,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
+
+
+const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOccupationInArabic, fontSize);
+
+const centerX_holderOccupationInArabic = (pageWidth - textWidth_holderOccupationInArabic) / 2;
 
 firstPage.drawText(holderOccupationInArabic,{
-  x: 292,
+  x: centerX_holderOccupationInArabic,
   y: 377,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_holderDateOfBirth = CairoFont.widthOfTextAtSize(holderDateOfBirth, fontSize);
+
+const centerX_holderDateOfBirth = (pageWidth - textWidth_holderDateOfBirth) / 2;
+
+
 firstPage.drawText(holderDateOfBirth,{
-  x: 279,
+  x: centerX_holderDateOfBirth,
   y: 357,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+
+const textWidth_holderPassportNo = CairoFont.widthOfTextAtSize(holderPassportNo, fontSize);
+
+const centerX_holderPassportNo = (pageWidth - textWidth_holderPassportNo) / 2;
+
 firstPage.drawText(holderPassportNo,{
-  x: 279,
+  x: centerX_holderPassportNo,
   y: 337,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_holderPlaceOfIssue = CairoFont.widthOfTextAtSize(holderPlaceOfIssue, fontSize);
+
+const centerX_holderPlaceOfIssue = (pageWidth - textWidth_holderPlaceOfIssue) / 2;
+
 firstPage.drawText(holderPlaceOfIssue,{
-  x: 279,
+  x: centerX_holderPlaceOfIssue,
   y: 317,
   size: fontSize,
   font: CairoFont,
@@ -774,48 +818,83 @@ firstPage.drawText(holderPlaceOfIssue,{
 })
 
 
+const textWidth_holderPassportType = CairoFont.widthOfTextAtSize(holderPassportType, fontSize);
+
+const centerX_holderPassportType = (pageWidth - textWidth_holderPassportType) / 2;
+
+
 firstPage.drawText(holderPassportType,{
-  x: 272,
+  x: centerX_holderPassportType,
   y: 297,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_holderExpiryDate = CairoFont.widthOfTextAtSize(holderExpiryDate, fontSize);
+
+const centerX_holderExpiryDate = (pageWidth - textWidth_holderExpiryDate) / 2;
+
+
 firstPage.drawText(holderExpiryDate,{
-  x: 279,
+  x: centerX_holderExpiryDate,
   y: 277,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_employerFullName = CairoFont.widthOfTextAtSize(employerFullName, fontSize);
+
+const centerX_employerFullName = (pageWidth - textWidth_employerFullName) / 2;
+
+
 firstPage.drawText(employerFullName,{
-  x: 241,
+  x: centerX_employerFullName,
   y: 209,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_employerFullNameinArabic = CairoFont.widthOfTextAtSize(employerFullNameinArabic, fontSize);
+
+const centerX_employerFullNameinArabic = (pageWidth - textWidth_employerFullNameinArabic) / 2;
+
 firstPage.drawText(employerFullNameinArabic,{
-  x: 241,
+  x: centerX_employerFullNameinArabic,
   y: 194,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+
+const textWidth_employerMOIReference = CairoFont.widthOfTextAtSize(employerMOIReference, fontSize);
+
+const centerX_employerMOIReference = (pageWidth - textWidth_employerMOIReference) / 2;
+
+
 firstPage.drawText(employerMOIReference,{
-  x: 292,
+  x: centerX_employerMOIReference,
   y: 173,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
+
+const textWidth_employerMobileNumber = CairoFont.widthOfTextAtSize(employerMobileNumber, fontSize);
+
+const centerX_employerMobileNumber = (pageWidth - textWidth_employerMobileNumber) / 2;
+
+
 firstPage.drawText(employerMobileNumber,{
-  x: 280,
+  x: centerX_employerMobileNumber,
   y: 152,
   size: fontSize,
   font: CairoFont,
