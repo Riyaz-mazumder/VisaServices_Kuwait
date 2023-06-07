@@ -10,6 +10,7 @@ const routes: Routes = [
     { path: 'addVisa', component: AddVisaFormComponent },
     { path: 'listOfVisa', component: ListOfVisaComponent },
     { path: 'viewMessages', component: ViewMessageComponent },
+    { path: 'viewVisaPDF', component: ViewVisaPdfComponent },
 ];
 
 

@@ -13,6 +13,8 @@ import { ContactComponent } from './frontEnd/contact/contact.component';
 import { AdminLoginComponent } from './common/admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { VisaApprovalAndTrackingComponent } from './frontEnd/visa/visa-approval-and-tracking/visa-approval-and-tracking.component';
+import { VisaInqueryAndPrintingComponent } from './frontEnd/visa/visa-inquery-and-printing/visa-inquery-and-printing.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FormsModule } from '@angular/forms';
     KuwaitVisaServicesComponent,
     AboutUsComponent,
     ContactComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    VisaApprovalAndTrackingComponent,
+    VisaInqueryAndPrintingComponent
   ],
   imports: [
     BrowserModule,

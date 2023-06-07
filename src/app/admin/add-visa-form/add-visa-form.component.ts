@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 import { PdfDataSenderService } from '../pdf-data-sender.service';
+import { Router } from '@angular/router';
 
 
 declare var fontkit: any;
@@ -30,6 +31,7 @@ export class AddVisaFormComponent implements OnInit{
   constructor(
     private httpClient: HttpClient,
     private pdfDataService: PdfDataSenderService,
+    private router: Router
     
     ) {}
 
@@ -42,33 +44,33 @@ export class AddVisaFormComponent implements OnInit{
 
     this.pdfDataService.setData(d.value);
 
-    const formValues = d.value;
+    // const formValues = d.value;
   
-    const visaNumber = formValues.visaNumber.toString();
-    const visaTypeInArabic = formValues.visaTypeInArabic;
-    const visaType = formValues.visaType;
-    const visaPurposeInArabic = formValues.visaPurposeInArabic;
-    const visaPurpose = formValues.visaPurpose;
-    const dateOfExpiry = formValues.dateOfExpiry.toString();
-    const dateOfIssue = formValues.dateOfIssue.toString();
-    const employerFullName = formValues.employerFullName;
-    const employerMOIReference = formValues.employerMOIReference.toString();
-    const employerMobileNumber = formValues.employerMobileNumber.toString();
-    const holderDateOfBirth = formValues.holderDateOfBirth.toString();
-    const holderDateOfIssue = formValues.holderDateOfIssue.toString();
-    const holderExpiryDate = formValues.holderExpiryDate.toString();
-    const holderFullName = formValues.holderFullName;
-    const holderFullNameInArabic = formValues.holderFullNameInArabic;
-    const holderGender = formValues.holderGender;
-    const holderMOIReference = formValues.holderMOIReference.toString();
-    const holderNationality = formValues.holderNationality;
-    const holderOccupation = formValues.holderOccupation;
-    const holderOccupationInArabic = formValues.holderOccupationInArabic;
-    const holderPassportNo = formValues.holderPassportNo.toString();
-    const holderPassportType = formValues.holderPassportType;
-    const holderPlaceOfIssue = formValues.holderPlaceOfIssue;
-    const employerFullNameinArabic = formValues.employerFullNameinArabic;
-    const placeOfIssue = formValues.placeOfIssue;
+    // const visaNumber = formValues.visaNumber.toString();
+    // const visaTypeInArabic = formValues.visaTypeInArabic;
+    // const visaType = formValues.visaType;
+    // const visaPurposeInArabic = formValues.visaPurposeInArabic;
+    // const visaPurpose = formValues.visaPurpose;
+    // const dateOfExpiry = formValues.dateOfExpiry.toString();
+    // const dateOfIssue = formValues.dateOfIssue.toString();
+    // const employerFullName = formValues.employerFullName;
+    // const employerMOIReference = formValues.employerMOIReference.toString();
+    // const employerMobileNumber = formValues.employerMobileNumber.toString();
+    // const holderDateOfBirth = formValues.holderDateOfBirth.toString();
+    // const holderDateOfIssue = formValues.holderDateOfIssue.toString();
+    // const holderExpiryDate = formValues.holderExpiryDate.toString();
+    // const holderFullName = formValues.holderFullName;
+    // const holderFullNameInArabic = formValues.holderFullNameInArabic;
+    // const holderGender = formValues.holderGender;
+    // const holderMOIReference = formValues.holderMOIReference.toString();
+    // const holderNationality = formValues.holderNationality;
+    // const holderOccupation = formValues.holderOccupation;
+    // const holderOccupationInArabic = formValues.holderOccupationInArabic;
+    // const holderPassportNo = formValues.holderPassportNo.toString();
+    // const holderPassportType = formValues.holderPassportType;
+    // const holderPlaceOfIssue = formValues.holderPlaceOfIssue;
+    // const employerFullNameinArabic = formValues.employerFullNameinArabic;
+    // const placeOfIssue = formValues.placeOfIssue;
   
     // console.log('visaNumber:', visaNumber);
     // console.log('visaTypeInArabic:', visaTypeInArabic);
@@ -97,13 +99,10 @@ export class AddVisaFormComponent implements OnInit{
     // console.log('placeOfIssue:', placeOfIssue);
   
     d.reset();
+    alert("Visa has Been Created")
 
-
-    this.genaratePdf(visaNumber, visaTypeInArabic, visaType, visaPurposeInArabic, visaPurpose, dateOfIssue,
-   dateOfExpiry, placeOfIssue, holderFullNameInArabic, holderFullName, holderMOIReference, holderNationality, holderDateOfIssue,
-   holderGender, holderOccupationInArabic, holderOccupation, holderDateOfBirth, holderPassportNo, holderPlaceOfIssue, holderPassportType, holderExpiryDate, employerFullName, employerFullNameinArabic,
-    employerMOIReference, employerMobileNumber
-    )
+    this.router.navigate(["/admin/dashboard/viewVisaPDF"])
+    
     
     
   }
@@ -907,7 +906,9 @@ firstPage.drawText(employerMobileNumber,{
 
  alert('Visa Has Been Added');
 
-window.open(uri, "_blank");
+
+
+// window.open(uri, "_blank");
 
 
 }
