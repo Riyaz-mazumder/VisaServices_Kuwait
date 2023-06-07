@@ -115,7 +115,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="UrunID" class="form-label">Place Of Issue</label>
+          <label for="UrunID" class="form-label">Place Of Issue In Arabic</label>
           <input
             ngModel
             name="placeOfIssue"
@@ -124,7 +124,7 @@
             id="UrunID"
             required
             #placeOfIssue="ngModel"
-            placeholder="Place Of Issue In Arabic"
+            placeholder="Place Of Issue In Arabic ex: ادارة ﻋﻤﻞ ﻣﺤﺎﻓﻈﺔ اﻟﻔﺮواﻧﻴﺔ"
           />
           <div style="color: red;" *ngIf="!placeOfIssue.valid && placeOfIssue.touched" class="error-message">
             Place Of Issue Of Expiry Field Can Not Be Empty! 
@@ -426,7 +426,7 @@
             </div> 
           </div>     
         <div class="d-flex justify-content-center">
-          <button
+          <button [disabled]="!f.valid"
             type="submit"
             class="btn btn-success text-white btn-outline-success form-control w-50 m-3"
             id="ekleButton"

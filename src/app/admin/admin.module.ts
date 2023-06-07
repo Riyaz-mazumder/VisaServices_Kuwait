@@ -8,6 +8,8 @@ import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { RouterModule } from '@angular/router';
 import { ViewVisaPdfComponent } from './view-visa-pdf/view-visa-pdf.component';
+import { ListOfVisaComponent } from './list-of-visa/list-of-visa.component';
+import { ViewMessageComponent } from './view-message/view-message.component';
 
 
 
@@ -17,6 +19,8 @@ import { ViewVisaPdfComponent } from './view-visa-pdf/view-visa-pdf.component';
     AddVisaFormComponent,
     AdminComponent,
     ViewVisaPdfComponent,
+    ListOfVisaComponent,
+    ViewMessageComponent,
   ],
   imports: [
     CommonModule,

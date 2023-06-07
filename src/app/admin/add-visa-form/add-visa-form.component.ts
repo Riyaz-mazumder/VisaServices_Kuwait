@@ -12,10 +12,10 @@ import { HttpClient } from '@angular/common/http';
 import { PdfDataSenderService } from '../pdf-data-sender.service';
 
 
+declare var fontkit: any;
+
 
 // import * as fontkit from '@pdf-lib/fontkit';
-
-declare var fontkit: any;
 
 
 
@@ -43,7 +43,6 @@ export class AddVisaFormComponent implements OnInit{
     this.pdfDataService.setData(d.value);
 
     const formValues = d.value;
-    console.log(formValues);
   
     const visaNumber = formValues.visaNumber.toString();
     const visaTypeInArabic = formValues.visaTypeInArabic;
@@ -71,33 +70,32 @@ export class AddVisaFormComponent implements OnInit{
     const employerFullNameinArabic = formValues.employerFullNameinArabic;
     const placeOfIssue = formValues.placeOfIssue;
   
-    console.log('visaNumber:', visaNumber);
-    console.log('visaTypeInArabic:', visaTypeInArabic);
-    console.log('visaType:', visaType);
-    console.log('visaPurposeInArabic:', visaPurposeInArabic);
-    console.log('visaPurpose:', visaPurpose);
-    console.log('dateOfExpiry:', dateOfExpiry);
-    console.log('dateOfIssue:', dateOfIssue);
-    console.log('employerFullName:', employerFullName);
-    console.log('employerMOIReference:', employerMOIReference);
-    console.log('employerMobileNumber:', employerMobileNumber);
-    console.log('holderDateOfBirth:', holderDateOfBirth);
-    console.log('holderDateOfIssue:', holderDateOfIssue);
-    console.log('holderExpiryDate:', holderExpiryDate);
-    console.log('holderFullName:', holderFullName);
-    console.log('holderFullNameInArabic:', holderFullNameInArabic);
-    console.log('holderGender:', holderGender);
-    console.log('holderMOIReference:', holderMOIReference);
-    console.log('holderNationality:', holderNationality);
-    console.log('holderOccupation:', holderOccupation);
-    console.log('holderOccupationInArabic:', holderOccupationInArabic);
-    console.log('holderPassportNo:', holderPassportNo);
-    console.log('holderPassportType:', holderPassportType);
-    console.log('holderPlaceOfIssue:', holderPlaceOfIssue);
-    console.log('employerFullNameinArabic:', employerFullNameinArabic);
-    console.log('placeOfIssue:', placeOfIssue);
+    // console.log('visaNumber:', visaNumber);
+    // console.log('visaTypeInArabic:', visaTypeInArabic);
+    // console.log('visaType:', visaType);
+    // console.log('visaPurposeInArabic:', visaPurposeInArabic);
+    // console.log('visaPurpose:', visaPurpose);
+    // console.log('dateOfExpiry:', dateOfExpiry);
+    // console.log('dateOfIssue:', dateOfIssue);
+    // console.log('employerFullName:', employerFullName);
+    // console.log('employerMOIReference:', employerMOIReference);
+    // console.log('employerMobileNumber:', employerMobileNumber);
+    // console.log('holderDateOfBirth:', holderDateOfBirth);
+    // console.log('holderDateOfIssue:', holderDateOfIssue);
+    // console.log('holderExpiryDate:', holderExpiryDate);
+    // console.log('holderFullName:', holderFullName);
+    // console.log('holderFullNameInArabic:', holderFullNameInArabic);
+    // console.log('holderGender:', holderGender);
+    // console.log('holderMOIReference:', holderMOIReference);
+    // console.log('holderNationality:', holderNationality);
+    // console.log('holderOccupation:', holderOccupation);
+    // console.log('holderOccupationInArabic:', holderOccupationInArabic);
+    // console.log('holderPassportNo:', holderPassportNo);
+    // console.log('holderPassportType:', holderPassportType);
+    // console.log('holderPlaceOfIssue:', holderPlaceOfIssue);
+    // console.log('employerFullNameinArabic:', employerFullNameinArabic);
+    // console.log('placeOfIssue:', placeOfIssue);
   
-    alert('Visa Has Been Added');
     d.reset();
 
 
@@ -107,13 +105,11 @@ export class AddVisaFormComponent implements OnInit{
     employerMOIReference, employerMobileNumber
     )
     
-
     
   }
 
 
   
-
   selectedCountry!: string;
   countries: { name: string, arabic: string }[] = [
     { name: 'Afghanistan', arabic: 'أفغانستان' },
@@ -312,6 +308,7 @@ export class AddVisaFormComponent implements OnInit{
     { name: 'Zambia', arabic: 'زامبيا' },
     { name: 'Zimbabwe', arabic: 'زيمبابوي' }
   ];
+
 
   selectedGender!: string;
   genders: string[] = ['Male', 'Female', 'Other'];
@@ -514,6 +511,7 @@ export class AddVisaFormComponent implements OnInit{
   'زيمبابوي'
 ];
 
+
 selectedStatus!: string;
 statuses: string[] = ['Diplomatic', 'Official', 'Normal'];
 statusTranslations: { [key: string]: string } = {
@@ -529,8 +527,12 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
   dateOfExpiry: any, placeOfIssue: string, holderFullNameInArabic: string, holderFullName: string, holderMOIReference: string, holderNationality: any, holderDateOfIssue: any,
   holderGender: any, holderOccupationInArabic: any, holderOccupation: any, holderDateOfBirth: any, holderPassportNo: any, holderPlaceOfIssue: any, holderPassportType: any,
   holderExpiryDate: any, employerFullName: any, employerFullNameinArabic: any, employerMOIReference: any, employerMobileNumber: any
+
   ) => {
+
+
   const {PDFDocument, rgb} = PDFLib;
+
 
   const exBytes = await fetch("./assets/pdf/visa.pdf").then(res=>{
     return res.arrayBuffer();
@@ -903,14 +905,10 @@ firstPage.drawText(employerMobileNumber,{
 
  const uri = await pdfDoc.saveAsBase64({dataUri: true});
 
+ alert('Visa Has Been Added');
 
- let pdf = document.querySelector('#myPdf') as HTMLElement;
+window.open(uri, "_blank");
 
-//  pdf.setAttribute('src', uri)
-    window.open(uri,  "_blank");
-  
-
-    
 
 }
 
