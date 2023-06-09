@@ -340,7 +340,9 @@ firstPage.drawText(holderGender,{
 
 const textWidth_holderOccupation = CairoFont.widthOfTextAtSize(holderOccupation, fontSize);
 
-const centerX_holderOccupation = (pageWidth - textWidth_holderOccupation) / 2;
+const occupationCenterFixEnglish = (pageWidth - textWidth_holderOccupation) / 2;
+
+const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderOccupation - 20);
 
 
 firstPage.drawText(holderOccupation,{
@@ -354,7 +356,9 @@ firstPage.drawText(holderOccupation,{
 
 const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOccupationInArabic, fontSize);
 
-const centerX_holderOccupationInArabic = (pageWidth - textWidth_holderOccupationInArabic) / 2;
+const occupationCenterFixArabic = (pageWidth - textWidth_holderOccupationInArabic ) / 2;
+
+const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic - 7);
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,
