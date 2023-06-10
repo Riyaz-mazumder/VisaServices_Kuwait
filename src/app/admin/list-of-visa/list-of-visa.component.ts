@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PdfDataSenderService } from '../pdf-data-sender.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-of-visa',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class ListOfVisaComponent implements OnInit{
 
   constructor(
+    private pdfService: PdfDataSenderService,
+    private router: Router
   ) {}
   allProducts!: any;
 
@@ -45,4 +49,11 @@ export class ListOfVisaComponent implements OnInit{
 
   //pop up
   openDialog(): void {}
+
+  openPdf(data: any){
+   this.pdfService.setData(data);
+   
+   this.router.navigate(["/admin/dashboard/viewVisaPDF"])
+
+  }
 }

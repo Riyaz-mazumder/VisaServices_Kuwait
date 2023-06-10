@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { ViewVisaPdfComponent } from './view-visa-pdf/view-visa-pdf.component';
 import { ListOfVisaComponent } from './list-of-visa/list-of-visa.component';
 import { ViewMessageComponent } from './view-message/view-message.component';
+import { EditVisaPdfComponent } from './edit-visa-pdf/edit-visa-pdf.component';
 
 
 
@@ -21,6 +22,7 @@ import { ViewMessageComponent } from './view-message/view-message.component';
     ViewVisaPdfComponent,
     ListOfVisaComponent,
     ViewMessageComponent,
+    EditVisaPdfComponent,
   ],
   imports: [
     CommonModule,

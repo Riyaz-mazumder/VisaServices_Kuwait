@@ -2,16 +2,47 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Name</th>
           <th scope="col">Visa Number</th>
+          <th scope="col">Visa Type In Arabic</th>
+          <th scope="col">Visa Type</th>
+          <th scope="col">Visa Purpose In Arabic</th>
+          <th scope="col">Visa Purpose</th>
+          <th scope="col">Date Of Issue</th>
+          <th scope="col">Date Of Expiry</th>
+          <th scope="col">Place Of Issue In Arabic</th>
+          <th scope="col">Holder Full Name In Arabic</th>
+          <th scope="col">Holder Full Name</th>
+          <th scope="col">MOI Reference</th>
+          <th scope="col">Nationality</th>
+          <th scope="col">Date Of Issue </th>
+          <th scope="col">Gender </th>
+          <th scope="col">Occupation </th>
+          <th scope="col">Occupation In Arabic </th>
+          <th scope="col">Date Of Birth </th>
+          <th scope="col">Passport Number </th>
+          <th scope="col">Holder Place Of Issue In Arabic</th>
+          <th scope="col">Holder Passport Type</th>
+          <th scope="col">Holder Expeiry Date</th>
+          <th scope="col">Employer Full Name</th>
+          <th scope="col">Employer Full Name In Arabic</th>
+          <th scope="col">Employer MOI Reference</th>
+          <th scope="col">Employer Number</th>
+          <th scope="col">Visa Status</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let i of allProducts.content">
-          <td>{{ i.name }}</td>
           <td>{{ i.visaNumber }}</td>
+          <td>{{ i.visaTypeInArabic }}</td>
+          <td>{{ i.visaType }}</td>
+          <td>{{ i.visaPurposeInArabic }}</td>
+          <td>{{ i.visaPurpose }}</td>
+          <td>{{ i.dateOfIssue }}</td>
+          <td>{{ i.dateOfExpiry }}</td>
+          <td>{{ i.placeOfIssue }}</td>
           <td>
+            <button class="btn btn-success" (click)="openPdf(i)">Open And DownLoad</button>
             <button
               data-toggle="modal"
               data-target="#myModal"
@@ -19,9 +50,11 @@
               (click)="onUpdate(i)"
               style="margin-right: 20px"
             >
-             Open Visa PDF
+             Edit
             </button>
             <button class="btn btn-danger" (click)="onDelete(i.id)">Delete From DataBase</button>
+
+           
           </td>
         </tr>
       </tbody>
