@@ -45,6 +45,9 @@ export class ViewVisaPdfComponent implements OnInit{
 
     const formValues = this.visaData;
 
+    console.log(formValues);
+    
+
     const visaNumber = formValues.visaNumber.toString();
     const visaTypeInArabic = formValues.visaTypeInArabic;
     const visaType = formValues.visaType;
@@ -54,7 +57,7 @@ export class ViewVisaPdfComponent implements OnInit{
     const dateOfIssue = formValues.dateOfIssue.toString();
     const employerFullName = formValues.employerFullName;
     const employerMOIReference = formValues.employerMOIReference.toString();
-    const employerMobileNumber = formValues.employerMobileNumber.toString();
+    const employerMobileNumber = formValues.employerMobileNumber;
     const holderDateOfBirth = formValues.holderDateOfBirth.toString();
     const holderDateOfIssue = formValues.holderDateOfIssue.toString();
     const holderExpiryDate = formValues.holderExpiryDate.toString();

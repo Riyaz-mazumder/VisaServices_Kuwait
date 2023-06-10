@@ -32,7 +32,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let i of allProducts.content">
+        <tr *ngFor="let i of allProducts">
           <td>{{ i.visaNumber }}</td>
           <td>{{ i.visaTypeInArabic }}</td>
           <td>{{ i.visaType }}</td>
@@ -41,6 +41,24 @@
           <td>{{ i.dateOfIssue }}</td>
           <td>{{ i.dateOfExpiry }}</td>
           <td>{{ i.placeOfIssue }}</td>
+          <td>{{ i.holderFullNameInArabic }}</td>
+          <td>{{ i.holderFullName }}</td>
+          <td>{{ i.holderMOIReference }}</td>
+          <td>{{ i.holderNationality }}</td>
+          <td>{{ i.holderDateOfIssue }}</td>
+          <td>{{ i.holderGender }}</td>
+          <td>{{ i.holderOccupation }}</td>
+          <td>{{ i.holderOccupationInArabic }}</td>
+          <td>{{ i.holderDateOfBirth }}</td>
+          <td>{{ i.holderPassportNo }}</td>
+          <td>{{ i.holderPlaceOfIssue }}</td>
+          <td>{{ i.holderPassportType }}</td>
+          <td>{{ i.holderExpiryDate }}</td>
+          <td>{{ i.employerFullName }}</td>
+          <td>{{ i.employerFullNameinArabic }}</td>
+          <td>{{ i.employerMOIReference }}</td>
+          <td>{{ i.employerMobileNumber }}</td>
+          <td>{{ i.active }}</td>
           <td>
             <button class="btn btn-success" (click)="openPdf(i)">Open And DownLoad</button>
             <button
@@ -62,7 +80,7 @@
   
   
      <!-- Pagination -->
-     <div class="pagination">
+     <!-- <div class="pagination">
       <button class="btn" id="btn">
         <svg
              xmlns="http://www.w3.org/2000/svg"
@@ -104,4 +122,4 @@
         </svg>
       </button>
     </div>
-  
+   -->

@@ -424,7 +424,10 @@
             <div style="color: red;" *ngIf="!employerMobileNumber.valid && employerMobileNumber.touched" class="error-message">
               Mobile Number Field Can Not Be Empty! 
             </div> 
-          </div>     
+          </div>  
+          <div>
+            <input type="hidden" ngModel name="active">
+          </div>   
         <div class="d-flex justify-content-center">
           <button [disabled]="!f.valid"
             type="submit"

@@ -43,10 +43,12 @@ export class AddVisaFormComponent implements OnInit{
   }
 
   submit(d: NgForm) {
+    d.value.active = true;
+
+    console.log(d.value);
+    
 
     this.pdfDataService.setData(d.value);
-
-    d.reset();
 
     this.service.saveVisa(d.value).subscribe({
       next: r =>{
@@ -58,7 +60,11 @@ export class AddVisaFormComponent implements OnInit{
       }
     });
 
+    d.reset();
+
     alert("Visa has Been Created")
+
+ 
 
     this.router.navigate(["/admin/dashboard/viewVisaPDF"])
     

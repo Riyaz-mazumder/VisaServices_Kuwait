@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PdfDataSenderService } from '../pdf-data-sender.service';
 import { Router } from '@angular/router';
+import { DataServicService } from '../data-servic.service';
 
 @Component({
   selector: 'app-list-of-visa',
@@ -11,23 +12,24 @@ export class ListOfVisaComponent implements OnInit{
 
   constructor(
     private pdfService: PdfDataSenderService,
-    private router: Router
+    private router: Router,
+    private service: DataServicService
   ) {}
   allProducts!: any;
 
   ngOnInit() {
-    // this.service.getAllProducts().subscribe({
-    //   next: (r) => {
-    //     this.allProducts = r;
-    //     console.log(this.allProducts);
+    this.service.getAllVisa().subscribe({
+      next: (r) => {
+        this.allProducts = r;
+        console.log(this.allProducts);
         
-    //     this.allProducts.content.reverse();
-    //   },
-    //   error: (err) => {
-    //     alert(err);
-    //     console.log(err);
-    //   },
-    // });
+        this.allProducts.content.reverse();
+      },
+      error: (err) => {
+        alert(err);
+        console.log(err);
+      },
+    });
     
   }
 
@@ -42,15 +44,17 @@ export class ListOfVisaComponent implements OnInit{
   }
 
   onDelete(id: any) {
-    // this.service.deleteProduct(id).subscribe((r) => {});
-    // alert('Product Deleted');
-    // this.ngOnInit();
+    this.service.deleteVisa(id).subscribe((r) => {});
+    alert('Product Deleted');
+    this.ngOnInit();
   }
 
   //pop up
   openDialog(): void {}
 
   openPdf(data: any){
+    console.log(data);
+    
    this.pdfService.setData(data);
    
    this.router.navigate(["/admin/dashboard/viewVisaPDF"])
