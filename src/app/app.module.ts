@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VisaApprovalAndTrackingComponent } from './frontEnd/visa/visa-approval-and-tracking/visa-approval-and-tracking.component';
 import { VisaInqueryAndPrintingComponent } from './frontEnd/visa/visa-inquery-and-printing/visa-inquery-and-printing.component';
+import { EVisaComponent } from './frontEnd/visa/e-visa/e-visa.component';
+import { ViewVisaPdfUserComponent } from './frontEnd/visa/view-visa-pdf-user/view-visa-pdf-user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { VisaInqueryAndPrintingComponent } from './frontEnd/visa/visa-inquery-an
     ContactComponent,
     AdminLoginComponent,
     VisaApprovalAndTrackingComponent,
-    VisaInqueryAndPrintingComponent
+    VisaInqueryAndPrintingComponent,
+    EVisaComponent,
+    ViewVisaPdfUserComponent
   ],
   imports: [
     BrowserModule,

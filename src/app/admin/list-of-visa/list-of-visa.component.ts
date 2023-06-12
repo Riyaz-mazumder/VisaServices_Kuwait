@@ -23,7 +23,7 @@ export class ListOfVisaComponent implements OnInit{
         this.allProducts = r;
         console.log(this.allProducts);
         
-        this.allProducts.content.reverse();
+        this.allProducts.reverse();
       },
       error: (err) => {
         alert(err);

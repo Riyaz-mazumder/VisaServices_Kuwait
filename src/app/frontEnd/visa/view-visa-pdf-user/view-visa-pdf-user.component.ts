@@ -4,13 +4,12 @@ import { DomSanitizer} from '@angular/platform-browser';
 import { PDFDocument} from 'pdf-lib'
 
 import * as PDFLib from 'pdf-lib';
+import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
 
 // import * as fontkit from '@pdf-lib/fontkit';
 
 declare var fontkit: any;
 
-
-import { PdfDataSenderService } from '../pdf-data-sender.service';
 
 
 @Pipe({ name: 'safe' })
@@ -22,12 +21,13 @@ export class SafePipe implements PipeTransform {
 } 
 
 
+
 @Component({
-  selector: 'app-view-visa-pdf',
-  templateUrl: './view-visa-pdf.component.html',
-  styleUrls: ['./view-visa-pdf.component.scss']
+  selector: 'app-view-visa-pdf-user',
+  templateUrl: './view-visa-pdf-user.component.html',
+  styleUrls: ['./view-visa-pdf-user.component.scss']
 })
-export class ViewVisaPdfComponent implements OnInit{
+export class ViewVisaPdfUserComponent implements OnInit{
 
   constructor(private pdfDataService: PdfDataSenderService) {}
 

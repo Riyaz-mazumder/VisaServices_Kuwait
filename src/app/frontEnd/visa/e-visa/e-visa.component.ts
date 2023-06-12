@@ -1,77 +1,50 @@
-
-import { Component, ElementRef, OnInit, Pipe, PipeTransform, Renderer2, ViewChild } from '@angular/core';
-import { DomSanitizer} from '@angular/platform-browser';
-
-import { PDFDocument} from 'pdf-lib'
-
-import * as PDFLib from 'pdf-lib';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-import { HttpClient } from '@angular/common/http';
-
-import { PdfDataSenderService } from '../pdf-data-sender.service';
 import { Router } from '@angular/router';
-import { DataServicService } from '../data-servic.service';
-
-
-declare var fontkit: any;
-
-
-// import * as fontkit from '@pdf-lib/fontkit';
-
-
+import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
+import { DataserviceService } from 'src/app/service/dataservice.service';
 
 @Component({
-  selector: 'app-add-visa-form',
-  templateUrl: './add-visa-form.component.html',
-  styleUrls: ['./add-visa-form.component.scss']
+  selector: 'app-e-visa',
+  templateUrl: './e-visa.component.html',
+  styleUrls: ['./e-visa.component.scss']
 })
-export class AddVisaFormComponent implements OnInit{
-
+export class EVisaComponent implements OnInit{
 
   constructor(
-    private httpClient: HttpClient,
-    private pdfDataService: PdfDataSenderService,
+    private service: DataserviceService,
     private router: Router,
-    private service: DataServicService
-    
-    ) {}
+    private pdfDataService: PdfDataSenderService
+    ){}
 
-  storedValue!: any;
   ngOnInit(): void {
-    this.storedValue = sessionStorage.getItem('admin');
-  }
-
-  submit(d: NgForm) {
-    d.value.active = true;
-
-    console.log(d.value);
-    
-
-    this.pdfDataService.setData(d.value);
-
-    this.service.saveVisa(d.value).subscribe({
-      next: r =>{
-        console.log(r);
-        
-      }, error: e =>{
-        console.log(e);
-        
-      }
-    });
-
-    d.reset();
-
-    alert("Visa has Been Created")
-
- 
-
-    this.router.navigate(["/admin/dashboard/viewVisaPDF"])
     
   }
 
+  searchedData!: any;
 
-  
+submit(data: NgForm){
+//  this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirth, data.value.holderNationality).subscribe({
+//   next: r=>{
+//     this.searchedData = r;
+//     this.pdfDataService.setData(this.searchedData);
+
+//     this.router.navigate(["/eVisa/print"])
+
+//   },
+//   error: err=>{
+//     console.log(err);
+    
+//   }
+//  })
+
+console.log(data.value);
+
+
+  }
+
+
+
   selectedCountry!: string;
   countries: { name: string, arabic: string }[] = [
     { name: 'Afghanistan', arabic: 'أفغانستان' },
@@ -270,228 +243,6 @@ export class AddVisaFormComponent implements OnInit{
     { name: 'Zambia', arabic: 'زامبيا' },
     { name: 'Zimbabwe', arabic: 'زيمبابوي' }
   ];
-
-
-  selectedGender!: string;
-  genders: string[] = ['Male', 'Female', 'Other'];
-  genderTranslations: { [key: string]: string } = {
-    Male: 'ذكر',
-    Female: 'أنثى',
-    Other: 'أخرى'
-  };
-
-
-  selectedCountryInArabic!: string;
-  countriesInArabic: string[] = [
-  'أفغانستان',
-  'ألبانيا',
-  'الجزائر',
-  'أندورا',
-  'أنغولا',
-  'أنتيغوا وبربودا',
-  'الأرجنتين',
-  'أرمينيا',
-  'أستراليا',
-  'النمسا',
-  'أذربيجان',
-  'باهاماس',
-  'البحرين',
-  'بنجلاديش',
-  'باربادوس',
-  'بيلاروس',
-  'بلجيكا',
-  'بليز',
-  'بنين',
-  'بوتان',
-  'بوليفيا',
-  'البوسنة والهرسك',
-  'بوتسوانا',
-  'البرازيل',
-  'بروناي',
-  'بلغاريا',
-  'بوركينا فاسو',
-  'بوروندي',
-  'كمبوديا',
-  'الكاميرون',
-  'كندا',
-  'الرأس الأخضر',
-  'أفريقيا الوسطى',
-  'تشاد',
-  'شيلي',
-  'الصين',
-  'كولومبيا',
-  'جزر القمر',
-  'الكونغو',
-  'كوستاريكا',
-  'كرواتيا',
-  'كوبا',
-  'قبرص',
-  'جمهورية التشيك',
-  'الدانمارك',
-  'جيبوتي',
-  'دومينيكا',
-  'جمهورية الدومينيكان',
-  'تيمور الشرقية',
-  'الإكوادور',
-  'مصر',
-  'السلفادور',
-  'غينيا الاستوائية',
-  'إريتريا',
-  'إستونيا',
-  'إثيوبيا',
-  'فيجي',
-  'فنلندا',
-  'فرنسا',
-  'الغابون',
-  'غامبيا',
-  'جورجيا',
-  'ألمانيا',
-  'غانا',
-  'اليونان',
-  'جرينادا',
-  'غواتيمالا',
-  'غينيا',
-  'غينيا بيساو',
-  'غيانا',
-  'هايتي',
-  'هندوراس',
-  'المجر',
-  'أيسلندا',
-  'الهند',
-  'إندونيسيا',
-  'إيران',
-  'العراق',
-  'أيرلندا',
-  'إسرائيل',
-  'إيطاليا',
-  'جامايكا',
-  'اليابان',
-  'الأردن',
-  'كازاخستان',
-  'كينيا',
-  'كيريباتي',
-  'كوريا الشمالية',
-  'كوريا الجنوبية',
-  'الكويت',
-  'قرغيزستان',
-  'لاوس',
-  'لاتفيا',
-  'لبنان',
-  'ليسوتو',
-  'ليبيريا',
-  'ليبيا',
-  'ليختنشتاين',
-  'ليتوانيا',
-  'لوكسمبورج',
-  'مدغشقر',
-  'مالاوي',
-  'ماليزيا',
-  'جزر المالديف',
-  'مالي',
-  'مالطا',
-  'جزر مارشال',
-  'موريتانيا',
-  'موريشيوس',
-  'المكسيك',
-  'مايكرونيزيا',
-  'مولدوفا',
-  'موناكو',
-  'منغوليا',
-  'الجبل الأسود',
-  'المغرب',
-  'موزمبيق',
-  'ميانمار',
-  'ناميبيا',
-  'ناورو',
-  'نيبال',
-  'هولندا',
-  'نيوزيلندا',
-  'نيكاراغوا',
-  'النيجر',
-  'نيجيريا',
-  'جزر النرويج',
-  'سلطنة عمان',
-  'باكستان',
-  'بالاو',
-  'بنما',
-  'بابوا غينيا الجديدة',
-  'باراغواي',
-  'بيرو',
-  'الفلبين',
-  'بولندا',
-  'البرتغال',
-  'قطر',
-  'رومانيا',
-  'روسيا',
-  'رواندا',
-  'سانت كيتس ونيفيس',
-  'سانت لوسيا',
-  'سانت فينسنت والغرينادين',
-  'ساموا',
-  'سان مارينو',
-  'ساو تومي وبرينسيبي',
-  'المملكة العربية السعودية',
-  'السنغال',
-  'صربيا',
-  'سيشيل',
-  'سيراليون',
-  'سنغافورة',
-  'سلوفاكيا',
-  'سلوفينيا',
-  'جزر سليمان',
-  'الصومال',
-  'جنوب أفريقيا',
-  'جنوب السودان',
-  'إسبانيا',
-  'سريلانكا',
-  'السودان',
-  'سوريا',
-  'تايوان',
-  'طاجيكستان',
-  'تنزانيا',
-  'تايلاند',
-  'توغو',
-  'تونغا',
-  'ترينيداد وتوباغو',
-  'تونس',
-  'تركيا',
-  'تركمانستان',
-  'توفالو',
-  'أوغندا',
-  'أوكرانيا',
-  'الإمارات العربية المتحدة',
-  'المملكة المتحدة',
-  'الولايات المتحدة الأمريكية',
-  'أوروغواي',
-  'أوزبكستان',
-  'فانواتو',
-  'الفاتيكان',
-  'فنزويلا',
-  'فيتنام',
-  'اليمن',
-  'زامبيا',
-  'زيمبابوي'
-];
-
-
-selectedStatus!: string;
-statuses: string[] = ['Diplomatic', 'Official', 'Normal'];
-statusTranslations: { [key: string]: string } = {
-  Diplomatic: 'دبلوماسي',
-  Official: 'رسمي',
-  Normal: 'عادي'
-};
-
-
-isRTL(country: any): boolean {
-  const rtlLanguages = ['ar', 'fa', 'he', 'ur']; // Add more if needed
-
-  // Extract the language code from the country object
-  const languageCode = country.languageCode; // Adjust this based on your country object's structure
-
-  // Check if the language code indicates right-to-left direction
-  return rtlLanguages.includes(languageCode);
-}
 
 
 }

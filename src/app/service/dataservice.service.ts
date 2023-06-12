@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class DataserviceService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  
+  private baseUrl = "http://localhost:8080/api/v1/visa"
+
+  public searchVisa(holderPassportNo: string, holderDateOfBirth: string, holderNationality: string){
+   return this.http.get(this.baseUrl + "/" + holderPassportNo + "/" + holderDateOfBirth + "/" + holderNationality);
+  }
+
 }
