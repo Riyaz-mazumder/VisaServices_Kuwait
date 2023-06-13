@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, Pipe, PipeTransform, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer} from '@angular/platform-browser';
 
-import { PDFDocument} from 'pdf-lib'
+import { PDFDocument, PDFPage } from 'pdf-lib';
+
 
 import * as PDFLib from 'pdf-lib';
 

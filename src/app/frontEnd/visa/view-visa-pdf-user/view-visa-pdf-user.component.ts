@@ -73,7 +73,33 @@ export class ViewVisaPdfUserComponent implements OnInit{
     const holderPlaceOfIssue = formValues.holderPlaceOfIssue;
     const employerFullNameinArabic = formValues.employerFullNameinArabic;
     const placeOfIssue = formValues.placeOfIssue;
-    
+  
+  
+    // console.log('visaNumber:', visaNumber);
+    // console.log('visaTypeInArabic:', visaTypeInArabic);
+    // console.log('visaType:', visaType);
+    // console.log('visaPurposeInArabic:', visaPurposeInArabic);
+    // console.log('visaPurpose:', visaPurpose);
+    // console.log('dateOfExpiry:', dateOfExpiry);
+    // console.log('dateOfIssue:', dateOfIssue);
+    // console.log('employerFullName:', employerFullName);
+    // console.log('employerMOIReference:', employerMOIReference);
+    // console.log('employerMobileNumber:', employerMobileNumber);
+    // console.log('holderDateOfBirth:', holderDateOfBirth);
+    // console.log('holderDateOfIssue:', holderDateOfIssue);
+    // console.log('holderExpiryDate:', holderExpiryDate);
+    // console.log('holderFullName:', holderFullName);
+    // console.log('holderFullNameInArabic:', holderFullNameInArabic);
+    // console.log('holderGender:', holderGender);
+    // console.log('holderMOIReference:', holderMOIReference);
+    // console.log('holderNationality:', holderNationality);
+    // console.log('holderOccupation:', holderOccupation);
+    // console.log('holderOccupationInArabic:', holderOccupationInArabic);
+    // console.log('holderPassportNo:', holderPassportNo);
+    // console.log('holderPassportType:', holderPassportType);
+    // console.log('holderPlaceOfIssue:', holderPlaceOfIssue);
+    // console.log('employerFullNameinArabic:', employerFullNameinArabic);
+
 
     this.genaratePdf(visaNumber, visaTypeInArabic, visaType, visaPurposeInArabic, visaPurpose, dateOfIssue,
       dateOfExpiry, placeOfIssue, holderFullNameInArabic, holderFullName, holderMOIReference, holderNationality, holderDateOfIssue,

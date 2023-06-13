@@ -24,21 +24,25 @@ export class EVisaComponent implements OnInit{
   searchedData!: any;
 
 submit(data: NgForm){
-//  this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirth, data.value.holderNationality).subscribe({
-//   next: r=>{
-//     this.searchedData = r;
-//     this.pdfDataService.setData(this.searchedData);
 
-//     this.router.navigate(["/eVisa/print"])
-
-//   },
-//   error: err=>{
-//     console.log(err);
+  // console.log(data.value);
+ this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirth, data.value.holderNationality).subscribe({
+  next: r=>{
+    this.searchedData = r;
+    this.pdfDataService.setData(this.searchedData[0]);
+    console.log(this.searchedData);
     
-//   }
-//  })
 
-console.log(data.value);
+     this.router.navigate(["/eVisa/print"])
+
+  },
+  error: err=>{
+    console.log(err);
+    
+  }
+  })
+
+
 
 
   }
