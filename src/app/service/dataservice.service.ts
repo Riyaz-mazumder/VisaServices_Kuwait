@@ -15,4 +15,8 @@ export class DataserviceService {
    return this.http.get(this.baseUrl + "/" + holderPassportNo + "/" + holderDateOfBirth + "/" + holderNationality);
   }
 
+  public getQrCode(qrPath:string){
+     return this.http.get("http://localhost:8080/api/v1" + "/qrCode/" + qrPath);
+  }
+
 }

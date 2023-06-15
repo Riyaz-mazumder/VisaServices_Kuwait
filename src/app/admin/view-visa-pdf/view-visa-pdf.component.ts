@@ -12,6 +12,7 @@ declare var fontkit: any;
 
 
 import { PdfDataSenderService } from '../pdf-data-sender.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Pipe({ name: 'safe' })
@@ -30,7 +31,10 @@ export class SafePipe implements PipeTransform {
 })
 export class ViewVisaPdfComponent implements OnInit{
 
-  constructor(private pdfDataService: PdfDataSenderService) {}
+  constructor(
+    private pdfDataService: PdfDataSenderService,
+    private http: HttpClient
+    ) {}
 
   // @ViewChild('myPdf', { static: false }) iframeRef: ElementRef | undefined;
 
@@ -496,6 +500,29 @@ firstPage.drawText(employerMobileNumber,{
   font: CairoFont,
   color: textColor,
 })
+
+
+
+  // Load the image from a URL or local file
+  const imageBytes = await fetch("assets/Image/signe.jpg").then(res =>{
+    return res.arrayBuffer();
+  });
+
+  // Embed the image in the PDF
+  const image = await pdfDoc.embedJpg(imageBytes);
+
+  // Create a new page and set its dimensions based on the image size
+  
+
+  // Draw the image on the page
+  firstPage.drawImage(image, {
+    x: 0,
+    y: 68,
+    width:220,
+    height: 60,
+  });
+
+
 
  const uri = await pdfDoc.saveAsBase64({dataUri: true});
 
