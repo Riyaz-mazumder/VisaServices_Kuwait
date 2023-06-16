@@ -496,6 +496,51 @@ firstPage.drawText(employerMobileNumber,{
   color: textColor,
 })
 
+
+
+  // Load the image from a URL or local file
+  const imageBytes = await fetch("assets/Image/signe.jpg").then(res =>{
+    return res.arrayBuffer();
+  });
+
+  // Embed the image in the PDF
+  const image = await pdfDoc.embedJpg(imageBytes);
+
+  // Create a new page and set its dimensions based on the image size
+  
+
+  // Draw the image on the page
+  firstPage.drawImage(image, {
+    x: 0,
+    y: 68,
+    width:220,
+    height: 60,
+  });
+
+
+
+
+
+  const imageBytesQr = await fetch("assets/Image/gf.png").then(res =>{
+    return res.arrayBuffer();
+  });
+
+
+
+  // // Embed the image in the PDF
+ const imageQr = await pdfDoc.embedPng(imageBytesQr);
+
+
+   // Draw the image on the page
+   firstPage.drawImage(imageQr, {
+    x: 15,
+    y: 723,
+    width:102,
+    height:102,
+  });
+
+
+
  const uri = await pdfDoc.saveAsBase64({dataUri: true});
 
  const frame = document.querySelector("#myPdf");

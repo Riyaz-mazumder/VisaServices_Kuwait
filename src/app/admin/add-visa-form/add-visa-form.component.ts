@@ -62,11 +62,9 @@ export class AddVisaFormComponent implements OnInit{
 
     d.reset();
 
-    alert("Visa has Been Created")
-
- 
-
-    this.router.navigate(["/admin/dashboard/viewVisaPDF"])
+    alert("Visa has Been Created");
+    
+    // this.router.navigate(["/admin/dashboard/viewVisaPDF"])
     
   }
 

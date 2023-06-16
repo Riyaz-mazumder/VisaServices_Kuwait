@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ReCaptcha2Component } from 'ngx-captcha';
 import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 
@@ -10,11 +11,16 @@ import { DataserviceService } from 'src/app/service/dataservice.service';
   styleUrls: ['./e-visa.component.scss']
 })
 export class EVisaComponent implements OnInit{
+  @ViewChild('captchaRef') captchaRef: ReCaptcha2Component | undefined;
+
+
+  captchaResponse!: string;
 
   constructor(
     private service: DataserviceService,
     private router: Router,
-    private pdfDataService: PdfDataSenderService
+    private pdfDataService: PdfDataSenderService,
+  
     ){}
 
   ngOnInit(): void {
@@ -24,6 +30,15 @@ export class EVisaComponent implements OnInit{
   searchedData!: any;
 
 submit(data: NgForm){
+  if (this.captchaResponse) {
+    console.log("EEE");
+    
+    // CAPTCHA validated successfully, submit the form
+  } else {
+    console.log("OOO");
+    
+    // CAPTCHA validation failed, show an error message
+  }
 
   // console.log(data.value);
  this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirth, data.value.holderNationality).subscribe({

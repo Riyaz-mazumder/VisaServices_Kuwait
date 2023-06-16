@@ -54,6 +54,9 @@
             </div> 
           </div>
 
+          <!-- Chaptcha -->
+          <ngx-captcha [(ngModel)]="captchaResponse"></ngx-captcha>
+
           <div class="d-flex justify-content-center">
             <button [disabled]="!f.valid"
               type="submit"

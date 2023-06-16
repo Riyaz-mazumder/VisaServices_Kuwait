@@ -11,6 +11,7 @@ import { VisaApprovalAndTrackingComponent } from './frontEnd/visa/visa-approval-
 import { VisaInqueryAndPrintingComponent } from './frontEnd/visa/visa-inquery-and-printing/visa-inquery-and-printing.component';
 import { EVisaComponent } from './frontEnd/visa/e-visa/e-visa.component';
 import { ViewVisaPdfUserComponent } from './frontEnd/visa/view-visa-pdf-user/view-visa-pdf-user.component';
+import { UserVisaVerifyComponent } from './frontEnd/visa/user-visa-verify/user-visa-verify.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
 
   { path: 'eVisa', component: EVisaComponent},
   { path: 'eVisa/print', component: ViewVisaPdfUserComponent},
+  { path: 'eVisa/verify/:id', component: UserVisaVerifyComponent},
 
 
   { path: 'admin', component: AdminLoginComponent },

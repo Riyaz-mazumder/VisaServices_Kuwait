@@ -13,6 +13,8 @@ declare var fontkit: any;
 
 import { PdfDataSenderService } from '../pdf-data-sender.service';
 import { HttpClient } from '@angular/common/http';
+import { DataServicService } from '../data-servic.service';
+import { DataserviceService } from 'src/app/service/dataservice.service';
 
 
 @Pipe({ name: 'safe' })
@@ -33,16 +35,19 @@ export class ViewVisaPdfComponent implements OnInit{
 
   constructor(
     private pdfDataService: PdfDataSenderService,
-    private http: HttpClient
+    private http: HttpClient,
+    private service: DataserviceService
     ) {}
 
   // @ViewChild('myPdf', { static: false }) iframeRef: ElementRef | undefined;
 
-
+  
 
    urlIframe: string = "";
 
    visaData: any;
+
+   QrCodeImage!: any;
 
    ngOnInit(): void {
 
@@ -51,6 +56,9 @@ export class ViewVisaPdfComponent implements OnInit{
     const formValues = this.visaData;
 
     console.log(formValues);
+
+    this.QrCodeImage = this.service.fetchImage(formValues.id);
+    
     
 
     const visaNumber = formValues.visaNumber.toString();
@@ -520,6 +528,28 @@ firstPage.drawText(employerMobileNumber,{
     y: 68,
     width:220,
     height: 60,
+  });
+
+
+
+
+
+  const imageBytesQr = await fetch("assets/Image/gf.png").then(res =>{
+    return res.arrayBuffer();
+  });
+
+
+
+  // // Embed the image in the PDF
+ const imageQr = await pdfDoc.embedPng(imageBytesQr);
+
+
+   // Draw the image on the page
+   firstPage.drawImage(imageQr, {
+    x: 15,
+    y: 723,
+    width:102,
+    height:102,
   });
 
 

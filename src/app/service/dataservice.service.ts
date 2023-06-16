@@ -19,4 +19,11 @@ export class DataserviceService {
      return this.http.get("http://localhost:8080/api/v1" + "/qrCode/" + qrPath);
   }
 
+  async fetchImage(qrPath: any): Promise<Uint8Array> {
+    const url = "http://localhost:8080/api/v1" + "/qrCode/" + qrPath;
+    const response = await this.http.get(url, { responseType: 'arraybuffer' }).toPromise();
+    return new Uint8Array(response as ArrayBuffer);
+  }
+  
+
 }
