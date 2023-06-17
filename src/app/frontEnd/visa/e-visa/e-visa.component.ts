@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ReCaptcha2Component } from 'ngx-captcha';
+import { NgxCaptchaService } from '@binssoft/ngx-captcha';
+// import { ReCaptcha2Component } from 'ngx-captcha';
 import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 
@@ -11,10 +12,10 @@ import { DataserviceService } from 'src/app/service/dataservice.service';
   styleUrls: ['./e-visa.component.scss']
 })
 export class EVisaComponent implements OnInit{
-  @ViewChild('captchaRef') captchaRef: ReCaptcha2Component | undefined;
+  // @ViewChild('captchaRef') captchaRef: ReCaptcha2Component | undefined;
+  @ViewChild('.prevew', { static: true })
+  captchaPreviewRef!: ElementRef;
 
-
-  captchaResponse!: string;
 
   constructor(
     private service: DataserviceService,
@@ -22,40 +23,75 @@ export class EVisaComponent implements OnInit{
     private pdfDataService: PdfDataSenderService,
   
     ){}
+     fonts: string[] = ["cursive"];
+     captchaValue: string = "";
+  
+  
+    ngOnInit(): void {
+      this.initCaptcha();
+    }
+  
+     gencaptcha(): void {
+      let value = btoa(String(Math.random() * 1000000000));
+      value = value.substr(0, 5 + Math.random() * 5);
+      this.captchaValue = value;
+    }
+  
+     setcaptcha(): void {
+      const captchaContainer = document.getElementById('captchaPreview');
+      if (captchaContainer) {
+        let html = this.captchaValue.split("").map((char) => {
+          const rotate = -20 + Math.trunc(Math.random() * 30);
+          const font = Math.trunc(Math.random() * this.fonts.length);
+          return `<span style="text-align: center; transform:rotate(${rotate}deg); font-family:${this.fonts[font]};">${char}</span>`;
+        }).join("");
+        captchaContainer.innerHTML = html;
+      }
+    }
+  
+    private initCaptcha(): void {
+      // const refreshButton = document.querySelector(".login_form #captcha .captcha_refersh");
+      // if (refreshButton) {
+      //   refreshButton.addEventListener("click", () => {
+      //     this.gencaptcha();
+      //     this.setcaptcha();
+      //   });
+      // }
+  
+      this.gencaptcha();
+      this.setcaptcha();
+    }
 
-  ngOnInit(): void {
-    
-  }
-
+   
   searchedData!: any;
 
 submit(data: NgForm){
-  if (this.captchaResponse) {
-    console.log("EEE");
-    
-    // CAPTCHA validated successfully, submit the form
-  } else {
-    console.log("OOO");
-    
-    // CAPTCHA validation failed, show an error message
-  }
 
-  // console.log(data.value);
- this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirth, data.value.holderNationality).subscribe({
+  const inputCaptchaValue = (<HTMLInputElement>document.querySelector("#captchaInput")).value;
+  
+  if (inputCaptchaValue === this.captchaValue) {
+     // console.log(data.value);
+this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirth, data.value.holderNationality).subscribe({
   next: r=>{
     this.searchedData = r;
-    this.pdfDataService.setData(this.searchedData[0]);
-    console.log(this.searchedData);
-    
 
-     this.router.navigate(["/eVisa/print"])
+    if(this.searchedData.length <1){
+      alert("Wrong Input Data!")
+    }else{
+      this.pdfDataService.setData(this.searchedData[0]);
+     this.router.navigate(["/eVisa/print"])  
+    }
 
   },
   error: err=>{
     console.log(err);
-    
+     
   }
   })
+  } else {
+    alert("Invalid Captcha");
+  }
+ 
 
 
 

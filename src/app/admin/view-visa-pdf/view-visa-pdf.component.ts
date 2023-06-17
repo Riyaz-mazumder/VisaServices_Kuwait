@@ -148,6 +148,24 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
 const pages = pdfDoc.getPages();
 const firstPage = pages[0];
 
+
+
+const wordsNa = holderNationality.split(" "); // Split the sentence into an array of words
+const nationalityEnglish = wordsNa[0]; // Extract the first word
+const nationalityArabic = wordsNa[1];
+
+
+const wordsPassportType = holderPassportType.split(" ");
+
+const passportTypeInEnglish = wordsPassportType[0]; // Extract the first word
+const passportTypeInArabic = wordsPassportType[1];
+
+
+console.log(nationalityArabic + "  " + nationalityEnglish);
+
+
+
+
 // const englishFont = await fetch("./assets/font/Roboto-Regular.ttf").then(res =>{
 //   return res.arrayBuffer();
 // });
@@ -313,12 +331,32 @@ firstPage.drawText(holderMOIReference,{
   color: textColor,
 })
 
-const textWidth_holderNationality = CairoFont.widthOfTextAtSize(holderNationality, fontSize);
+const textWidth_holderNationalityEnglish = CairoFont.widthOfTextAtSize(nationalityEnglish, fontSize);
 
-const centerX_holderNationality= (pageWidth - textWidth_holderNationality) / 2;
+const centerX_holderNationalityEnglishTheE = (pageWidth - textWidth_holderNationalityEnglish) / 2;
 
-firstPage.drawText(holderNationality,{
-  x: centerX_holderNationality,
+
+
+const centerX_holderNationalityEnglish = centerX_holderNationalityEnglishTheE - (textWidth_holderNationalityEnglish - 30);
+
+firstPage.drawText(nationalityEnglish,{
+  x: centerX_holderNationalityEnglish,
+  y: 436,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidth_holderNationalityArabic = CairoFont.widthOfTextAtSize(nationalityArabic, fontSize);
+
+const centerX_holderNationalityArabicTheA = (pageWidth - textWidth_holderNationalityArabic) / 2;
+
+const centerX_holderNationalityArabic = centerX_holderNationalityArabicTheA + (textWidth_holderNationalityArabic -7);
+
+
+firstPage.drawText(nationalityArabic,{
+  x: centerX_holderNationalityArabic,
   y: 436,
   size: fontSize,
   font: CairoFont,
@@ -426,13 +464,30 @@ firstPage.drawText(holderPlaceOfIssue,{
 })
 
 
-const textWidth_holderPassportType = CairoFont.widthOfTextAtSize(holderPassportType, fontSize);
+const textWidth_holderPassportTypeEnglish = CairoFont.widthOfTextAtSize(passportTypeInEnglish, fontSize);
 
-const centerX_holderPassportType = (pageWidth - textWidth_holderPassportType) / 2;
+const centerX_holderPassportTypeEnglish = (pageWidth - textWidth_holderPassportTypeEnglish) / 2;
+
+const centerX_holderPassportTypeEnglish_C = centerX_holderPassportTypeEnglish - (textWidth_holderPassportTypeEnglish - 20)
 
 
-firstPage.drawText(holderPassportType,{
-  x: centerX_holderPassportType,
+firstPage.drawText(passportTypeInEnglish,{
+  x: centerX_holderPassportTypeEnglish_C,
+  y: 297,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+const textWidth_holderPassportTypeArabic = CairoFont.widthOfTextAtSize(passportTypeInArabic, fontSize);
+
+const centerX_holderPassportTypeArabic = (pageWidth - textWidth_holderPassportTypeArabic) / 2;
+
+const centerX_holderPassportTypeArabic_C = centerX_holderPassportTypeArabic + (textWidth_holderPassportTypeArabic)
+
+
+firstPage.drawText(passportTypeInArabic,{
+  x: centerX_holderPassportTypeArabic_C,
   y: 297,
   size: fontSize,
   font: CairoFont,
@@ -452,21 +507,6 @@ firstPage.drawText(holderExpiryDate,{
   font: CairoFont,
   color: textColor,
 })
-
-
-const textWidth_employerFullName = CairoFont.widthOfTextAtSize(employerFullName, fontSize);
-
-const centerX_employerFullName = (pageWidth - textWidth_employerFullName) / 2;
-
-
-firstPage.drawText(employerFullName,{
-  x: centerX_employerFullName,
-  y: 209,
-  size: fontSize,
-  font: CairoFont,
-  color: textColor,
-})
-
 
 const textWidth_employerFullNameinArabic = CairoFont.widthOfTextAtSize(employerFullNameinArabic, fontSize);
 

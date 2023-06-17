@@ -44,6 +44,7 @@ export class AddVisaFormComponent implements OnInit{
 
   submit(d: NgForm) {
     d.value.active = true;
+    d.value.employerFullName = "no name";
 
     console.log(d.value);
     

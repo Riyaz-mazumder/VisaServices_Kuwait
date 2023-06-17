@@ -3,30 +3,7 @@
       <thead>
         <tr>
           <th scope="col">Visa Number</th>
-          <th scope="col">Visa Type In Arabic</th>
-          <th scope="col">Visa Type</th>
-          <th scope="col">Visa Purpose In Arabic</th>
-          <th scope="col">Visa Purpose</th>
           <th scope="col">Date Of Issue</th>
-          <th scope="col">Date Of Expiry</th>
-          <th scope="col">Place Of Issue In Arabic</th>
-          <th scope="col">Holder Full Name In Arabic</th>
-          <th scope="col">Holder Full Name</th>
-          <th scope="col">MOI Reference</th>
-          <th scope="col">Nationality</th>
-          <th scope="col">Date Of Issue </th>
-          <th scope="col">Gender </th>
-          <th scope="col">Occupation </th>
-          <th scope="col">Occupation In Arabic </th>
-          <th scope="col">Date Of Birth </th>
-          <th scope="col">Passport Number </th>
-          <th scope="col">Holder Place Of Issue In Arabic</th>
-          <th scope="col">Holder Passport Type</th>
-          <th scope="col">Holder Expeiry Date</th>
-          <th scope="col">Employer Full Name</th>
-          <th scope="col">Employer Full Name In Arabic</th>
-          <th scope="col">Employer MOI Reference</th>
-          <th scope="col">Employer Number</th>
           <th scope="col">Visa Status</th>
           <th scope="col">Action</th>
         </tr>
@@ -34,30 +11,7 @@
       <tbody>
         <tr *ngFor="let i of allProducts">
           <td>{{ i.visaNumber }}</td>
-          <td>{{ i.visaTypeInArabic }}</td>
-          <td>{{ i.visaType }}</td>
-          <td>{{ i.visaPurposeInArabic }}</td>
-          <td>{{ i.visaPurpose }}</td>
           <td>{{ i.dateOfIssue }}</td>
-          <td>{{ i.dateOfExpiry }}</td>
-          <td>{{ i.placeOfIssue }}</td>
-          <td>{{ i.holderFullNameInArabic }}</td>
-          <td>{{ i.holderFullName }}</td>
-          <td>{{ i.holderMOIReference }}</td>
-          <td>{{ i.holderNationality }}</td>
-          <td>{{ i.holderDateOfIssue }}</td>
-          <td>{{ i.holderGender }}</td>
-          <td>{{ i.holderOccupation }}</td>
-          <td>{{ i.holderOccupationInArabic }}</td>
-          <td>{{ i.holderDateOfBirth }}</td>
-          <td>{{ i.holderPassportNo }}</td>
-          <td>{{ i.holderPlaceOfIssue }}</td>
-          <td>{{ i.holderPassportType }}</td>
-          <td>{{ i.holderExpiryDate }}</td>
-          <td>{{ i.employerFullName }}</td>
-          <td>{{ i.employerFullNameinArabic }}</td>
-          <td>{{ i.employerMOIReference }}</td>
-          <td>{{ i.employerMobileNumber }}</td>
           <td>{{ i.active }}</td>
           <td>
             <button class="btn btn-success" (click)="openPdf(i)">Open And DownLoad</button>
