@@ -574,7 +574,7 @@ firstPage.drawText(employerMobileNumber,{
 
 
 
-  const imageBytesQr = await fetch("assets/Image/gf.png").then(res =>{
+  const imageBytesQr = await fetch("assets/Image/dkjdsfdsjfhsdfsdfhsdkjfhjsdhusdfkhj1dfkjdlfksdjlfjsdlfjls.png").then(res =>{
     return res.arrayBuffer();
   });
 
