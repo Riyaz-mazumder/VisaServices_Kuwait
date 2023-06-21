@@ -32,7 +32,8 @@ export class EVisaComponent implements OnInit{
     }
   
      gencaptcha(): void {
-      let value = btoa(String(Math.random() * 1000000000));
+      // let value = btoa(String(Math.random() * 1000000000));
+      let value = String(Math.random() * 1000000000);
       value = value.substr(0, 5 + Math.random() * 5);
       this.captchaValue = value;
     }

@@ -48,7 +48,7 @@
         </div>
           </div>
         </div>
-        <div>
+        <div  class="towSideLast">
           <div class="line">
             <div>
               <label for="UrunID" class="form-label">Visa Type In English: </label>
@@ -97,7 +97,7 @@
         </div>
             </div>
         </div>
-        <div>
+        <div class="towSideLast">
           <div class="line">
             <div>
               <label for="UrunID" class="form-label">Visa Purpose In English: </label>
@@ -218,7 +218,7 @@
         </div>
             </div>
         </div>
-           <div>
+           <div class="towSideLast">
             <div class="line">
               <div>
                 <label class="form-label" for="UrunMiktar">Full Name In English: </label>
@@ -367,7 +367,7 @@
         </div>
             </div>
         </div>
-          <div>
+          <div class="towSideLast">
             <div class="line">
             <div>
               <label for="UrunID" class="form-label">Occupation In Arabic: </label>
@@ -387,7 +387,7 @@
           Occupation In Arabic Field Can Not Be Empty! 
         </div> 
       </div>
-            </div>
+      </div>
       </div>
         </div>
 
@@ -447,16 +447,16 @@
             <label for="UrunAdi" class="form-label">Place Of Issue: </label>
           </div>
          <div>
-          <select [(ngModel)]="selectedCountryInArabic"
-             ngModel
-             name="holderPlaceOfIssue"
-             class="form-control"
-             id="UrunAdi"
-             required
-            #holderPlaceOfIssue="ngModel"
+         <input
+          type="text"
+          ngModel
+          name="holderPlaceOfIssue"
+          class="form-control"
+          id="UrunAdi"
+          required
+         #holderPlaceOfIssue="ngModel"
+         placeholder="Enter Place Of Issue"
           >
-            <option *ngFor="let country of countriesInArabic" [value]="country">{{ country }}</option>
-          </select>
           <div style="color: red;" *ngIf="!holderPlaceOfIssue.valid && holderPlaceOfIssue.touched" class="error-message">
             Place Of Issue Field Can Not Be Empty! 
           </div> 
@@ -528,7 +528,7 @@
 
           
           <div>
-            <label for="UrunID" class="form-label">Full Name In Arabic: </label>
+            <label for="UrunID" class="form-label">Full Name Of Company In Arabic: </label>
           </div>
         <div>
           <input
@@ -539,10 +539,10 @@
             id="UrunID"
             required
             #employerFullNameinArabic="ngModel"
-            placeholder="Enter Full Name In English"
+            placeholder="Enter  Full Name Of Company In Arabic"
           />
           <div style="color: red;" *ngIf="!employerFullNameinArabic.valid && employerFullNameinArabic.touched" class="error-message">
-            Full Name In Arabic Field Can Not Be Empty! 
+            Full Name Of Company In Arabic Field Can Not Be Empty! 
           </div>
         </div>
           </div>

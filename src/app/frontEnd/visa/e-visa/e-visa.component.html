@@ -47,7 +47,7 @@
               required
               #holderNationality="ngModel"
             >
-            <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}  {{ country.arabic }}</option>
+            <option *ngFor="let country of countries" [value]="country.name + ' ' +  country.arabic">{{ country.name }}  {{ country.arabic }}</option>
             </select>
             <div style="color: red;" *ngIf="!holderNationality.valid && holderNationality.touched" class="error-message">
               Nationality Field Can Not Be Empty! 
