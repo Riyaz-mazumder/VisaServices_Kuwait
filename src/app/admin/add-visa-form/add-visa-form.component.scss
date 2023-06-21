@@ -78,3 +78,16 @@
   }
 
  
+  line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form input{
+  width: 100%;
+  }
+
+  form div{
+    margin-bottom: 12px;
+  }

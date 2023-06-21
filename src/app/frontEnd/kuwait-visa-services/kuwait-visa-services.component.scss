@@ -11,9 +11,13 @@
     height: 255px;
     display: grid;
     place-items: center;
-    padding: 10px;
     z-index: 200;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+}
+.card a{
+  font-weight: 600;
+  font-size: small;
 }
 
 .btn {

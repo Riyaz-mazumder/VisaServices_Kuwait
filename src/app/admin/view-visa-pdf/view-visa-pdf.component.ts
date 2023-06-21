@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, Pipe, PipeTransform, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer} from '@angular/platform-browser';
+import QRCodeStyling from 'qr-code-styling';
+
 
 import { PDFDocument, PDFPage } from 'pdf-lib';
 
@@ -13,7 +15,7 @@ declare var fontkit: any;
 
 import { PdfDataSenderService } from '../pdf-data-sender.service';
 import { HttpClient } from '@angular/common/http';
-import { DataServicService } from '../data-servic.service';
+// import { DataServicService } from '../data-servic.service';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 
 
@@ -39,15 +41,15 @@ export class ViewVisaPdfComponent implements OnInit{
     private service: DataserviceService
     ) {}
 
-  // @ViewChild('myPdf', { static: false }) iframeRef: ElementRef | undefined;
-
-  
-
    urlIframe: string = "";
 
    visaData: any;
 
    QrCodeImage!: any;
+
+   dataUrl!: any;
+
+   qrCodeId!: any;
 
    ngOnInit(): void {
 
@@ -57,9 +59,8 @@ export class ViewVisaPdfComponent implements OnInit{
 
     console.log(formValues);
 
-    this.QrCodeImage = this.service.fetchImage(formValues.id);
-    
-    
+    this.qrCodeId = formValues.id;
+
 
     const visaNumber = formValues.visaNumber.toString();
     const visaTypeInArabic = formValues.visaTypeInArabic;
@@ -86,33 +87,6 @@ export class ViewVisaPdfComponent implements OnInit{
     const holderPlaceOfIssue = formValues.holderPlaceOfIssue;
     const employerFullNameinArabic = formValues.employerFullNameinArabic;
     const placeOfIssue = formValues.placeOfIssue;
-  
-  
-    // console.log('visaNumber:', visaNumber);
-    // console.log('visaTypeInArabic:', visaTypeInArabic);
-    // console.log('visaType:', visaType);
-    // console.log('visaPurposeInArabic:', visaPurposeInArabic);
-    // console.log('visaPurpose:', visaPurpose);
-    // console.log('dateOfExpiry:', dateOfExpiry);
-    // console.log('dateOfIssue:', dateOfIssue);
-    // console.log('employerFullName:', employerFullName);
-    // console.log('employerMOIReference:', employerMOIReference);
-    // console.log('employerMobileNumber:', employerMobileNumber);
-    // console.log('holderDateOfBirth:', holderDateOfBirth);
-    // console.log('holderDateOfIssue:', holderDateOfIssue);
-    // console.log('holderExpiryDate:', holderExpiryDate);
-    // console.log('holderFullName:', holderFullName);
-    // console.log('holderFullNameInArabic:', holderFullNameInArabic);
-    // console.log('holderGender:', holderGender);
-    // console.log('holderMOIReference:', holderMOIReference);
-    // console.log('holderNationality:', holderNationality);
-    // console.log('holderOccupation:', holderOccupation);
-    // console.log('holderOccupationInArabic:', holderOccupationInArabic);
-    // console.log('holderPassportNo:', holderPassportNo);
-    // console.log('holderPassportType:', holderPassportType);
-    // console.log('holderPlaceOfIssue:', holderPlaceOfIssue);
-    // console.log('employerFullNameinArabic:', employerFullNameinArabic);
-
 
     this.genaratePdf(visaNumber, visaTypeInArabic, visaType, visaPurposeInArabic, visaPurpose, dateOfIssue,
       dateOfExpiry, placeOfIssue, holderFullNameInArabic, holderFullName, holderMOIReference, holderNationality, holderDateOfIssue,
@@ -131,6 +105,36 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
   holderExpiryDate: any, employerFullName: any, employerFullNameinArabic: any, employerMOIReference: any, employerMobileNumber: any
 
   ) => {
+
+      // qrCode Angular
+      const qrCode = new QRCodeStyling({
+        width: 93,
+        height: 93,
+        margin: 0,
+        data: "https://localhost:4200/companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu_5OjAhhpG90xi7Ogak6PyrFl2H4e6WeA/" + this.qrCodeId,
+        image:
+          "assets/Image/kuwait-logoCard90834589.png",
+        dotsOptions: {
+          color: "#88a9c7",
+          type: "dots"
+        },
+        cornersSquareOptions:{
+          color: "#176396",
+          type: "square"
+        },
+        cornersDotOptions:{
+          color: "#176396",
+          type: "square"
+        },
+        backgroundOptions: {
+          color: "#fff"
+        },
+        imageOptions: {
+          crossOrigin: "anonymous",
+          margin: 2
+        }
+      });
+  
 
 
   const {PDFDocument, rgb} = PDFLib;
@@ -160,17 +164,6 @@ const wordsPassportType = holderPassportType.split(" ");
 const passportTypeInEnglish = wordsPassportType[0]; // Extract the first word
 const passportTypeInArabic = wordsPassportType[1];
 
-
-console.log(nationalityArabic + "  " + nationalityEnglish);
-
-
-
-
-// const englishFont = await fetch("./assets/font/Roboto-Regular.ttf").then(res =>{
-//   return res.arrayBuffer();
-// });
-//  pdfDoc.registerFontkit(fontkit);
-//  const RobotoFont = await pdfDoc.embedFont(englishFont);
 
 const arabicFont = await fetch("./assets/font/Cairo-Regular.ttf").then(res =>{
   return res.arrayBuffer();
@@ -571,26 +564,26 @@ firstPage.drawText(employerMobileNumber,{
   });
 
 
+  const qrCodeImageBlob = await qrCode.getRawData();
 
+  if (qrCodeImageBlob) {
+    const qrCodeImageArrayBuffer = await qrCodeImageBlob.arrayBuffer();
+    const qrCodeImageData = new Uint8Array(qrCodeImageArrayBuffer);
 
+    const embeddedImage = await pdfDoc.embedPng(qrCodeImageData);
 
-  const imageBytesQr = await fetch("assets/Image/dkjdsfdsjfhsdfsdfhsdkjfhjsdhusdfkhj1dfkjdlfksdjlfjsdlfjls.png").then(res =>{
-    return res.arrayBuffer();
+      // Draw the image on the page
+   firstPage.drawImage(embeddedImage, {
+    x: 20,
+    y: 728,
+    width: 93,
+    height: 93,
   });
 
-
-
-  // // Embed the image in the PDF
- const imageQr = await pdfDoc.embedPng(imageBytesQr);
-
-
-   // Draw the image on the page
-   firstPage.drawImage(imageQr, {
-    x: 15,
-    y: 723,
-    width:102,
-    height:102,
-  });
+    // Use the modified PDF as needed
+  } else {
+    console.error('QR code image data is null');
+  }
 
 
 
