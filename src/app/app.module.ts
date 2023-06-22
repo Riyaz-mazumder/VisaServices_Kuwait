@@ -19,6 +19,8 @@ import { EVisaComponent } from './frontEnd/visa/e-visa/e-visa.component';
 import { ViewVisaPdfUserComponent } from './frontEnd/visa/view-visa-pdf-user/view-visa-pdf-user.component';
 import { UserVisaVerifyComponent } from './frontEnd/visa/user-visa-verify/user-visa-verify.component';
 import {NgxCaptchaModule} from  'ngx-captcha';
+import { ManualVisaComponent } from './frontEnd/visa/manual-visa/manual-visa.component';
+import { ManualVisaMessageComponent } from './frontEnd/visa/manual-visa-message/manual-visa-message.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {NgxCaptchaModule} from  'ngx-captcha';
     VisaInqueryAndPrintingComponent,
     EVisaComponent,
     ViewVisaPdfUserComponent,
-    UserVisaVerifyComponent
+    UserVisaVerifyComponent,
+    ManualVisaComponent,
+    ManualVisaMessageComponent
   ],
   imports: [
     BrowserModule,

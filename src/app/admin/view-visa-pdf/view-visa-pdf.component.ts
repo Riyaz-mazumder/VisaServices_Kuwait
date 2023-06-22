@@ -111,7 +111,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
         width: 93,
         height: 93,
         margin: 0,
-        data: "https://localhost:4200/companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu_5OjAhhpG90xi7Ogak6PyrFl2H4e6WeA/" + this.qrCodeId,
+        data: "http://localhost:4200/companies/e-visa/verify/kuwaitVisaServices/" + this.qrCodeId,
         image:
           "assets/Image/kuwait-logoCard90834589.png",
         dotsOptions: {
@@ -131,7 +131,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
         },
         imageOptions: {
           crossOrigin: "anonymous",
-          margin: 2
+          margin: 0
         }
       });
   
@@ -330,7 +330,7 @@ const centerX_holderNationalityEnglishTheE = (pageWidth - textWidth_holderNation
 
 
 
-const centerX_holderNationalityEnglish = centerX_holderNationalityEnglishTheE - (textWidth_holderNationalityEnglish - 30);
+const centerX_holderNationalityEnglish = centerX_holderNationalityEnglishTheE - (textWidth_holderNationalityEnglish - 32);
 
 firstPage.drawText(nationalityEnglish,{
   x: centerX_holderNationalityEnglish,
@@ -345,7 +345,7 @@ const textWidth_holderNationalityArabic = CairoFont.widthOfTextAtSize(nationalit
 
 const centerX_holderNationalityArabicTheA = (pageWidth - textWidth_holderNationalityArabic) / 2;
 
-const centerX_holderNationalityArabic = centerX_holderNationalityArabicTheA + (textWidth_holderNationalityArabic -7);
+const centerX_holderNationalityArabic = centerX_holderNationalityArabicTheA + (textWidth_holderNationalityArabic -10);
 
 
 firstPage.drawText(nationalityArabic,{
@@ -405,7 +405,7 @@ const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOcc
 
 const occupationCenterFixArabic = (pageWidth - textWidth_holderOccupationInArabic ) / 2;
 
-const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 7);
+const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 5);
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,
@@ -476,7 +476,7 @@ const textWidth_holderPassportTypeArabic = CairoFont.widthOfTextAtSize(passportT
 
 const centerX_holderPassportTypeArabic = (pageWidth - textWidth_holderPassportTypeArabic) / 2;
 
-const centerX_holderPassportTypeArabic_C = centerX_holderPassportTypeArabic + (textWidth_holderPassportTypeArabic)
+const centerX_holderPassportTypeArabic_C = centerX_holderPassportTypeArabic + (textWidth_holderPassportTypeArabic -5)
 
 
 firstPage.drawText(passportTypeInArabic,{
@@ -557,9 +557,9 @@ firstPage.drawText(employerMobileNumber,{
 
   // Draw the image on the page
   firstPage.drawImage(image, {
-    x: 0,
+    x: -7,
     y: 68,
-    width:220,
+    width:300,
     height: 60,
   });
 

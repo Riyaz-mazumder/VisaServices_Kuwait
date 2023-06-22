@@ -22,10 +22,10 @@ export class KuwaitVisaServicesComponent implements OnInit {
     }
     
     const qrCode = new QRCodeStyling({
-      width:103,
-      height: 103,
+      width: 93,
+      height: 93,
       margin: 0,
-      data: "https://eres.moi.gov.kw/companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu_5OjAhhpG90xi7Ogak6PyrFl2H4e6WeA",
+      data: "http://localhost:4200/companies/e-visa/verify/kuwaitVisaServices/1",
       image:
         "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
       dotsOptions: {

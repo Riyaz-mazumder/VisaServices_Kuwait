@@ -1,15 +1,21 @@
 import { Component, ElementRef, OnInit, Pipe, PipeTransform, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer} from '@angular/platform-browser';
+import QRCodeStyling from 'qr-code-styling';
 
-import { PDFDocument} from 'pdf-lib'
+
+import { PDFDocument, PDFPage } from 'pdf-lib';
+
 
 import * as PDFLib from 'pdf-lib';
-import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
 
 // import * as fontkit from '@pdf-lib/fontkit';
 
 declare var fontkit: any;
 
+import { HttpClient } from '@angular/common/http';
+// import { DataServicService } from '../data-servic.service';
+import { DataserviceService } from 'src/app/service/dataservice.service';
+import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
 
 
 @Pipe({ name: 'safe' })
@@ -21,7 +27,6 @@ export class SafePipe implements PipeTransform {
 } 
 
 
-
 @Component({
   selector: 'app-view-visa-pdf-user',
   templateUrl: './view-visa-pdf-user.component.html',
@@ -29,15 +34,21 @@ export class SafePipe implements PipeTransform {
 })
 export class ViewVisaPdfUserComponent implements OnInit{
 
-  constructor(private pdfDataService: PdfDataSenderService) {}
-
-  // @ViewChild('myPdf', { static: false }) iframeRef: ElementRef | undefined;
-
-
+  constructor(
+    private pdfDataService: PdfDataSenderService,
+    private http: HttpClient,
+    private service: DataserviceService
+    ) {}
 
    urlIframe: string = "";
 
    visaData: any;
+
+   QrCodeImage!: any;
+
+   dataUrl!: any;
+
+   qrCodeId!: any;
 
    ngOnInit(): void {
 
@@ -46,7 +57,9 @@ export class ViewVisaPdfUserComponent implements OnInit{
     const formValues = this.visaData;
 
     console.log(formValues);
-    
+
+    this.qrCodeId = formValues.id;
+
 
     const visaNumber = formValues.visaNumber.toString();
     const visaTypeInArabic = formValues.visaTypeInArabic;
@@ -73,33 +86,6 @@ export class ViewVisaPdfUserComponent implements OnInit{
     const holderPlaceOfIssue = formValues.holderPlaceOfIssue;
     const employerFullNameinArabic = formValues.employerFullNameinArabic;
     const placeOfIssue = formValues.placeOfIssue;
-  
-  
-    // console.log('visaNumber:', visaNumber);
-    // console.log('visaTypeInArabic:', visaTypeInArabic);
-    // console.log('visaType:', visaType);
-    // console.log('visaPurposeInArabic:', visaPurposeInArabic);
-    // console.log('visaPurpose:', visaPurpose);
-    // console.log('dateOfExpiry:', dateOfExpiry);
-    // console.log('dateOfIssue:', dateOfIssue);
-    // console.log('employerFullName:', employerFullName);
-    // console.log('employerMOIReference:', employerMOIReference);
-    // console.log('employerMobileNumber:', employerMobileNumber);
-    // console.log('holderDateOfBirth:', holderDateOfBirth);
-    // console.log('holderDateOfIssue:', holderDateOfIssue);
-    // console.log('holderExpiryDate:', holderExpiryDate);
-    // console.log('holderFullName:', holderFullName);
-    // console.log('holderFullNameInArabic:', holderFullNameInArabic);
-    // console.log('holderGender:', holderGender);
-    // console.log('holderMOIReference:', holderMOIReference);
-    // console.log('holderNationality:', holderNationality);
-    // console.log('holderOccupation:', holderOccupation);
-    // console.log('holderOccupationInArabic:', holderOccupationInArabic);
-    // console.log('holderPassportNo:', holderPassportNo);
-    // console.log('holderPassportType:', holderPassportType);
-    // console.log('holderPlaceOfIssue:', holderPlaceOfIssue);
-    // console.log('employerFullNameinArabic:', employerFullNameinArabic);
-
 
     this.genaratePdf(visaNumber, visaTypeInArabic, visaType, visaPurposeInArabic, visaPurpose, dateOfIssue,
       dateOfExpiry, placeOfIssue, holderFullNameInArabic, holderFullName, holderMOIReference, holderNationality, holderDateOfIssue,
@@ -119,6 +105,36 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
 
   ) => {
 
+      // qrCode Angular
+      const qrCode = new QRCodeStyling({
+        width: 93,
+        height: 93,
+        margin: 0,
+        data: "http://localhost:4200/companies/e-visa/verify/kuwaitVisaServices/" + this.qrCodeId,
+        image:
+          "assets/Image/kuwait-logoCard90834589.png",
+        dotsOptions: {
+          color: "#88a9c7",
+          type: "dots"
+        },
+        cornersSquareOptions:{
+          color: "#176396",
+          type: "square"
+        },
+        cornersDotOptions:{
+          color: "#176396",
+          type: "square"
+        },
+        backgroundOptions: {
+          color: "#fff"
+        },
+        imageOptions: {
+          crossOrigin: "anonymous",
+          margin: 0
+        }
+      });
+  
+
 
   const {PDFDocument, rgb} = PDFLib;
 
@@ -135,11 +151,18 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
 const pages = pdfDoc.getPages();
 const firstPage = pages[0];
 
-// const englishFont = await fetch("./assets/font/Roboto-Regular.ttf").then(res =>{
-//   return res.arrayBuffer();
-// });
-//  pdfDoc.registerFontkit(fontkit);
-//  const RobotoFont = await pdfDoc.embedFont(englishFont);
+
+
+const wordsNa = holderNationality.split(" "); // Split the sentence into an array of words
+const nationalityEnglish = wordsNa[0]; // Extract the first word
+const nationalityArabic = wordsNa[1];
+
+
+const wordsPassportType = holderPassportType.split(" ");
+
+const passportTypeInEnglish = wordsPassportType[0]; // Extract the first word
+const passportTypeInArabic = wordsPassportType[1];
+
 
 const arabicFont = await fetch("./assets/font/Cairo-Regular.ttf").then(res =>{
   return res.arrayBuffer();
@@ -300,12 +323,32 @@ firstPage.drawText(holderMOIReference,{
   color: textColor,
 })
 
-const textWidth_holderNationality = CairoFont.widthOfTextAtSize(holderNationality, fontSize);
+const textWidth_holderNationalityEnglish = CairoFont.widthOfTextAtSize(nationalityEnglish, fontSize);
 
-const centerX_holderNationality= (pageWidth - textWidth_holderNationality) / 2;
+const centerX_holderNationalityEnglishTheE = (pageWidth - textWidth_holderNationalityEnglish) / 2;
 
-firstPage.drawText(holderNationality,{
-  x: centerX_holderNationality,
+
+
+const centerX_holderNationalityEnglish = centerX_holderNationalityEnglishTheE - (textWidth_holderNationalityEnglish - 32);
+
+firstPage.drawText(nationalityEnglish,{
+  x: centerX_holderNationalityEnglish,
+  y: 436,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidth_holderNationalityArabic = CairoFont.widthOfTextAtSize(nationalityArabic, fontSize);
+
+const centerX_holderNationalityArabicTheA = (pageWidth - textWidth_holderNationalityArabic) / 2;
+
+const centerX_holderNationalityArabic = centerX_holderNationalityArabicTheA + (textWidth_holderNationalityArabic -10);
+
+
+firstPage.drawText(nationalityArabic,{
+  x: centerX_holderNationalityArabic,
   y: 436,
   size: fontSize,
   font: CairoFont,
@@ -361,7 +404,7 @@ const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOcc
 
 const occupationCenterFixArabic = (pageWidth - textWidth_holderOccupationInArabic ) / 2;
 
-const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 7);
+const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 5);
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,
@@ -413,13 +456,30 @@ firstPage.drawText(holderPlaceOfIssue,{
 })
 
 
-const textWidth_holderPassportType = CairoFont.widthOfTextAtSize(holderPassportType, fontSize);
+const textWidth_holderPassportTypeEnglish = CairoFont.widthOfTextAtSize(passportTypeInEnglish, fontSize);
 
-const centerX_holderPassportType = (pageWidth - textWidth_holderPassportType) / 2;
+const centerX_holderPassportTypeEnglish = (pageWidth - textWidth_holderPassportTypeEnglish) / 2;
+
+const centerX_holderPassportTypeEnglish_C = centerX_holderPassportTypeEnglish - (textWidth_holderPassportTypeEnglish - 20)
 
 
-firstPage.drawText(holderPassportType,{
-  x: centerX_holderPassportType,
+firstPage.drawText(passportTypeInEnglish,{
+  x: centerX_holderPassportTypeEnglish_C,
+  y: 297,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+const textWidth_holderPassportTypeArabic = CairoFont.widthOfTextAtSize(passportTypeInArabic, fontSize);
+
+const centerX_holderPassportTypeArabic = (pageWidth - textWidth_holderPassportTypeArabic) / 2;
+
+const centerX_holderPassportTypeArabic_C = centerX_holderPassportTypeArabic + (textWidth_holderPassportTypeArabic -5)
+
+
+firstPage.drawText(passportTypeInArabic,{
+  x: centerX_holderPassportTypeArabic_C,
   y: 297,
   size: fontSize,
   font: CairoFont,
@@ -439,21 +499,6 @@ firstPage.drawText(holderExpiryDate,{
   font: CairoFont,
   color: textColor,
 })
-
-
-const textWidth_employerFullName = CairoFont.widthOfTextAtSize(employerFullName, fontSize);
-
-const centerX_employerFullName = (pageWidth - textWidth_employerFullName) / 2;
-
-
-firstPage.drawText(employerFullName,{
-  x: centerX_employerFullName,
-  y: 209,
-  size: fontSize,
-  font: CairoFont,
-  color: textColor,
-})
-
 
 const textWidth_employerFullNameinArabic = CairoFont.widthOfTextAtSize(employerFullNameinArabic, fontSize);
 
@@ -511,33 +556,33 @@ firstPage.drawText(employerMobileNumber,{
 
   // Draw the image on the page
   firstPage.drawImage(image, {
-    x: 0,
+    x: -7,
     y: 68,
-    width:220,
+    width:300,
     height: 60,
   });
 
 
+  const qrCodeImageBlob = await qrCode.getRawData();
 
+  if (qrCodeImageBlob) {
+    const qrCodeImageArrayBuffer = await qrCodeImageBlob.arrayBuffer();
+    const qrCodeImageData = new Uint8Array(qrCodeImageArrayBuffer);
 
+    const embeddedImage = await pdfDoc.embedPng(qrCodeImageData);
 
-  const imageBytesQr = await fetch("assets/Image/gf.png").then(res =>{
-    return res.arrayBuffer();
+      // Draw the image on the page
+   firstPage.drawImage(embeddedImage, {
+    x: 20,
+    y: 728,
+    width: 93,
+    height: 93,
   });
 
-
-
-  // // Embed the image in the PDF
- const imageQr = await pdfDoc.embedPng(imageBytesQr);
-
-
-   // Draw the image on the page
-   firstPage.drawImage(imageQr, {
-    x: 15,
-    y: 723,
-    width:102,
-    height:102,
-  });
+    // Use the modified PDF as needed
+  } else {
+    console.error('QR code image data is null');
+  }
 
 
 

@@ -12,6 +12,8 @@ import { VisaInqueryAndPrintingComponent } from './frontEnd/visa/visa-inquery-an
 import { EVisaComponent } from './frontEnd/visa/e-visa/e-visa.component';
 import { ViewVisaPdfUserComponent } from './frontEnd/visa/view-visa-pdf-user/view-visa-pdf-user.component';
 import { UserVisaVerifyComponent } from './frontEnd/visa/user-visa-verify/user-visa-verify.component';
+import { ManualVisaComponent } from './frontEnd/visa/manual-visa/manual-visa.component';
+import { ManualVisaMessageComponent } from './frontEnd/visa/manual-visa-message/manual-visa-message.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -25,7 +27,9 @@ const routes: Routes = [
 
   { path: 'eVisa', component: EVisaComponent},
   { path: 'eVisa/print', component: ViewVisaPdfUserComponent},
-  { path: 'eVisa/verify/:id', component: UserVisaVerifyComponent},
+  { path: 'manualVisa', component: ManualVisaComponent},
+  { path: 'manualVisa/message', component: ManualVisaMessageComponent},
+  { path: 'companies/e-visa/verify/kuwaitVisaServices/:id', component: UserVisaVerifyComponent},
 
 
   { path: 'admin', component: AdminLoginComponent },

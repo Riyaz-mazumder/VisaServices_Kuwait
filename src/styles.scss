@@ -1,11 +1,16 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
 body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     max-width: 1600px;
-    font-family: Cairo;
 }
 
+body * {
+  font-family: 'Cairo', sans-serif;
+}
 
 html, body {
     max-width: 100%;

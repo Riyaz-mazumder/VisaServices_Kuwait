@@ -5,6 +5,7 @@
           <th scope="col">Visa Number</th>
           <th scope="col">Date Of Issue</th>
           <th scope="col">Visa Status</th>
+          <th scope="col">Created Date Time</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -13,6 +14,7 @@
           <td>{{ i.visaNumber }}</td>
           <td>{{ i.dateOfIssue }}</td>
           <td>{{ i.active }}</td>
+          <td>{{ i.createdDateTime }}</td>
           <td>
             <button class="btn btn-success" (click)="openPdf(i)">Open And DownLoad</button>
             <!-- <button
@@ -24,9 +26,12 @@
             >
              Edit
             </button> -->
-            <button class="btn btn-danger" (click)="onDelete(i.id)">Delete From DataBase</button>
+           
 
            
+          </td>
+          <td>
+             <button class="btn btn-danger" (click)="onDelete(i.id)">Delete From DataBase</button>
           </td>
         </tr>
       </tbody>
