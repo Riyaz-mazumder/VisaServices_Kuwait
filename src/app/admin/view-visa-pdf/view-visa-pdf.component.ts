@@ -111,7 +111,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
         width: 93,
         height: 93,
         margin: 0,
-        data: "http://localhost:4200/companies/e-visa/verify/kuwaitVisaServices/" + this.qrCodeId,
+        data: "http://localhost:4200/companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu_5OjAhhpG90xi7Ogak6PyrFl2H4e6WeA/" + this.qrCodeId,
         image:
           "assets/Image/kuwait-logoCard90834589.png",
         dotsOptions: {
@@ -140,7 +140,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
   const {PDFDocument, rgb} = PDFLib;
 
 
-  const exBytes = await fetch("./assets/pdf/visa.pdf").then(res=>{
+  const exBytes = await fetch("./assets/pdf/000 (1).pdf").then(res=>{
     return res.arrayBuffer();
   });
 

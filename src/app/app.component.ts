@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   link: string = '';
 
   checkUrl() {
-    return this.link.includes('/admin') || this.link.includes('/companies/e-visa/verify/kuwaitVisaServices/');
+    return this.link.includes('/admin') || this.link.includes('companies/e-visa/verify/');
   }
 
   ngOnInit(): void {
