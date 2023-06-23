@@ -1,0 +1,95 @@
+
+<div class="space_top"></div>
+<div class="container w-50 border mt-5" id="form">
+    <h2 style="text-align: center; padding: 10px;" >Find Visa<span style="width: 20px;"></span></h2>
+    <form class="mt-5" (ngSubmit)="submit(f)" #f="ngForm">
+
+        <div class="mb-3">
+            <label for="UrunAdi" class="form-label">Passport No</label>
+            <input
+              ngModel
+              name="holderPassportNo"
+              type="text"
+              class="form-control"
+              id="UrunAdi"
+              required
+              #holderPassportNo="ngModel"
+              placeholder="Enter Passport No"
+            />
+            <div style="color: red;" *ngIf="!holderPassportNo.valid && holderPassportNo.touched" class="error-message">
+              Passport Number Field Can Not Be Empty! 
+            </div> 
+          </div>
+
+          <div class="mb-3">
+            <label for="UrunID" class="form-label">Date Of Birth</label>
+            <input
+              ngModel
+              name="holderDateOfBirth"
+              type="date"
+              class="form-control"
+              id="UrunID"
+              required
+              #holderDateOfBirth="ngModel"
+            />
+            <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
+              Date Of Birth Field Can Not Be Empty! 
+            </div> 
+          </div>
+
+          <div class="mb-3">
+            <label for="Kategori" class="form-label">Nationality</label>
+            <select [(ngModel)]="selectedCountry"
+              ngModel
+              name="holderNationality"
+              id="Kategori"
+              class="ms-1 d-block w-100"
+              required
+              #holderNationality="ngModel"
+            >
+            <option *ngFor="let country of countries" [value]="country.name + ' ' +  country.arabic">{{ country.name }}  {{ country.arabic }}</option>
+            </select>
+            <div style="color: red;" *ngIf="!holderNationality.valid && holderNationality.touched" class="error-message">
+              Nationality Field Can Not Be Empty! 
+            </div> 
+          </div>
+
+          <!-- Chaptcha -->
+          <br>
+          <div id="captcha" class=" mb-3">
+
+            <div style=" color: #7c1f13; background-color: rgba(10, 123, 10, 0.473); border: 2px dotted #31725f70; height: 3rem; margin: auto; padding-top: 9px;" id="captchaPreview"></div>
+
+           <br>
+            <div>
+              <input id="captchaInput" style="height: 3rem;" type="text" placeholder="Enter Chaptcha Here"  class="form-control">
+              <!-- <div style="display: flex; justify-content: center; align-items: center;">
+                <p>Refresh</p>
+             
+              <button class="refresh-icon">
+                <svg viewBox="0 0 90 90">
+                    <path class="circle-path" d="M 45 45 m 0 -30 a 30 30 0 1 1 0 60 a 30 30 0 1 1 0 -60"></path>
+                </svg>
+                <svg class="arrow-svg" viewBox="0 0 90 90">
+                    <path class="arrow-path" d="M 50 15 m -18 -18 l 18 18 l -18 18"></path>
+                </svg>
+            </button>
+          </div> -->
+
+            </div>
+           
+        </div>
+          <!-- <ngx-recaptcha2></ngx-recaptcha2> -->
+
+          <div class="d-flex justify-content-center">
+            <button [disabled]="!f.valid"
+              type="submit"
+              class="btn btn-success text-white btn-outline-success form-control w-50 m-3"
+              id="ekleButton"
+            >
+              Find
+            </button>
+          </div>
+    </form>
+</div>
+<div class="space_top"></div>

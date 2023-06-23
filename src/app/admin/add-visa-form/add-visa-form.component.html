@@ -253,7 +253,7 @@
           <input
             ngModel
             name="holderMOIReference"
-            type="number"
+            type="text"
             class="form-control"
             id="UrunID"
             #holderMOIReference="ngModel"
@@ -559,7 +559,7 @@
             <input
               ngModel
               name="employerMOIReference"
-              type="number"
+              type="text"
               class="form-control"
               id="UrunID"
               #employerMOIReference="ngModel"
@@ -597,7 +597,33 @@
           </div>  
           <div>
             <input type="hidden" ngModel name="active">
-          </div>   
+          </div>  
+          <hr>
+           <div>
+            <h2>Message</h2>
+            <div class="mb-3">
+              <div class="line">
+                <div>
+                  <label for="UrunID" class="form-label">Message</label>
+                </div>
+             <div>
+              <input
+                ngModel
+                name="message"
+                type="text"
+                class="form-control"
+                id="UrunID"
+                #message="ngModel"
+                placeholder="Enter Message"
+              />
+              <div style="color: red;" *ngIf="!message.valid && message.touched" class="error-message">
+                Message Field Can Not Be Empty! 
+              </div> 
+            </div>
+              </div>
+            </div>  
+           </div>
+           <hr>
         <div class="d-flex justify-content-center">
           <button [disabled]="!f.valid"
             type="submit"

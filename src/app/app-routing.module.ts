@@ -14,6 +14,8 @@ import { ViewVisaPdfUserComponent } from './frontEnd/visa/view-visa-pdf-user/vie
 import { UserVisaVerifyComponent } from './frontEnd/visa/user-visa-verify/user-visa-verify.component';
 import { ManualVisaComponent } from './frontEnd/visa/manual-visa/manual-visa.component';
 import { ManualVisaMessageComponent } from './frontEnd/visa/manual-visa-message/manual-visa-message.component';
+import { UserInqueryViewComponent } from './frontEnd/visa/user-inquery-view/user-inquery-view.component';
+import { UserInqueryViewMessageComponent } from './frontEnd/visa/user-inquery-view-message/user-inquery-view-message.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -22,13 +24,15 @@ const routes: Routes = [
   { path: 'kuwaitVisaServices', component: KuwaitVisaServicesComponent},
   { path: 'contactUs', component: ContactComponent},
   { path: 'fqaKuwait', component: LandingPageComponent },
-  { path: 'visaApprovalAndTracking', component: VisaApprovalAndTrackingComponent },
+  { path: 'visaApprovalAndTracking', component: VisaApprovalAndTrackingComponent},
   { path: 'visaInqueryAndPrinting', component: VisaInqueryAndPrintingComponent},
+  { path: 'visaRelatedInformationAndTracking', component: UserInqueryViewComponent},
+  { path: 'visaRelatedInformationAndTracking/message/:id', component: UserInqueryViewMessageComponent},
 
   { path: 'eVisa', component: EVisaComponent},
   { path: 'eVisa/print', component: ViewVisaPdfUserComponent},
   { path: 'manualVisa', component: ManualVisaComponent},
-  { path: 'manualVisa/message', component: ManualVisaMessageComponent},
+  { path: 'manualVisa/message/:id', component: ManualVisaMessageComponent},
   { path: 'companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu_5OjAhhpG90xi7Ogak6PyrFl2H4e6WeA/:id', component: UserVisaVerifyComponent},
 
 

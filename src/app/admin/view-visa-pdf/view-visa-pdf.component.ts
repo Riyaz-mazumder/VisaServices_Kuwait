@@ -140,7 +140,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
   const {PDFDocument, rgb} = PDFLib;
 
 
-  const exBytes = await fetch("./assets/pdf/000 (1).pdf").then(res=>{
+  const exBytes = await fetch("./assets/pdf/electronic-visa-MD ARIFUL ISLAM MD KHAZA MIA final.pdf").then(res=>{
     return res.arrayBuffer();
   });
 
@@ -405,7 +405,7 @@ const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOcc
 
 const occupationCenterFixArabic = (pageWidth - textWidth_holderOccupationInArabic ) / 2;
 
-const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 5);
+const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 3);
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,

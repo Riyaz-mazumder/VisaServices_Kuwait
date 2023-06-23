@@ -21,6 +21,8 @@ import { UserVisaVerifyComponent } from './frontEnd/visa/user-visa-verify/user-v
 import {NgxCaptchaModule} from  'ngx-captcha';
 import { ManualVisaComponent } from './frontEnd/visa/manual-visa/manual-visa.component';
 import { ManualVisaMessageComponent } from './frontEnd/visa/manual-visa-message/manual-visa-message.component';
+import { UserInqueryViewComponent } from './frontEnd/visa/user-inquery-view/user-inquery-view.component';
+import { UserInqueryViewMessageComponent } from './frontEnd/visa/user-inquery-view-message/user-inquery-view-message.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { ManualVisaMessageComponent } from './frontEnd/visa/manual-visa-message/
     ViewVisaPdfUserComponent,
     UserVisaVerifyComponent,
     ManualVisaComponent,
-    ManualVisaMessageComponent
+    ManualVisaMessageComponent,
+    UserInqueryViewComponent,
+    UserInqueryViewMessageComponent
   ],
   imports: [
     BrowserModule,

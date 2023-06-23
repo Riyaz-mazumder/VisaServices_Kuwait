@@ -1,0 +1,140 @@
+<!-- <div class="container w-50 border mt-5" id="form">
+    <h2 style="text-align: center; padding: 10px;" > Upload Visa <span style="width: 20px;"></span></h2>
+    <form class="mt-5" (ngSubmit)="submit(f)" #f="ngForm">
+
+        <div class="mb-3">
+            <label for="UrunAdi" class="form-label">Passport No</label>
+            <input
+              ngModel
+              name="holderPassportNo"
+              type="text"
+              class="form-control"
+              id="UrunAdi"
+              required
+              #holderPassportNo="ngModel"
+              placeholder="Enter Passport No"
+            />
+            <div style="color: red;" *ngIf="!holderPassportNo.valid && holderPassportNo.touched" class="error-message">
+              Passport Number Field Can Not Be Empty! 
+            </div> 
+          </div>
+
+          <div class="mb-3">
+            <label for="UrunID" class="form-label">Date Of Birth</label>
+            <input
+              ngModel
+              name="holderDateOfBirth"
+              type="date"
+              class="form-control"
+              id="UrunID"
+              required
+              #holderDateOfBirth="ngModel"
+            />
+            <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
+              Date Of Birth Field Can Not Be Empty! 
+            </div> 
+          </div>
+
+          <div class="mb-3">
+            <label for="Kategori" class="form-label">Nationality</label>
+            <select [(ngModel)]="selectedCountry"
+              ngModel
+              name="holderNationality"
+              id="Kategori"
+              class="ms-1 d-block w-100"
+              required
+              #holderNationality="ngModel"
+            >
+            <option *ngFor="let country of countries" [value]="country.name + ' ' +  country.arabic">{{ country.name }}  {{ country.arabic }}</option>
+            </select>
+            <div style="color: red;" *ngIf="!holderNationality.valid && holderNationality.touched" class="error-message">
+              Nationality Field Can Not Be Empty! 
+            </div> 
+          </div>
+          <div class="mb-3">
+            <label for="Kategori" class="form-label">Upload File</label>
+            <input type="file"/>
+           
+          </div>
+          <div class="d-flex justify-content-center">
+            <button [disabled]="!f.valid"
+              type="submit"
+              class="btn btn-success text-white btn-outline-success form-control w-50 m-3"
+              id="ekleButton"
+            >
+              Find
+            </button>
+          </div>
+    </form>
+</div> -->
+
+
+<div class="container w-50 border mt-5" id="form">
+    <h2 style="text-align: center; padding: 10px;">Upload Visa <span style="width: 20px;"></span></h2>
+    <form class="mt-5" (ngSubmit)="submit(f)" #f="ngForm">
+      <div class="mb-3">
+        <label for="UrunAdi" class="form-label">Passport No</label>
+        <input
+          ngModel
+          name="holderPassportNo"
+          type="text"
+          class="form-control"
+          id="UrunAdi"
+          required
+          #holderPassportNo="ngModel"
+          placeholder="Enter Passport No"
+        />
+        <div style="color: red;" *ngIf="!holderPassportNo.valid && holderPassportNo.touched" class="error-message">
+          Passport Number Field Can Not Be Empty!
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="UrunID" class="form-label">Date Of Birth</label>
+        <input
+          ngModel
+          name="holderDateOfBirth"
+          type="date"
+          class="form-control"
+          id="UrunID"
+          required
+          #holderDateOfBirth="ngModel"
+        />
+        <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
+          Date Of Birth Field Can Not Be Empty!
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="Kategori" class="form-label">Nationality</label>
+        <select [(ngModel)]="selectedCountry"
+          ngModel
+          name="holderNationality"
+          id="Kategori"
+          class="ms-1 d-block w-100"
+          required
+          #holderNationality="ngModel"
+        >
+          <option *ngFor="let country of countries" [value]="country.name + ' ' +  country.arabic">
+            {{ country.name }} {{ country.arabic }}
+          </option>
+        </select>
+        <div style="color: red;" *ngIf="!holderNationality.valid && holderNationality.touched" class="error-message">
+          Nationality Field Can Not Be Empty!
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="fileInput" class="form-label">Upload File</label>
+        <input ngModel name="file" type="file" (change)="onFileSelected($event)" class="form-control" id="fileInput" />
+      </div>
+  
+      <div class="d-flex justify-content-center">
+        <button [disabled]="!f.valid" type="submit" class="btn btn-success text-white btn-outline-success form-control w-50 m-3"
+          id="ekleButton">
+          Upload
+        </button>
+      </div>
+    </form>
+  </div>
+  

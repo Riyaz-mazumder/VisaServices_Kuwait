@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
@@ -9,7 +9,8 @@ import { DataserviceService } from 'src/app/service/dataservice.service';
   templateUrl: './manual-visa.component.html',
   styleUrls: ['./manual-visa.component.scss']
 })
-export class ManualVisaComponent {
+
+export class ManualVisaComponent implements OnInit{
    // @ViewChild('captchaRef') captchaRef: ReCaptcha2Component | undefined;
    @ViewChild('.prevew', { static: true })
    captchaPreviewRef!: ElementRef;
@@ -77,8 +78,9 @@ export class ManualVisaComponent {
      if(this.searchedData.length <1){
        alert("Wrong Input Data!")
      }else{
-       this.pdfDataService.setData(this.searchedData[0]);
-      this.router.navigate(["/eVisa/print"])  
+      console.log(this.searchedData);
+      
+      this.router.navigate(["/manualVisa/message/" + this.searchedData[0].id])  
      }
  
    },

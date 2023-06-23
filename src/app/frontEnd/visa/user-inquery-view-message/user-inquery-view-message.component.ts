@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataServicService } from 'src/app/admin/data-servic.service';
 
 @Component({
-  selector: 'app-manual-visa-message',
-  templateUrl: './manual-visa-message.component.html',
-  styleUrls: ['./manual-visa-message.component.scss']
+  selector: 'app-user-inquery-view-message',
+  templateUrl: './user-inquery-view-message.component.html',
+  styleUrls: ['./user-inquery-view-message.component.scss']
 })
-
-export class ManualVisaMessageComponent implements OnInit{
+export class UserInqueryViewMessageComponent {
 
   constructor(
     private route: ActivatedRoute,
