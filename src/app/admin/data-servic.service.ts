@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,27 @@ export class DataServicService {
 
   public deleteUploadedFile(id: number){
     return this.http.delete(this.urlOfUpload+ "/" + id);
+  }
+
+
+  // upload file
+  private urlforUploadImage = 'http://localhost:8080/api/v1';
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', `${this.urlforUploadImage}/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
+
+  getFiles(): Observable<any> {
+    return this.http.get(`${this.urlforUploadImage}/files`);
   }
 
 

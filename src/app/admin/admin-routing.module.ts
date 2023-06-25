@@ -6,6 +6,7 @@ import { ListOfVisaComponent } from './list-of-visa/list-of-visa.component';
 import { ViewMessageComponent } from './view-message/view-message.component';
 import { UploadVisaComponent } from './upload-visa/upload-visa.component';
 import { ListOfUploadVisaComponent } from './list-of-upload-visa/list-of-upload-visa.component';
+import { UploadVisaFileComponent } from './upload-visa-file/upload-visa-file.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'listOfUploadedFile', component: ListOfUploadVisaComponent},
     { path: 'viewMessages', component: ViewMessageComponent },
     { path: 'viewVisaPDF', component: ViewVisaPdfComponent },
+    { path: 'upload', component: UploadVisaFileComponent },
 ];
 
 

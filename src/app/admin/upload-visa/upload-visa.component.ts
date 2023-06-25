@@ -1,44 +1,69 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataServicService } from '../data-servic.service';
-import { from } from 'rxjs';
+import { Observable, from } from 'rxjs';
 
 @Component({
   selector: 'app-upload-visa',
   templateUrl: './upload-visa.component.html',
   styleUrls: ['./upload-visa.component.scss']
 })
-export class UploadVisaComponent {
+export class UploadVisaComponent{
+
 
 
   constructor(private dataService: DataServicService){}
 
-  selectedFile!: File | null;
+  // submit(form: NgForm){
+      
+      
+  //    console.log(form.value);
+     
+  //     this.dataService.saveUploadedFile(form.value).subscribe({
+  //       next: n =>{
+  //         console.log(n);
+          
+  //       },
+  //       error: err =>{
+  //         console.log(err);
+          
+  //       }
+  //     })
 
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
+  // }
+
+  file!: any;
+
+  submit(form: any) {
+    form.value.file = this.file;
+    if (form.valid) {
+      const formData = new FormData();
+      formData.append('holderPassportNo', form.value.holderPassportNo);
+      formData.append('holderDateOfBirth', form.value.holderDateOfBirth);
+      formData.append('holderNationality', form.value.holderNationality);
+      formData.append('file', form.value.file);
+
+      this.dataService.saveUploadedFile(form.value).subscribe({
+              next: n =>{
+                console.log(n);
+                
+              },
+              error: err =>{
+                console.log(err);
+                
+              }
+            })
+    }
   }
 
-  submit(form: NgForm){
-    if (form.valid && this.selectedFile) {
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      // Add file validation if needed (e.g., file type, size)
 
-      console.log(this.selectedFile);
-      
-      
-     console.log(form.value);
-     
-      this.dataService.saveUploadedFile(form.value).subscribe({
-        next: n =>{
-          console.log(n);
-          
-        },
-        error: err =>{
-          console.log(err);
-          
-        }
-      })
+      // Assign the selected file to the form value
+      this.file = file;
     }
-
   }
 
   selectedCountry!: string;

@@ -13,6 +13,7 @@ import { ViewMessageComponent } from './view-message/view-message.component';
 import { EditVisaPdfComponent } from './edit-visa-pdf/edit-visa-pdf.component';
 import { UploadVisaComponent } from './upload-visa/upload-visa.component';
 import { ListOfUploadVisaComponent } from './list-of-upload-visa/list-of-upload-visa.component';
+import { UploadVisaFileComponent } from './upload-visa-file/upload-visa-file.component';
 
 
 
@@ -27,6 +28,7 @@ import { ListOfUploadVisaComponent } from './list-of-upload-visa/list-of-upload-
     EditVisaPdfComponent,
     UploadVisaComponent,
     ListOfUploadVisaComponent,
+    UploadVisaFileComponent,
   ],
   imports: [
     CommonModule,
