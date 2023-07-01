@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+
+
 .banner{
     display: grid;
     place-items: center;
     margin-bottom: 30px;
+    font-family: 'Cairo', sans-serif;
 }
 
 .card{

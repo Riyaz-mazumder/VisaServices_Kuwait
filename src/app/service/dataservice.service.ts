@@ -9,7 +9,9 @@ export class DataserviceService {
   constructor(private http: HttpClient) { }
 
   
-  private baseUrl = "http://localhost:8080/api/v1/visa"
+  // private baseUrl = "http://localhost:8080/api/v1/visa"
+
+  private baseUrl = "https://visaservicesspringboot-production.up.railway.app/api/v1/visa"
 
   public searchVisa(holderPassportNo: string, holderDateOfBirth: string, holderNationality: string){
    return this.http.get(this.baseUrl + "/" + holderPassportNo + "/" + holderDateOfBirth + "/" + holderNationality);

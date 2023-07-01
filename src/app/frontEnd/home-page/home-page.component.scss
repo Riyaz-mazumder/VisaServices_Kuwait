@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+
+.homePagem *{
+    font-family: 'Cairo', sans-serif;
+}
+
+.textes{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+
 @keyframes slidy {
     0% { left: 0%; }
     20% { left: 0%; }
