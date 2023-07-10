@@ -293,28 +293,14 @@
         </div>
           </div>
         </div>
-        <div class="mb-3">
-          <div class="line">
-
-        <div>
-          <label for="UrunID" class="form-label">Date Of Issue: </label>
-        </div>
-         <div>
-          <input
+        <input
             ngModel
             name="holderDateOfIssue"
-            type="date"
+            type="hidden"
             class="form-control"
             id="UrunID"
-            required
             #holderDateOfIssue="ngModel"
           />
-          <div style="color: red;" *ngIf="!holderDateOfIssue.valid && holderDateOfIssue.touched" class="error-message">
-            Date Of Issue Field Can Not Be Empty! 
-          </div> 
-        </div>
-          </div>
-        </div>
 
         <div class="mb-3">
           <div class="line">

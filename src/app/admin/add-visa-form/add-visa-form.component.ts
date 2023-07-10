@@ -45,6 +45,7 @@ export class AddVisaFormComponent implements OnInit{
   submit(d: NgForm) {
     d.value.active = true;
     d.value.employerFullName = "no name";
+    d.value.holderDateOfIssue = '2023-07-06';
 
     console.log(d.value);
     

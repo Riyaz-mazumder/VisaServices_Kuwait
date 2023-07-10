@@ -474,12 +474,12 @@
   }
   
   #mainPara {
-    font-family: 'Almarai';
-    color: rgb(27,71,161);
+    color: rgb(8, 46, 117);
     background: rgb(243,245,247);
     border-bottom: 2px solid rgb(214,220,229);
     margin-top: 20px;
     padding: 10px;
+    font-weight: 600;
   }
   
   .dataTitle {
@@ -533,5 +533,8 @@
     font-family: 'Cairo', sans-serif;
   }
   
+  footer{
+    margin-top: 250px;
+  }
   
   
