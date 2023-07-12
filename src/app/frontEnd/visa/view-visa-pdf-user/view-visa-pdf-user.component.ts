@@ -172,7 +172,7 @@ const holderGenderFinalInEnglish = holderGenderFinal[0]; // Extract the first wo
 const holderGenderFinalInArabic = holderGenderFinal[1];
 
 
-const arabicFont = await fetch("./assets/font/Cairo-SemiBold.ttf").then(res =>{
+const arabicFont = await fetch("./assets/font/Cairo-ExtraBold.ttf").then(res =>{
   return res.arrayBuffer();
 });
 
@@ -378,15 +378,23 @@ firstPage.drawText(holderDateOfIssue,{
   color: textColor,
 })
 
-// gender
+
+// gender start
 const textWidth_holderGender = CairoFont.widthOfTextAtSize(holderGenderFinalInEnglish, fontSize);
 
 const centerX_holderGender= (pageWidth - textWidth_holderGender) / 2;
 
-const centerX_holderGenderEnglish = centerX_holderGender - ( textWidth_holderGender - 32);
+const centerX_holderGenderEnglish = centerX_holderGender - ( textWidth_holderGender - 10);
 
 
-firstPage.drawText(holderGender,{
+const textWidth_holderGenderArabic = CairoFont.widthOfTextAtSize(holderGenderFinalInArabic, fontSize);
+
+const centerX_holderGenderAra= (pageWidth - textWidth_holderGenderArabic) / 2;
+
+const centerX_holderGenderArabic = centerX_holderGenderAra + ( textWidth_holderGenderArabic - 2);
+
+
+firstPage.drawText(holderGenderFinalInEnglish,{
   x: centerX_holderGenderEnglish,
   y: 397,
   size: fontSize,
@@ -394,21 +402,17 @@ firstPage.drawText(holderGender,{
   color: textColor,
 })
 
-
-const textWidth_holderGenderArabic = CairoFont.widthOfTextAtSize(holderGenderFinalInArabic, fontSize);
-
-const centerX_holderGenderAra= (pageWidth - textWidth_holderGender) / 2;
-
-const centerX_holderGenderArabic = centerX_holderGenderAra - ( textWidth_holderGenderArabic - 10);
-
-
-firstPage.drawText(holderGender,{
+firstPage.drawText(holderGenderFinalInArabic,{
   x: centerX_holderGenderArabic,
   y: 397,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
+
+// gender end
+
+
 
 
 const textWidth_holderOccupation = CairoFont.widthOfTextAtSize(holderOccupation, fontSize);

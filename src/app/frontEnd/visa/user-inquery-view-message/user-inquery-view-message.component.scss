@@ -3,8 +3,14 @@
     display: grid;
     place-items: center;
 }
+
+.holder{
+    display: grid;
+    place-items: center;
+}
 .message{
+    background-color: rgba(222, 249, 240, 0.523);
+    width: 70%;
     padding: 30px;
     border: 2px solid green;
-    
 }
