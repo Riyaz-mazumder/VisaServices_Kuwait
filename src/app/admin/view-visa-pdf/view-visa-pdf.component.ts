@@ -140,7 +140,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
   const {PDFDocument, rgb} = PDFLib;
 
 
-  const exBytes = await fetch("./assets/pdf/electronic-visa-MD ARIFUL ISLAM MD KHAZA MIA final (1).pdf").then(res=>{
+  const exBytes = await fetch("./assets/pdf/electronic-visa-MD ARIFUL ISLAM MD KHAZA MIA final.pdf").then(res=>{
     return res.arrayBuffer();
   });
 
@@ -165,7 +165,14 @@ const passportTypeInEnglish = wordsPassportType[0]; // Extract the first word
 const passportTypeInArabic = wordsPassportType[1];
 
 
-const arabicFont = await fetch("./assets/font/Cairo-Regular.ttf").then(res =>{
+// gender
+const holderGenderFinal = holderGender.split(" ");
+const holderGenderFinalInEnglish = holderGenderFinal[0]; // Extract the first word
+const holderGenderFinalInArabic = holderGenderFinal[1];
+
+
+
+const arabicFont = await fetch("./assets/font/Cairo-SemiBold.ttf").then(res =>{
   return res.arrayBuffer();
 });
  pdfDoc.registerFontkit(fontkit);
@@ -357,27 +364,60 @@ firstPage.drawText(nationalityArabic,{
 })
 
 
-// const textWidth_holderDateOfIssue = CairoFont.widthOfTextAtSize(holderDateOfIssue, fontSize);
+const textWidth_holderDateOfIssue = CairoFont.widthOfTextAtSize(holderDateOfIssue, fontSize);
 
-// const centerX_holderDateOfIssue= (pageWidth - textWidth_holderDateOfIssue) / 2;
+const centerX_holderDateOfIssue= (pageWidth - textWidth_holderDateOfIssue) / 2;
 
 
-// firstPage.drawText(holderDateOfIssue,{
-//   x: centerX_holderDateOfIssue,
-//   y: 417,
+firstPage.drawText(holderDateOfIssue,{
+  x: centerX_holderDateOfIssue,
+  y: 417,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+// const textWidth_holderGender = CairoFont.widthOfTextAtSize(holderGender, fontSize);
+
+// const centerX_holderGender= (pageWidth - textWidth_holderGender) / 2;
+
+
+// firstPage.drawText(holderGender,{
+//   x: centerX_holderGender,
+//   y: 397,
 //   size: fontSize,
 //   font: CairoFont,
 //   color: textColor,
 // })
 
 
-const textWidth_holderGender = CairoFont.widthOfTextAtSize(holderGender, fontSize);
+// gender
+const textWidth_holderGender = CairoFont.widthOfTextAtSize(holderGenderFinalInEnglish, fontSize);
 
 const centerX_holderGender= (pageWidth - textWidth_holderGender) / 2;
 
+const centerX_holderGenderEnglish = centerX_holderGender - ( textWidth_holderGender - 32);
+
 
 firstPage.drawText(holderGender,{
-  x: centerX_holderGender,
+  x: centerX_holderGenderEnglish,
+  y: 397,
+  size: fontSize,
+  font: CairoFont,
+  color: textColor,
+})
+
+
+const textWidth_holderGenderArabic = CairoFont.widthOfTextAtSize(holderGenderFinalInArabic, fontSize);
+
+const centerX_holderGenderAra= (pageWidth - textWidth_holderGender) / 2;
+
+const centerX_holderGenderArabic = centerX_holderGenderAra - ( textWidth_holderGenderArabic - 10);
+
+
+firstPage.drawText(holderGender,{
+  x: centerX_holderGenderArabic,
   y: 397,
   size: fontSize,
   font: CairoFont,
@@ -399,6 +439,7 @@ firstPage.drawText(holderOccupation,{
   font: CairoFont,
   color: textColor,
 })
+
 
 
 const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOccupationInArabic, fontSize);

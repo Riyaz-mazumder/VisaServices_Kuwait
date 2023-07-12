@@ -272,8 +272,6 @@
               <label for="Kategori" class="form-label">Nationality: </label>
             </div>
         <div>
-
-      
           <select [(ngModel)]="selectedCountry"
             ngModel
             name="holderNationality"
@@ -293,14 +291,26 @@
         </div>
           </div>
         </div>
-        <input
-            ngModel
-            name="holderDateOfIssue"
-            type="hidden"
-            class="form-control"
-            id="UrunID"
-            #holderDateOfIssue="ngModel"
-          />
+        <div class="mb-3">
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Date Of Issue: </label>
+            </div>
+         <div>
+          <input
+          ngModel
+          name="holderDateOfIssue"
+          type="date"
+          class="form-control"
+          id="UrunID"
+          #holderDateOfIssue="ngModel"
+        />
+          <div style="color: red;" *ngIf="!holderDateOfIssue.valid && holderDateOfIssue.touched" class="error-message">
+            Date Of Issue Field Can Not Be Empty! 
+          </div> 
+         </div>
+          </div>
+        </div>
 
         <div class="mb-3">
           <div class="line">
@@ -320,7 +330,7 @@
              #holderGender="ngModel"
           
           >
-            <option *ngFor="let gender of genders" [value]="gender">{{ gender }}  {{ genderTranslations[gender] }}</option>
+            <option *ngFor="let gender of genders" [value]="gender + ' ' + genderTranslations[gender]" >{{ gender }}  {{ genderTranslations[gender] }}</option>
           </select>
           <div style="color: red;" *ngIf="!holderGender.valid && holderGender.touched" class="error-message">
             Gender Field Can Not Be Empty! 
