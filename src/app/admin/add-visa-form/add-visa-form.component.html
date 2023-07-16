@@ -342,7 +342,32 @@
 
           <div class="mb-3 towSide" >
           <div>
+            <!-- for arabic -->
             <div class="line">
+              <div>
+                <label for="UrunID" class="form-label">Occupation In Arabic: </label>
+              </div>
+           <div>
+            <input
+            ngModel
+            name="holderOccupationInArabic"
+            type="text"
+            class="form-control"
+            id="UrunID"
+            required
+            #holderOccupationInArabic="ngModel"
+            placeholder="أدخل المهنة"
+          />
+          <div style="color: red;" *ngIf="!holderOccupationInArabic.valid && holderOccupationInArabic.touched" class="error-message">
+            Occupation In Arabic Field Can Not Be Empty! 
+          </div> 
+        </div>
+        </div>
+        
+        </div>
+         <!-- for english -->
+         <div class="towSideLast">
+          <div class="line">
             <div>
               <label for="UrunID" class="form-label">Occupation In English: </label>
             </div>
@@ -362,30 +387,12 @@
           </div> 
         </div>
             </div>
+
+          <!-- end eng -->
+         
+    </div>
         </div>
-          <div class="towSideLast">
-            <div class="line">
-            <div>
-              <label for="UrunID" class="form-label">Occupation In Arabic: </label>
-            </div>
-         <div>
-          <input
-          ngModel
-          name="holderOccupationInArabic"
-          type="text"
-          class="form-control"
-          id="UrunID"
-          required
-          #holderOccupationInArabic="ngModel"
-          placeholder="أدخل المهنة"
-        />
-        <div style="color: red;" *ngIf="!holderOccupationInArabic.valid && holderOccupationInArabic.touched" class="error-message">
-          Occupation In Arabic Field Can Not Be Empty! 
-        </div> 
-      </div>
-      </div>
-      </div>
-        </div>
+       
 
         <div class="mb-3">
           <div class="line">
