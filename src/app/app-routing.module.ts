@@ -18,12 +18,13 @@ import { UserInqueryViewComponent } from './frontEnd/visa/user-inquery-view/user
 import { UserInqueryViewMessageComponent } from './frontEnd/visa/user-inquery-view-message/user-inquery-view-message.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
-  { path: 'home', component: HomePageComponent },
+  // { path: '', component: LandingPageComponent },
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },  // Redirect to HomeComponent when the path is empty
+  { path: '', component: HomePageComponent},
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'kuwaitVisaServices', component: KuwaitVisaServicesComponent},
   { path: 'contactUs', component: ContactComponent},
-  { path: 'fqaKuwait', component: LandingPageComponent },
+  { path: 'FAQ', component: LandingPageComponent },
   { path: 'visaApprovalAndTracking', component: VisaApprovalAndTrackingComponent},
   { path: 'visaInqueryAndPrinting', component: VisaInqueryAndPrintingComponent},
   { path: 'visaRelatedInformationAndTracking', component: UserInqueryViewComponent},
