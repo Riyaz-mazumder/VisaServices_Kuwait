@@ -11,7 +11,7 @@
 </figure>
 </div> -->
 <div id="video">
-    <video autoplay muted loop>
+    <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
         <source src="assets/Image/academy-register.mp4" type="video/mp4">
         <!-- Add additional <source> tags for different video formats if needed -->
         <!-- Your browser does not support the video tag. -->
@@ -108,28 +108,26 @@ easily download the visa copy from this site after the visa is issued.
 
 
 
-<section class="visaServices">
+<!-- <section class="visaServices">
     <h1>Visa Services</h1>
     <div class="cartHolder">
         <div class="card">
-            <!-- <div>
-               <img src="assets/Image/kuwait-toplogo.jpg" alt="logo">
-            </div> -->
+           
             <div style="max-width: 100%;">
                 <img style="width: 80%;" src="assets/Image/State of Kuwait Employment Visa (2).jpg" alt="logo">
              </div>
-            <div>
-                <p class="p-first">-Visa Approval Tracking</p>
-                <p>-Visa Inquery And Printing</p>
+            <div style="margin-top: 30px; padding: 35px;">
+                
+                    <li style="margin-left: -19px;">Visa Approval Tracking</li>  
+                    <li>Visa Inquery And Printing</li>
+                
+               
             </div>
-            <!-- <hr> -->
-            <!-- <div>
-                <button routerLink="/kuwaitVisaServices">VISA SERVICE</button>
-            </div> -->
+           
     
         </div>
     </div>
-    </section>
+    </section> -->
 
 
     <section class="last">

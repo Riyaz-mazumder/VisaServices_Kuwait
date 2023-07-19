@@ -11,6 +11,7 @@
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     margin-bottom: 50px;
+    width: 50%; 
 }
 .card{
     width: 285px;
@@ -59,7 +60,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
+    width: 580px;
   }
   .textHolder{
     width: 45%;
@@ -71,6 +72,16 @@
   @media only screen and (min-width: 500px) and (max-width: 1200px){
     .logoCard img{
       max-width: 70vw;
+    }
+    .logoCard{
+      width: 75%;
+    }
+  }
+
+
+  @media only screen and (max-width: 800px){
+    .logoCard{
+      width: 285px;
     }
   }
 
