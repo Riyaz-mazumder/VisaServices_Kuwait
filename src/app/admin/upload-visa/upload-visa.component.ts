@@ -2,17 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataServicService } from '../data-servic.service';
 import { Observable, from } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-upload-visa',
   templateUrl: './upload-visa.component.html',
   styleUrls: ['./upload-visa.component.scss']
 })
-export class UploadVisaComponent{
+export class UploadVisaComponent implements OnInit{
 
 
 
-  constructor(private dataService: DataServicService){}
+  constructor(
+    private dataService: DataServicService,
+    private route: ActivatedRoute,  
+    ){}
+
 
   // submit(form: NgForm){
       
@@ -33,27 +38,51 @@ export class UploadVisaComponent{
   // }
 
   file!: any;
+  id!: any;
+
+
+  ngOnInit(): void {
+   this.id = this.route.snapshot.params['id'];
+  }
 
   submit(form: any) {
-    form.value.file = this.file;
-    if (form.valid) {
-      const formData = new FormData();
-      formData.append('holderPassportNo', form.value.holderPassportNo);
-      formData.append('holderDateOfBirth', form.value.holderDateOfBirth);
-      formData.append('holderNationality', form.value.holderNationality);
-      formData.append('file', form.value.file);
+    form.value.fileId = this.id;
 
-      this.dataService.saveUploadedFile(form.value).subscribe({
-              next: n =>{
-                console.log(n);
+
+
+    this.dataService.saveUploadedFile(form.value).subscribe({
+      next: n =>{
+        console.log(n);
+        form.reset();
+        
+      },
+      error: err =>{
+        console.log(err);
+        
+      }
+    })
+
+    // if (form.valid) {
+    //   const formData = new FormData();
+    //   formData.append('holderPassportNo', form.value.holderPassportNo);
+    //   formData.append('holderDateOfBirth', form.value.holderDateOfBirth);
+    //   formData.append('holderNationality', form.value.holderNationality);
+    //   formData.append('fileId', form.value.fileId);
+
+    //   this.dataService.saveUploadedFile(formData).subscribe({
+    //           next: n =>{
+    //             console.log(n);
+    //             form.reset();
                 
-              },
-              error: err =>{
-                console.log(err);
+    //           },
+    //           error: err =>{
+    //             console.log(err);
                 
-              }
-            })
-    }
+    //           }
+    //         })
+    // }else{
+    //   console.log("Not Valid");
+    // }
   }
 
   onFileSelected(event: any) {

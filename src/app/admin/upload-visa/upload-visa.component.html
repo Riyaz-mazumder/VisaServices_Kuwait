@@ -52,12 +52,7 @@
         Nationality Field Can Not Be Empty!
       </div>
     </div>
-
-    <div class="mb-3">
-      <label for="fileInput" class="form-label">Upload File</label>
-      <input ngModel name="file" type="file" class="form-control" id="fileInput" (change)="onFileSelected($event)" />
-    </div>
-
+    <input type="hidden" name="fileId">
     <div class="d-flex justify-content-center">
       <button [disabled]="!f.valid" type="submit" class="btn btn-success text-white btn-outline-success form-control w-50 m-3"
         id="ekleButton">

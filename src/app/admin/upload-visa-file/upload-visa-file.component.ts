@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataServicService } from '../data-servic.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-visa-file',
@@ -18,7 +19,10 @@ export class UploadVisaFileComponent {
 
   fileInfos?: Observable<any>;
 
-  constructor(private uploadService: DataServicService) { }
+  constructor(
+    private uploadService: DataServicService,
+    private router: Router
+    ) { }
 
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
@@ -72,6 +76,15 @@ export class UploadVisaFileComponent {
       }
 
       this.selectedFiles = undefined;
+    }
+  }
+
+
+  next(){
+    if(this.idOfTheFie == null || this.idOfTheFie == ' '){
+      alert("Frist Uplad the File")
+    }else{
+    this.router.navigate(['/admin/dashboard/uploadVisa/' + this.idOfTheFie]);
     }
   }
 }

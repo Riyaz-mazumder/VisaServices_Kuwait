@@ -11,12 +11,13 @@ import { UploadVisaFileComponent } from './upload-visa-file/upload-visa-file.com
 
 const routes: Routes = [
     { path: 'addVisa', component: AddVisaFormComponent },
-    { path: 'uploadVisa', component: UploadVisaComponent },
+   
     { path: 'listOfVisa', component: ListOfVisaComponent },
     { path: 'listOfUploadedFile', component: ListOfUploadVisaComponent},
     { path: 'viewMessages', component: ViewMessageComponent },
     { path: 'viewVisaPDF', component: ViewVisaPdfComponent },
     { path: 'upload', component: UploadVisaFileComponent },
+    { path: 'uploadVisa/:id', component: UploadVisaComponent },
 ];
 
 
