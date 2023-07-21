@@ -54,6 +54,7 @@ export class UploadVisaComponent implements OnInit{
       next: n =>{
         console.log(n);
         form.reset();
+        alert("Upload SuccessFul")
         
       },
       error: err =>{

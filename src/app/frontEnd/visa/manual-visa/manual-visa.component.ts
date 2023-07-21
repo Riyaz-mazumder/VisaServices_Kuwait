@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,12 +16,11 @@ export class ManualVisaComponent implements OnInit{
    @ViewChild('.prevew', { static: true })
    captchaPreviewRef!: ElementRef;
  
- 
    constructor(
      private service: DataserviceService,
      private router: Router,
      private pdfDataService: PdfDataSenderService,
-   
+     private http: HttpClient,
      ){}
       fonts: string[] = ["cursive"];
       captchaValue: string = "";
@@ -71,7 +71,7 @@ export class ManualVisaComponent implements OnInit{
    
    if (inputCaptchaValue === this.captchaValue) {
       // console.log(data.value);
- this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirth, data.value.holderNationality).subscribe({
+ this.service.searchUploadedVisa(data.value.holderPassportNo, data.value.holderDateOfBirth, data.value.holderNationality).subscribe({
    next: r=>{
      this.searchedData = r;
  
@@ -79,8 +79,20 @@ export class ManualVisaComponent implements OnInit{
        alert("Wrong Input Data!")
      }else{
       console.log(this.searchedData);
+
+
+
+      // download
+      // Replace 'your_spring_boot_url' with the actual URL of your Spring Boot backend
+    const url = `https://visaservicesspringboot-production.up.railway.app/api/v1/files/${this.searchedData[0].fileId}`;
+    this.http.get(url, { responseType: 'arraybuffer' })
+      .subscribe((response: ArrayBuffer) => {
+        this.saveFile(response, 'your-file-name.pdf');
+      });
+
+      // this.service.getFileById(this.searchedData[0].id).subscribe()
       
-      this.router.navigate(["/manualVisa/message/" + this.searchedData[0].id])  
+      // this.router.navigate(["/manualVisa/message/" + this.searchedData[0].id])  
      }
  
    },
@@ -92,12 +104,19 @@ export class ManualVisaComponent implements OnInit{
    } else {
      alert("Invalid Captcha");
    }
-  
- 
- 
- 
- 
    }
+
+
+
+   saveFile(data: ArrayBuffer, filename: string) {
+    const blob = new Blob([data], { type: 'application/pdf' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
  
  
  

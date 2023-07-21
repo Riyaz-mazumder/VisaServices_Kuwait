@@ -17,7 +17,9 @@
           <td>{{ i.createdDateTime }}</td>
           <td>
             <button class="btn btn-success" (click)="openPdf(i)">Open And DownLoad</button>
-            <!-- <button
+          </td>
+          <td>
+            <button
               data-toggle="modal"
               data-target="#myModal"
               class="btn btn-primary"
@@ -25,10 +27,7 @@
               style="margin-right: 20px"
             >
              Edit
-            </button> -->
-           
-
-           
+            </button>
           </td>
           <td>
              <button class="btn btn-danger" (click)="onDelete(i.id)">Delete From DataBase</button>

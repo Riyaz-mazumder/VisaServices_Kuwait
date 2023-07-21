@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PdfDataSenderService } from '../pdf-data-sender.service';
 import { DataServicService } from '../data-servic.service';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-visa-pdf',
@@ -18,22 +18,34 @@ export class EditVisaPdfComponent implements OnInit{
     private httpClient: HttpClient,
     private pdfDataService: PdfDataSenderService,
     private router: Router,
-    private service: DataServicService
-    
+    private route: ActivatedRoute,
+    private service: DataServicService,
     ) {}
 
   storedValue!: any;
+  id!: any;
+
+  data!: any;
+
   ngOnInit(): void {
     this.storedValue = sessionStorage.getItem('admin');
+
+    this.id = this.route.snapshot.params['id'];
+
+    this.service.getVisaById(this.id).subscribe({
+      next: r =>{
+        this.data = r;
+      },
+      error: e =>{
+        console.log(e);
+        
+      }
+    })
   }
 
   submit(d: NgForm) {
 
-    this.pdfDataService.setData(d.value);
-
-    d.reset();
-
-    this.service.saveVisa(d.value).subscribe({
+    this.service.updateVisa(d.value).subscribe({
       next: r =>{
         console.log(r);
         
@@ -43,7 +55,7 @@ export class EditVisaPdfComponent implements OnInit{
       }
     });
 
-    alert("Visa has Been Created")
+    alert("Visa has Been Updated")
 
     this.router.navigate(["/admin/dashboard/viewVisaPDF"])
     

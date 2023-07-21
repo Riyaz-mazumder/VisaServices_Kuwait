@@ -70,3 +70,31 @@
     top: 430px;
   }
   
+
+  .towSide{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    input{
+      width: 230%;
+    }
+  }
+  .towSideLast {
+    margin-left: 279px;
+  }
+
+ 
+  line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+
+  form input{
+  width: 100%;
+  }
+
+  // form div{
+  //   margin-bottom: 15px;
+  // }

@@ -34,13 +34,17 @@ export class ListOfVisaComponent implements OnInit{
   }
 
   onUpdate(d: any) {
-    // // const dialogRef = this.dialog.open(EditProductComponent, {
-    // //   data: d,
+    // const dialogRef = this.dialog.open(EditProductComponent, {
+    //   data: d,
     // });
 
     // dialogRef.afterClosed().subscribe((result) => {
     //   console.log(`Dialog result: ${result}`);
     // });
+
+    this.router.navigate(["/admin/dashboard/updateVisa/" + d.id]);
+
+
   }
 
   onDelete(id: any) {

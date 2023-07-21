@@ -26,6 +26,18 @@ export class DataserviceService {
     const response = await this.http.get(url, { responseType: 'arraybuffer' }).toPromise();
     return new Uint8Array(response as ArrayBuffer);
   }
-  
+
+  private manualvisaUpload = "https://visaservicesspringboot-production.up.railway.app/api/v1/uploadVisa"
+
+
+  public searchUploadedVisa(holderPassportNo: string, holderDateOfBirth: string, holderNationality: string){
+    return this.http.get(this.manualvisaUpload + "/" + holderPassportNo + "/" + holderDateOfBirth + "/" + holderNationality);
+   }
+
+   private fileUrl = "https://visaservicesspringboot-production.up.railway.app/api/v1/files";
+
+   public getFileById(id: any){
+      return this.http.get(this.fileUrl + "/" + id);
+   }
 
 }

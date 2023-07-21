@@ -115,7 +115,8 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
         image:
           "assets/Image/kuwait-logoCard90834589.png",
         dotsOptions: {
-          color: "#88a9c7",
+          // color: "#88a9c7",
+          color: " #5a81a4",
           type: "dots"
         },
         cornersSquareOptions:{
@@ -132,7 +133,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
         imageOptions: {
           crossOrigin: "anonymous",
           margin: 0
-        }
+        },
       });
   
 
@@ -430,7 +431,9 @@ const textWidth_holderOccupation = CairoFont.widthOfTextAtSize(holderOccupation,
 
 const occupationCenterFixEnglish = (pageWidth - textWidth_holderOccupation) / 2;
 
-const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderOccupation - 30);
+// const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderOccupation - 30);
+
+const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderOccupation /2);
 
 
 firstPage.drawText(holderOccupation,{
@@ -447,7 +450,9 @@ const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOcc
 
 const occupationCenterFixArabic = (pageWidth - textWidth_holderOccupationInArabic ) / 2;
 
-const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 3);
+// const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 3);
+
+const centerX_holderOccupationInArabic = occupationCenterFixArabic + ((textWidth_holderOccupation / 2) + textWidth_holderOccupation / 5);
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,

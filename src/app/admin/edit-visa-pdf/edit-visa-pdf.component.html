@@ -1,134 +1,192 @@
-
-<h1 style="text-align: center; margin: 30px;">Add Visa Form</h1>
-    <div class="container w-50 border mt-5" id="form" *ngIf="storedValue">
+<h1 style="text-align: center; margin: 30px;">Update Visa Form</h1>
+    <div class="container w-60 border mt-5" id="form" *ngIf="storedValue">
       <h2 style="text-align: center; padding: 10px;" >Details Visa. <span style="width: 20px;"></span>  <span>   ﺑﻴﺎﻧﺎت اﻟﺘﺄﺷﻴﺮة </span></h2>
       <form class="mt-5" (ngSubmit)="submit(f)" #f="ngForm">
         <div class="mb-3">
-          <label for="UrunAdi" class="form-label">Visa Number</label>
+          <div class="line">
+          <div>
+            <label for="UrunAdi" class="form-label">Visa Number: </label>
+          </div>
+         <div>
           <input
-           
-            formControlName="visaNumber"
+            ngModel
+            name="visaNumber"
             type="number"
             class="form-control"
             id="UrunAdi"
             required
-           
+            #visaNumber="ngModel"
             placeholder="Visa Number"
           />
-          <!-- <div style="color: red;" *ngIf="!visaNumber.valid && visaNumber.touched" class="error-message">
+          <div style="color: red;" *ngIf="!visaNumber.valid && visaNumber.touched" class="error-message">
             Visa Number Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
         </div>
-        <div class="mb-3">
-          <label for="UrunID" class="form-label">Visa Type In Arabic</label>
-          <input
-           
-            formControlName="visaTypeInArabic"
-            type="text"
-            class="form-control"
-            id="UrunID"
-            required
-           
-            placeholder="ﻧﻮع اﻟﺘﺄﺷﻴﺮة"
-          />
-          <!-- <div style="color: red;" *ngIf="!visaTypeInArabic.valid && visaTypeInArabic.touched" class="error-message">
-            Visa Type In Arabic Field Can Not Be Empty! 
-          </div>  -->
-
-          <br>
-          <label for="UrunID" class="form-label">Visa Type In English</label>
-          <input
-         
-          formControlName="visaType"
-          type="text"
-          class="form-control"
-          id="UrunID"
-          required
+        </div>
+        </div>
         
-          placeholder="Visa Type"
-        />
-        <!-- <div style="color: red;" *ngIf="!visaType.valid && visaType.touched" class="error-message">
-          Visa Type Field Can Not Be Empty! 
-        </div>  -->
-        </div>
-        <div class="mb-3">
-          <label for="UrunID" class="form-label">Visa Purpose In Arabic</label>
-          <input
-           
-          formControlName="visaPurposeInArabic"
-            type="text"
-            class="form-control"
-            id="UrunID"
-            required
-           
-            placeholder="اﻟﻐﺮض"
-          />
-          <!-- <div style="color: red;" *ngIf="!visaPurposeInArabic.valid && visaPurposeInArabic.touched" class="error-message">
-            Visa Purpose In Arabic Field Can Not Be Empty! 
-          </div>  -->
-
-          <br>
-          <label for="UrunID" class="form-label">Visa Purpose In English</label>
-          <input
-         
-          formControlName="visaPurpose"
-          type="text"
-          class="form-control"
-          id="UrunID"
-          required
-         
-          placeholder="Visa Purpose"
-        />
-        <!-- <div style="color: red;" *ngIf="!visaPurpose.valid && visaPurpose.touched" class="error-message">
-          Visa Purpose Field Can Not Be Empty! 
-        </div>  -->
-        </div>
-        <div class="mb-3">
-          <label for="UrunID" class="form-label">Date Of Issue</label>
+        <div class="mb-3 towSide">
+          <div>
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Visa Type In Arabic: </label>
+            </div>
+        <div>
           <input
             ngModel
-            formControlName="dateOfIssue"
-            type="date"
-            class="form-control"
-            id="UrunID"
-            required
-           
-          />
-          <!-- <div style="color: red;" *ngIf="!dateOfIssue.valid && dateOfIssue.touched" class="error-message">
-            Date Of Issue Field Can Not Be Empty! 
-          </div>  -->
-        </div>
-        <div class="mb-3">
-          <label for="UrunID" class="form-label">Date Of Expiry</label>
-          <input
-           
-          formControlName="dateOfExpiry"
-            type="date"
-            class="form-control"
-            id="UrunID"
-            required
-           
-          />
-          <!-- <div style="color: red;" *ngIf="!dateOfExpiry.valid && dateOfExpiry.touched" class="error-message">
-            Date Of Expiry Field Can Not Be Empty! 
-          </div>  -->
-        </div>
-
-        <div class="mb-3">
-          <label for="UrunID" class="form-label">Place Of Issue In Arabic</label>
-          <input
-            
-          formControlName="placeOfIssue"
+            name="visaTypeInArabic"
             type="text"
             class="form-control"
             id="UrunID"
             required
-          
+            #visaTypeInArabic="ngModel"
+            placeholder="ﻧﻮع اﻟﺘﺄﺷﻴﺮة"
+          />
+          <div style="color: red;" *ngIf="!visaTypeInArabic.valid && visaTypeInArabic.touched" class="error-message">
+            Visa Type In Arabic Field Can Not Be Empty! 
+          </div> 
+        </div>
+          </div>
+        </div>
+        <div  class="towSideLast">
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Visa Type In English: </label>
+            </div>
+        <div>
+          <input
+          ngModel
+          name="visaType"
+          type="text"
+          class="form-control"
+          id="UrunID"
+          required
+          #visaType="ngModel"
+          placeholder="Visa Type"
+        />
+        <div style="color: red;" *ngIf="!visaType.valid && visaType.touched" class="error-message">
+          Visa Type Field Can Not Be Empty! 
+        </div> 
+        </div>
+     
+          </div>
+      </div>
+        </div>
+
+
+        <div class="mb-3 towSide">
+          <div>
+            <div class="line">
+              <div>
+                <label for="UrunID" class="form-label">Visa Purpose In Arabic: </label>
+              </div>
+         <div>
+          <input
+            ngModel
+            name="visaPurposeInArabic"
+            type="text"
+            class="form-control"
+            id="UrunID"
+            required
+            #visaPurposeInArabic="ngModel"
+            placeholder="اﻟﻐﺮض"
+          />
+          <div style="color: red;" *ngIf="!visaPurposeInArabic.valid && visaPurposeInArabic.touched" class="error-message">
+            Visa Purpose In Arabic Field Can Not Be Empty! 
+          </div> 
+        </div>
+            </div>
+        </div>
+        <div class="towSideLast">
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Visa Purpose In English: </label>
+            </div>
+         <div>
+          <input
+          ngModel
+          name="visaPurpose"
+          type="text"
+          class="form-control"
+          id="UrunID"
+          required
+          #visaPurpose="ngModel"
+          placeholder="Visa Purpose"
+        />
+        <div style="color: red;" *ngIf="!visaPurpose.valid && visaPurpose.touched" class="error-message">
+          Visa Purpose Field Can Not Be Empty! 
+        </div> 
+      </div>
+          </div>
+      </div>
+      </div>
+        <div class="mb-3">
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Date Of Issue: </label>
+            </div>
+         <div>
+          <input
+            ngModel
+            name="dateOfIssue"
+            type="date"
+            class="form-control"
+            id="UrunID"
+            required
+            #dateOfIssue="ngModel"
+          />
+          <div style="color: red;" *ngIf="!dateOfIssue.valid && dateOfIssue.touched" class="error-message">
+            Date Of Issue Field Can Not Be Empty! 
+          </div> 
+         </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Date Of Expiry: </label>
+            </div>
+         <div>
+          <input
+            ngModel
+            name="dateOfExpiry"
+            type="date"
+            class="form-control"
+            id="UrunID"
+            required
+            #dateOfExpiry="ngModel"
+          />
+          <div style="color: red;" *ngIf="!dateOfExpiry.valid && dateOfExpiry.touched" class="error-message">
+            Date Of Expiry Field Can Not Be Empty! 
+          </div> 
+        </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Place Of Issue In Arabic: </label>
+            </div>
+        <div>
+
+       
+          <input
+            ngModel
+            name="placeOfIssue"
+            type="text"
+            class="form-control"
+            id="UrunID"
+            required
+            #placeOfIssue="ngModel"
             placeholder="Place Of Issue In Arabic ex: ادارة ﻋﻤﻞ ﻣﺤﺎﻓﻈﺔ اﻟﻔﺮواﻧﻴﺔ"
           />
-          <!-- <div style="color: red;" *ngIf="!placeOfIssue.valid && placeOfIssue.touched" class="error-message">
+          <div style="color: red;" *ngIf="!placeOfIssue.valid && placeOfIssue.touched" class="error-message">
             Place Of Issue Of Expiry Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+          </div>
+          
         </div>
 
         <br>
@@ -137,304 +195,447 @@
         <h2 style="text-align: center; padding: 10px;" >Details Holder Visa. <span style="width: 20px;"></span>  <span>   ﺑﻴﺎﻧﺎت ﺻﺎﺣﺐ اﻟﺘﺄﺷﻴﺮة </span></h2>
 
 
-        <div class="mb-3">
-          <label class="form-label" for="UrunMiktar">Full Name In Arabic</label>
+        <div class="mb-3 towSide">
+          <div>
+            <div class="line">
+              <div>
+                <label class="form-label" for="UrunMiktar">Full Name In Arabic: </label>
+              </div>
+         <div>
           <input
-           
-          formControlName="holderFullNameInArabic"
+            ngModel
+            name="holderFullNameInArabic"
             type="text"
             class="form-control"
             id="UrunMiktar"
             required
-          
+            #holderFullNameInArabic="ngModel"
             placeholder="اﻻﺳﻢ اﻟﻜﺎﻣﻞ"
           />
-          <!-- <div style="color: red;" *ngIf="!holderFullNameInArabic.valid && holderFullNameInArabic.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderFullNameInArabic.valid && holderFullNameInArabic.touched" class="error-message">
             Full Name In Arabic Field Can Not Be Empty! 
-          </div>  -->
-          <br>
-          <label class="form-label" for="UrunMiktar">Full Name In English</label>
+          </div> 
+        </div>
+            </div>
+        </div>
+           <div class="towSideLast">
+            <div class="line">
+              <div>
+                <label class="form-label" for="UrunMiktar">Full Name In English: </label>
+              </div>
+         <div>
           <input
-           
-            formControlName="holderFullName"
+            ngModel
+            name="holderFullName"
             type="text"
             class="form-control"
             id="UrunMiktar"
             required
-           
+            #holderFullName="ngModel"
             placeholder="Full Name"
           />
-          <!-- <div style="color: red;" *ngIf="!holderFullName.valid && holderFullName.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderFullName.valid && holderFullName.touched" class="error-message">
             Full Name Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+            </div>
+        </div>
         </div>
 
         <div class="mb-3">
-          <label for="UrunID" class="form-label">MOI Reference</label>
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">MOI Reference: </label>
+            </div>
+         <div>
+
+        
           <input
-          
-          formControlName="holderMOIReference"
-            type="number"
+            ngModel
+            name="holderMOIReference"
+            type="text"
             class="form-control"
             id="UrunID"
-           
+            #holderMOIReference="ngModel"
             required
             placeholder="Enter MOI Reference"
           />
-          <!-- <div style="color: red;" *ngIf="!holderMOIReference.valid && holderMOIReference.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderMOIReference.valid && holderMOIReference.touched" class="error-message">
             MOI Reference Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+          </div>
         </div>
          <div class="mb-3">
-          <label for="Kategori" class="form-label">Nationality</label>
-          <select
-           
-          formControlName="holderNationality"
+          <div class="line">
+            <div>
+              <label for="Kategori" class="form-label">Nationality: </label>
+            </div>
+        <div>
+          <select [(ngModel)]="selectedCountry"
+            ngModel
+            name="holderNationality"
             id="Kategori"
             class="ms-1 d-block w-100"
             required
-           
+            #holderNationality="ngModel"
           >
-          <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}  {{ country.arabic }}</option>
+          <option *ngFor="let country of countries" [value]="country.name + ' ' +  country.arabic">{{ country.name }}  {{ country.arabic }}</option>
           </select>
-          <!-- <div style="color: red;" *ngIf="!holderNationality.valid && holderNationality.touched" class="error-message">
+
+          
+
+          <div style="color: red;" *ngIf="!holderNationality.valid && holderNationality.touched" class="error-message">
             Nationality Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+          </div>
         </div>
         <div class="mb-3">
-          <label for="UrunID" class="form-label">Date Of Issue</label>
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Date Of Issue: </label>
+            </div>
+         <div>
           <input
-           
-          formControlName="holderDateOfIssue"
-            type="date"
-            class="form-control"
-            id="UrunID"
-            required
-           
-          />
-          <!-- <div style="color: red;" *ngIf="!holderDateOfIssue.valid && holderDateOfIssue.touched" class="error-message">
+          ngModel
+          name="holderDateOfIssue"
+          type="date"
+          class="form-control"
+          id="UrunID"
+          #holderDateOfIssue="ngModel"
+        />
+          <div style="color: red;" *ngIf="!holderDateOfIssue.valid && holderDateOfIssue.touched" class="error-message">
             Date Of Issue Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+         </div>
+          </div>
         </div>
 
         <div class="mb-3">
-          <label for="Kategori" class="form-label">Gender</label>
+          <div class="line">
+            <div>
+              <label for="Kategori" class="form-label">Gender: </label>
+            </div>
+        
+            <div>
 
-          <select 
             
-          formControlName="holderGender"
+          <select [(ngModel)]="selectedGender"
+             ngModel
+             name="holderGender"
              id="Kategori"
              class="ms-1 d-block w-100"
              required
-            
+             #holderGender="ngModel"
           
           >
-            <option *ngFor="let gender of genders" [value]="gender">{{ gender }}  {{ genderTranslations[gender] }}</option>
+            <option *ngFor="let gender of genders" [value]="gender + ' ' + genderTranslations[gender]" >{{ gender }}  {{ genderTranslations[gender] }}</option>
           </select>
-          <!-- <div style="color: red;" *ngIf="!holderGender.valid && holderGender.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderGender.valid && holderGender.touched" class="error-message">
             Gender Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+          </div>
 
         </div>
-          <div class="mb-3">
-          <label for="UrunID" class="form-label">Occupation In English</label>
-          <input
-          
-          formControlName="holderOccupation"
+
+          <div class="mb-3 towSide" >
+          <div>
+            <!-- for arabic -->
+            <div class="line">
+              <div>
+                <label for="UrunID" class="form-label">Occupation In Arabic: </label>
+              </div>
+           <div>
+            <input
+            ngModel
+            name="holderOccupationInArabic"
             type="text"
             class="form-control"
             id="UrunID"
             required
-           
+            #holderOccupationInArabic="ngModel"
+            placeholder="أدخل المهنة"
+          />
+          <div style="color: red;" *ngIf="!holderOccupationInArabic.valid && holderOccupationInArabic.touched" class="error-message">
+            Occupation In Arabic Field Can Not Be Empty! 
+          </div> 
+        </div>
+        </div>
+        
+        </div>
+         <!-- for english -->
+         <div class="towSideLast">
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Occupation In English: </label>
+            </div>
+         <div>
+          <input
+            ngModel
+            name="holderOccupation"
+            type="text"
+            class="form-control"
+            id="UrunID"
+            required
+            #holderOccupation="ngModel"
             placeholder="Enter Occupation"
           />
-          <!-- <div style="color: red;" *ngIf="!holderOccupation.valid && holderOccupation.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderOccupation.valid && holderOccupation.touched" class="error-message">
             Occupation Field Can Not Be Empty! 
-          </div>  -->
-
-          <br>
-          <label for="UrunID" class="form-label">Occupation In Arabic</label>
-          <input
-          
-          formControlName="holderOccupationInArabic"
-          type="text"
-          class="form-control"
-          id="UrunID"
-          required
-         
-          placeholder="أدخل المهنة"
-        />
-        <!-- <div style="color: red;" *ngIf="!holderOccupationInArabic.valid && holderOccupationInArabic.touched" class="error-message">
-          Occupation In Arabic Field Can Not Be Empty! 
-        </div>  -->
-
+          </div> 
         </div>
+            </div>
+
+          <!-- end eng -->
+         
+    </div>
+        </div>
+       
 
         <div class="mb-3">
-          <label for="UrunID" class="form-label">Date Of Birth</label>
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Date Of Birth: </label>
+            </div>
+        <div>
           <input
-           
-          formControlName="holderDateOfBirth"
+            ngModel
+            name="holderDateOfBirth"
             type="date"
             class="form-control"
             id="UrunID"
             required
-           
+            #holderDateOfBirth="ngModel"
           />
-          <!-- <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
             Date Of Birth Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+          </div>
         </div>
 
         <div class="mb-3">
-          <label for="UrunAdi" class="form-label">Passport No</label>
+          <div class="line">
+            <div>
+              <label for="UrunAdi" class="form-label">Passport No: </label>
+            </div>
+         <div>
+
+        
           <input
-            
-          formControlName="holderPassportNo"
+            ngModel
+            name="holderPassportNo"
             type="text"
             class="form-control"
             id="UrunAdi"
             required
-        
+            #holderPassportNo="ngModel"
             placeholder="Enter Passport No"
           />
-          <!-- <div style="color: red;" *ngIf="!holderPassportNo.valid && holderPassportNo.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderPassportNo.valid && holderPassportNo.touched" class="error-message">
             Passport Number Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+          </div>
         </div>
 
 
         <div class="mb-3">
-          <label for="UrunAdi" class="form-label">Place Of Issue</label>
-          <select 
-            
-          formControlName="holderPlaceOfIssue"
-             class="form-control"
-             id="UrunAdi"
-             required
-           
-          >
-            <option *ngFor="let country of countriesInArabic" [value]="country">{{ country }}</option>
-          </select>
-          <!-- <div style="color: red;" *ngIf="!holderPlaceOfIssue.valid && holderPlaceOfIssue.touched" class="error-message">
-            Place Of Issue Field Can Not Be Empty! 
-          </div>  -->
-        </div>
+          <div class="line">
 
-
-
-        <div class="mb-3">
-          <label for="UrunID" class="form-label">Passport Type</label>
-          <select
-         
-          formControlName="holderPassportType"
+          
+          <div>
+            <label for="UrunAdi" class="form-label">Place Of Issue: </label>
+          </div>
+         <div>
+         <input
+          type="text"
+          ngModel
+          name="holderPlaceOfIssue"
           class="form-control"
           id="UrunAdi"
           required
-       
+         #holderPlaceOfIssue="ngModel"
+         placeholder="Enter Place Of Issue"
           >
-            <option *ngFor="let status of statuses" [value]="status">{{ status }}  {{ statusTranslations[status] }}</option>
+          <div style="color: red;" *ngIf="!holderPlaceOfIssue.valid && holderPlaceOfIssue.touched" class="error-message">
+            Place Of Issue Field Can Not Be Empty! 
+          </div> 
+        </div>
+          </div>
+        </div>
+
+
+
+        <div class="mb-3">
+          <div class="line">
+            <div>
+              <label for="UrunID" class="form-label">Passport Type: </label>
+            </div>
+         <div>
+          <select [(ngModel)]="selectedStatus"
+          ngModel
+          name="holderPassportType"
+          class="form-control"
+          id="UrunAdi"
+          required
+         #holderPassportType="ngModel"
+          >
+            <option *ngFor="let status of statuses" [value]="status + ' ' + statusTranslations[status]">{{ status }}  {{ statusTranslations[status] }}</option>
           </select>
-          <!-- <div style="color: red;" *ngIf="!holderPassportType.valid && holderPassportType.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderPassportType.valid && holderPassportType.touched" class="error-message">
             Passport Type Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+          </div>
         </div>
 
         <div class="mb-3">
-          <label for="UrunID" class="form-label">Expiry Date</label>
+          <div class="line">
+
+        <div>
+          <label for="UrunID" class="form-label">Expiry Date: </label>
+        </div>
+        <div>
           <input
-           
-          formControlName="holderExpiryDate"
+            ngModel
+            name="holderExpiryDate"
             type="date"
             class="form-control"
             id="UrunID"
             required
-           
+            #holderExpiryDate="ngModel"
           />
-          <!-- <div style="color: red;" *ngIf="!holderExpiryDate.valid && holderExpiryDate.touched" class="error-message">
+          <div style="color: red;" *ngIf="!holderExpiryDate.valid && holderExpiryDate.touched" class="error-message">
             Expiry Date Field Can Not Be Empty! 
-          </div>  -->
+          </div> 
+        </div>
+          </div>
         </div>
         <hr>
         <br>
         <h2 style="text-align: center; padding: 10px;" >Employer/Family Breadwinner Details.  <span style="width: 20px;"></span>  <span>   ﺑﻴﺎﻧﺎت ﺻﺎﺣﺐ اﻟﻌﻤﻞ/اﻟﻌﺎﺋﻞ</span></h2>
 
-        <div class="mb-3">
-          <label for="UrunID" class="form-label">Full Name</label>
+      
           <input
-         
-          formControlName="employerFullName"
-            type="text"
+            ngModel
+            name="employerFullName"
+            type="hidden"
             class="form-control"
-            id="UrunID"
-            required
-            
-            placeholder="Enter Full Name In English"
+            id="UrunID" 
           />
-          <!-- <div style="color: red;" *ngIf="!employerFullName.valid && employerFullName.touched" class="error-message">
-            Full Name Field Can Not Be Empty! 
-          </div> -->
-        </div>
         <div class="mb-3">
-          <label for="UrunID" class="form-label">Full Name In Arabic</label>
-          <input
-          
-          formControlName="employerFullNameinArabic"
-            type="text"
-            class="form-control"
-            id="UrunID"
-            required
-           
-            placeholder="Enter Full Name In English"
-          />
-          <!-- <div style="color: red;" *ngIf="!employerFullNameinArabic.valid && employerFullNameinArabic.touched" class="error-message">
-            Full Name In Arabic Field Can Not Be Empty! 
-          </div> -->
-        </div>
-          
-          <div class="mb-3">
-            <label for="UrunID" class="form-label">MOI Reference</label>
-            <input
-             
-            formControlName="employerMOIReference"
-              type="number"
-              class="form-control"
-              id="UrunID"
-             
-              required
-              placeholder="Enter MOI Reference"
-            />
-            <!-- <div style="color: red;" *ngIf="!employerMOIReference.valid && employerMOIReference.touched" class="error-message">
-              MOI Reference Field Can Not Be Empty! 
-            </div>  -->
-          </div>
+          <div class="line">
 
+          
+          <div>
+            <label for="UrunID" class="form-label">Full Name Of Company In Arabic: </label>
+          </div>
+        <div>
+          <input
+            ngModel
+            name="employerFullNameinArabic"
+            type="text"
+            class="form-control"
+            id="UrunID"
+            required
+            #employerFullNameinArabic="ngModel"
+            placeholder="Enter  Full Name Of Company In Arabic"
+          />
+          <div style="color: red;" *ngIf="!employerFullNameinArabic.valid && employerFullNameinArabic.touched" class="error-message">
+            Full Name Of Company In Arabic Field Can Not Be Empty! 
+          </div>
+        </div>
+          </div>
+        </div>
+          
           <div class="mb-3">
-            <label for="UrunID" class="form-label">Mobile Number</label>
+            <div class="line">
+              <div>
+                <label for="UrunID" class="form-label">MOI Reference: </label>
+              </div>
+          <div>
+
+        
             <input
-              
-            formControlName="employerMobileNumber"
+              ngModel
+              name="employerMOIReference"
               type="text"
               class="form-control"
               id="UrunID"
-             
+              #employerMOIReference="ngModel"
+              required
+              placeholder="Enter MOI Reference"
+            />
+            <div style="color: red;" *ngIf="!employerMOIReference.valid && employerMOIReference.touched" class="error-message">
+              MOI Reference Field Can Not Be Empty! 
+            </div> 
+          </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="line">
+              <div>
+                <label for="UrunID" class="form-label">Mobile Number: </label>
+              </div>
+           <div>
+            <input
+              ngModel
+              name="employerMobileNumber"
+              type="text"
+              class="form-control"
+              id="UrunID"
+              #employerMobileNumber="ngModel"
               required
               placeholder="Enter Mobile Number"
             />
-            <!-- <div style="color: red;" *ngIf="!employerMobileNumber.valid && employerMobileNumber.touched" class="error-message">
+            <div style="color: red;" *ngIf="!employerMobileNumber.valid && employerMobileNumber.touched" class="error-message">
               Mobile Number Field Can Not Be Empty! 
-            </div>  -->
-          </div>     
+            </div> 
+          </div>
+            </div>
+          </div>  
+          <div>
+            <input type="hidden" ngModel name="active">
+          </div>  
+          <hr>
+           <div>
+            <h2>Message</h2>
+            <div class="mb-3">
+              <div class="line">
+                <div>
+                  <label for="UrunID" class="form-label">Message</label>
+                </div>
+             <div>
+              <input
+                ngModel
+                name="message"
+                type="text"
+                class="form-control"
+                id="UrunID"
+                #message="ngModel"
+                placeholder="Enter Message"
+              />
+              <div style="color: red;" *ngIf="!message.valid && message.touched" class="error-message">
+                Message Field Can Not Be Empty! 
+              </div> 
+            </div>
+              </div>
+            </div>  
+           </div>
+           <hr>
         <div class="d-flex justify-content-center">
           <button [disabled]="!f.valid"
             type="submit"
             class="btn btn-success text-white btn-outline-success form-control w-50 m-3"
             id="ekleButton"
           >
-            Add Visa
+            Update
           </button>
         </div>
       </form>
     </div>
     <br><br>
-  

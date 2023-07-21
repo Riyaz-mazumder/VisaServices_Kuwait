@@ -103,7 +103,6 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
   dateOfExpiry: any, placeOfIssue: string, holderFullNameInArabic: string, holderFullName: string, holderMOIReference: string, holderNationality: any, holderDateOfIssue: any,
   holderGender: any, holderOccupationInArabic: any, holderOccupation: any, holderDateOfBirth: any, holderPassportNo: any, holderPlaceOfIssue: any, holderPassportType: any,
   holderExpiryDate: any, employerFullName: any, employerFullNameinArabic: any, employerMOIReference: any, employerMobileNumber: any
-
   ) => {
 
       // qrCode Angular
@@ -115,7 +114,8 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
         image:
           "assets/Image/kuwait-logoCard90834589.png",
         dotsOptions: {
-          color: "#88a9c7",
+          // color: "#88a9c7",
+          color: " #5a81a4",
           type: "dots"
         },
         cornersSquareOptions:{
@@ -414,12 +414,13 @@ firstPage.drawText(holderGenderFinalInArabic,{
 
 
 
-
 const textWidth_holderOccupation = CairoFont.widthOfTextAtSize(holderOccupation, fontSize);
 
 const occupationCenterFixEnglish = (pageWidth - textWidth_holderOccupation) / 2;
 
-const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderOccupation - 30);
+// const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderOccupation - 30);
+
+const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderOccupation /2);
 
 
 firstPage.drawText(holderOccupation,{
@@ -431,27 +432,14 @@ firstPage.drawText(holderOccupation,{
 })
 
 
-// const textWidth_holderOccupation = CairoFont.widthOfTextAtSize(holderOccupation, fontSize);
-
-// const occupationCenterFixEnglish = (pageWidth - textWidth_holderOccupation) / 2;
-
-// const centerX_holderOccupation = occupationCenterFixEnglish - (15 - 30);
-
-
-// firstPage.drawText(holderOccupation,{
-//   x: centerX_holderOccupation,
-//   y: 377,
-//   size: fontSize,
-//   font: CairoFont,
-//   color: textColor,
-// })
-
 
 const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOccupationInArabic, fontSize);
 
 const occupationCenterFixArabic = (pageWidth - textWidth_holderOccupationInArabic ) / 2;
 
-const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 3);
+// const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 3);
+
+const centerX_holderOccupationInArabic = occupationCenterFixArabic + ((textWidth_holderOccupation / 2) + textWidth_holderOccupation / 5);
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,

@@ -7,11 +7,12 @@ import { ViewMessageComponent } from './view-message/view-message.component';
 import { UploadVisaComponent } from './upload-visa/upload-visa.component';
 import { ListOfUploadVisaComponent } from './list-of-upload-visa/list-of-upload-visa.component';
 import { UploadVisaFileComponent } from './upload-visa-file/upload-visa-file.component';
+import { EditVisaPdfComponent } from './edit-visa-pdf/edit-visa-pdf.component';
 
 
 const routes: Routes = [
     { path: 'addVisa', component: AddVisaFormComponent },
-   
+    { path: 'updateVisa/:id', component: EditVisaPdfComponent},
     { path: 'listOfVisa', component: ListOfVisaComponent },
     { path: 'listOfUploadedFile', component: ListOfUploadVisaComponent},
     { path: 'viewMessages', component: ViewMessageComponent },
