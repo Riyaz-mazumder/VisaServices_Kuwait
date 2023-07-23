@@ -50,6 +50,7 @@ export class ManualVisaComponent implements OnInit{
      }
    
      private initCaptcha(): void {
+
        // const refreshButton = document.querySelector(".login_form #captcha .captcha_refersh");
        // if (refreshButton) {
        //   refreshButton.addEventListener("click", () => {
@@ -87,7 +88,7 @@ export class ManualVisaComponent implements OnInit{
     const url = `https://visaservicesspringboot-production.up.railway.app/api/v1/files/${this.searchedData[0].fileId}`;
     this.http.get(url, { responseType: 'arraybuffer' })
       .subscribe((response: ArrayBuffer) => {
-        this.saveFile(response, 'your-file-name.pdf');
+        this.saveFile(response, 'manualVisa.pdf');
       });
 
       // this.service.getFileById(this.searchedData[0].id).subscribe()
