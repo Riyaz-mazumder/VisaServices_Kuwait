@@ -23,6 +23,7 @@ import { ManualVisaComponent } from './frontEnd/visa/manual-visa/manual-visa.com
 import { ManualVisaMessageComponent } from './frontEnd/visa/manual-visa-message/manual-visa-message.component';
 import { UserInqueryViewComponent } from './frontEnd/visa/user-inquery-view/user-inquery-view.component';
 import { UserInqueryViewMessageComponent } from './frontEnd/visa/user-inquery-view-message/user-inquery-view-message.component';
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { UserInqueryViewMessageComponent } from './frontEnd/visa/user-inquery-vi
     FormsModule,
     NgxCaptchaModule
   ],
-  providers: [],
+  providers: [{provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: {dateFormat: 'dd.MM.yyy'}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

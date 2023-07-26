@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 
+
 @Component({
   selector: 'app-manual-visa',
   templateUrl: './manual-visa.component.html',
@@ -24,10 +25,31 @@ export class ManualVisaComponent implements OnInit{
      ){}
       fonts: string[] = ["cursive"];
       captchaValue: string = "";
+     today!: string;
+
+      // date formate 
+      formattedDate!: string;
+
+      onDateChange(event: Event) {
+        const inputElement = event.target as HTMLInputElement;
+        if (inputElement) {
+          const dateValue = inputElement.value;
+          // Assuming dateValue is in the format 'YYYY-MM-DD'
+          const dateParts = dateValue.split('-');
+          const day = dateParts[2];
+          const month = dateParts[1];
+          const year = dateParts[0];
+      
+          this.formattedDate = `${day}-${month}-${year}`;
+        }
+      }
+      
+      
    
    
      ngOnInit(): void {
        this.initCaptcha();
+       this.today = new Date().toISOString().split('T')[0];
      }
    
       gencaptcha(): void {
@@ -319,6 +341,15 @@ export class ManualVisaComponent implements OnInit{
      { name: 'Zambia', arabic: 'زامبيا' },
      { name: 'Zimbabwe', arabic: 'زيمبابوي' }
    ];
+
+
+   // controller
+parseDate(dateString: string): Date {
+  if (dateString) {
+      return new Date(dateString);
+  }
+  return new Date();
+}
  
 
 }
