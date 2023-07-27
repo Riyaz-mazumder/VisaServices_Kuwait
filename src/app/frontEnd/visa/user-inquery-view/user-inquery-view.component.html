@@ -1,7 +1,7 @@
 
 <div class="space_top"></div>
 <div class="container w-50 border mt-5" id="form">
-    <h2 style="text-align: center; padding: 10px;" >Find Visa<span style="width: 20px;"></span></h2>
+    <h2 style="text-align: center; padding: 10px;" >Know the Visa Status<span style="width: 20px;"></span></h2>
     <form class="mt-5" (ngSubmit)="submit(f)" #f="ngForm">
 
         <div class="mb-3">
@@ -21,13 +21,30 @@
             </div> 
           </div>
 
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="UrunID" class="form-label">Date Of Birth</label>
             <input
               ngModel
               name="holderDateOfBirth"
               type="date"
-              data-date-format="DD MMMM YYYY"
+              class="form-control"
+              id="UrunID"
+              required
+              #holderDateOfBirth="ngModel"
+            />
+            <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
+              Date Of Birth Field Can Not Be Empty! 
+            </div> 
+          </div> -->
+
+
+          <div class="mb-3">
+            <label for="UrunID" class="form-label">Date Of Birth</label>
+            <input
+              ngModel
+              name="holderDateOfBirth"
+              type="text"
+              placeholder="DD-MM-YYYY"
               class="form-control"
               id="UrunID"
               required

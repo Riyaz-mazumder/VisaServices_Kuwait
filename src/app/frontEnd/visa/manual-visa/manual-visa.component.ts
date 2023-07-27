@@ -25,7 +25,7 @@ export class ManualVisaComponent implements OnInit{
      ){}
       fonts: string[] = ["cursive"];
       captchaValue: string = "";
-     today!: string;
+    
 
       // date formate 
       formattedDate!: string;
@@ -49,7 +49,6 @@ export class ManualVisaComponent implements OnInit{
    
      ngOnInit(): void {
        this.initCaptcha();
-       this.today = new Date().toISOString().split('T')[0];
      }
    
       gencaptcha(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataServicService } from 'src/app/admin/data-servic.service';
 
@@ -12,8 +13,13 @@ export class UserVisaVerifyComponent implements OnInit{
   constructor(
     private dataService: DataServicService,
     private router: Router,
-    private route: ActivatedRoute
-    ){}
+    private route: ActivatedRoute,
+    private readonly titleService: Title
+    ){
+
+      const title = '- Ministry of Interior - Kuwait'; // get title data from the server
+    this.titleService.setTitle(title);
+    }
 
     id!: any;
 
