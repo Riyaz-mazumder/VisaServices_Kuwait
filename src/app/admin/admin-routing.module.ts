@@ -8,6 +8,7 @@ import { UploadVisaComponent } from './upload-visa/upload-visa.component';
 import { ListOfUploadVisaComponent } from './list-of-upload-visa/list-of-upload-visa.component';
 import { UploadVisaFileComponent } from './upload-visa-file/upload-visa-file.component';
 import { EditVisaPdfComponent } from './edit-visa-pdf/edit-visa-pdf.component';
+import { ChangeStatusComponent } from './change-status/change-status.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: 'viewVisaPDF', component: ViewVisaPdfComponent },
     { path: 'upload', component: UploadVisaFileComponent },
     { path: 'uploadVisa/:id', component: UploadVisaComponent },
+    { path: 'changeStatus/:id', component: ChangeStatusComponent },
 ];
 
 
