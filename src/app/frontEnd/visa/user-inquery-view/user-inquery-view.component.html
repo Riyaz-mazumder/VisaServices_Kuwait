@@ -21,7 +21,7 @@
             </div> 
           </div>
 
-          <!-- <div class="mb-3">
+          <div class="mb-3">
             <label for="UrunID" class="form-label">Date Of Birth</label>
             <input
               ngModel
@@ -35,26 +35,7 @@
             <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
               Date Of Birth Field Can Not Be Empty! 
             </div> 
-          </div> -->
-
-
-          <div class="mb-3">
-            <label for="UrunID" class="form-label">Date Of Birth</label>
-            <input
-              ngModel
-              name="holderDateOfBirth"
-              type="text"
-              placeholder="DD-MM-YYYY"
-              class="form-control"
-              id="UrunID"
-              required
-              #holderDateOfBirth="ngModel"
-            />
-            <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
-              Date Of Birth Field Can Not Be Empty! 
-            </div> 
           </div>
-
           <div class="mb-3">
             <label for="Kategori" class="form-label">Nationality</label>
             <select [(ngModel)]="selectedCountry"

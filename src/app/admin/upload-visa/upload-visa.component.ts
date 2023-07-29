@@ -48,8 +48,6 @@ export class UploadVisaComponent implements OnInit{
   submit(form: any) {
     form.value.fileId = this.id;
 
-
-
     this.dataService.saveUploadedFile(form.value).subscribe({
       next: n =>{
         console.log(n);

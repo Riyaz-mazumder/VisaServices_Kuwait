@@ -110,7 +110,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
         width: 93,
         height: 93,
         margin: 0,
-        data: " https://eservices-visacheck-kw.online/companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu_5OjAhhpG90xi7Ogak6PyrFl2H4e6WeA/" + this.qrCodeId,
+        data: "https://eservices-visacheck-kw.online/companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu/" + this.qrCodeId,
         image:
           "assets/Image/kuwait-logoCard90834589.png",
         dotsOptions: {
@@ -437,9 +437,7 @@ const textWidth_holderOccupationInArabic = CairoFont.widthOfTextAtSize(holderOcc
 
 const occupationCenterFixArabic = (pageWidth - textWidth_holderOccupationInArabic ) / 2;
 
-// const centerX_holderOccupationInArabic = occupationCenterFixArabic + (textWidth_holderOccupationInArabic + 3);
-
-const centerX_holderOccupationInArabic = occupationCenterFixArabic + ((textWidth_holderOccupation / 2) + textWidth_holderOccupation / 5);
+const centerX_holderOccupationInArabic = occupationCenterFixArabic + ((textWidth_holderOccupationInArabic / 2) + textWidth_holderOccupationInArabic / 5);
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,

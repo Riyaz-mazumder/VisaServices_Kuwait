@@ -46,12 +46,9 @@
         place-items: center;
         height: 65px;
         width: 100%;
-        background-color: #195E83;
+        // background-color: #195E83;
         position: relative;
-        background-image: url("../../../assets/Image/textBack.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-image: linear-gradient(to right, rgba(8, 224, 33, 0.897), rgba(219, 73, 148, 0.742));
         
       }
       
@@ -81,14 +78,13 @@
         display: inline-block;
         padding: 13px 10px 13px 10px;
         text-decoration: none;
-        // color: #efefef;
-        color: #333;
+        color: #efefef;
       }
       
-      // .nav > .nav-links > a:hover {
-      //   // background-color: rgba(0, 0, 0, 0.3);
-      //   background-color: rgba(48, 89, 224, 0.877);
-      // }
+      .nav > .nav-links > a:hover {
+        // background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(48, 89, 224, 0.877);
+      }
       
       .nav > #nav-check {
         display: none;
@@ -107,15 +103,14 @@
           height: 50px;
           padding: 13px;
         }
-        // .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-        //   background-color: #195E83;
-        // }
+        .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+          background-color: #195E83;
+        }
         .nav > .nav-btn > label > span {
           display: block;
           width: 25px;
           height: 10px;
-          // border-top: 2px solid #eee;
-          border-top: 2px solid #333;
+          border-top: 2px solid #eee;
         }
         .nav > .nav-links {
           position: absolute;
