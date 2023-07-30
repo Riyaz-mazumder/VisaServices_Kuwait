@@ -7,7 +7,7 @@
     </div>
 </header>
 <p style="font-family: 'Cairo', sans-serif;" class="text-center" id="mainPara"> الموقع الرسمي للتحقق من الوثائق والشهادات الصادرة من وزارة الداخلية<br>The official website to verify documents and certificates issued by Ministry of Interior<br></p>
-<div class="container" id="cc">
+<div class="container" id="cc" *ngIf="data.active === true">
     <div class="row">
         <div class="col" style="text-align: center;"><img id="logoStatus" src="assets/Image/success.png" width="60px" style="text-align: left;"></div>
     </div>
@@ -105,10 +105,22 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+<!--         <div class="row text-center"> -->
+<!--             <div class="col" style="padding-top: 5px;margin-bottom: 10px;"><a href="qrcode" class="btn btn-primary" id="button" type="button" style="font-family: 'Almarai';background: rgb(27,71,161);"><span>تحقق من وثيقة أخرى<br>Verify another document<br></span></a></div> -->
+<!--         </div> -->
+</div>
 
+ <!-- if not valid -->
+ <div class="container" *ngIf="data.active === false" style="margin-bottom: 60px;">
+    <div class="row">
+        <div class="col" style="text-align: center;"><img id="logoStatus" src="assets/Image/fail.png" width="60px" style="text-align: left;"></div>
+    </div>
+    <div class="row">
+        <div class="col" style="padding-top: 5px;">
+            <p id="status" style="text-align: center; font-family: 'Cairo', sans-serif; color: rgb(243,116,137);"><strong>وثيقة غير صالحة</strong><br><strong>Invalid document</strong><br></p>
+        </div>
+    </div>
 <!--         <div class="row text-center"> -->
 <!--             <div class="col" style="padding-top: 5px;margin-bottom: 10px;"><a href="qrcode" class="btn btn-primary" id="button" type="button" style="font-family: 'Almarai';background: rgb(27,71,161);"><span>تحقق من وثيقة أخرى<br>Verify another document<br></span></a></div> -->
 <!--         </div> -->

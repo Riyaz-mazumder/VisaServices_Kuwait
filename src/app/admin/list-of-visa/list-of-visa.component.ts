@@ -64,4 +64,8 @@ export class ListOfVisaComponent implements OnInit{
    this.router.navigate(["/admin/dashboard/viewVisaPDF"])
 
   }
+
+  changeStatus(value: any){
+    this.router.navigate(["/admin/dashboard/changeStatus/" + value.id]);
+  }
 }
