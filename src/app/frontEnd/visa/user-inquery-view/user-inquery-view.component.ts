@@ -16,13 +16,15 @@ export class UserInqueryViewComponent implements OnInit{
   @ViewChild('.prevew', { static: true })
   captchaPreviewRef!: ElementRef;
 
-
+  selectedDate!: string; // 
   constructor(
     private service: DataserviceService,
     private router: Router,
     private pdfDataService: PdfDataSenderService,
   
-    ){}
+    ){
+      this.selectedDate = '2000-12-01';
+    }
      fonts: string[] = ["cursive"];
      captchaValue: string = "";
   

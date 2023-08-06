@@ -16,13 +16,17 @@ export class ManualVisaComponent implements OnInit{
    // @ViewChild('captchaRef') captchaRef: ReCaptcha2Component | undefined;
    @ViewChild('.prevew', { static: true })
    captchaPreviewRef!: ElementRef;
+
+   selectedDate!: string; // 
  
    constructor(
      private service: DataserviceService,
      private router: Router,
      private pdfDataService: PdfDataSenderService,
      private http: HttpClient,
-     ){}
+     ){
+      this.selectedDate = '2000-12-01';
+     }
       fonts: string[] = ["cursive"];
       captchaValue: string = "";
     

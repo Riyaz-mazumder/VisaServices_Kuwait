@@ -44,9 +44,17 @@ export class ListOfUploadVisaComponent {
   }
 
   onDelete(id: any) {
-    this.service.deleteVisa(id).subscribe((r) => {});
-    alert('Product Deleted');
-    this.ngOnInit();
+    this.service.deleteUploadedFile(id).subscribe({
+      next: r =>{
+        console.log(r);
+        alert('Product Deleted');
+        this.ngOnInit(); 
+      },
+      error: e =>{
+        console.log(e); 
+      }
+    });
+    
   }
 
   //pop up

@@ -15,14 +15,16 @@ export class EVisaComponent implements OnInit{
   // @ViewChild('captchaRef') captchaRef: ReCaptcha2Component | undefined;
   @ViewChild('.prevew', { static: true })
   captchaPreviewRef!: ElementRef;
-
+  selectedDate!: string;
 
   constructor(
     private service: DataserviceService,
     private router: Router,
     private pdfDataService: PdfDataSenderService,
   
-    ){}
+    ){
+      this.selectedDate = '2000-12-01';
+    }
      fonts: string[] = ["cursive"];
      captchaValue: string = "";
   
@@ -77,8 +79,11 @@ this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirt
     this.searchedData = r;
 
     if(this.searchedData.length <1){
-      alert("Wrong Input Data!")
-    }else{
+      alert("Wrong Input Data!");
+    }else if (this.searchedData[0].active == false){
+      alert("This Visa is InValid!");
+    }
+    else{
       this.pdfDataService.setData(this.searchedData[0]);
      this.router.navigate(["/eVisa/print"])  
     }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataServicService } from '../data-servic.service';
 import { Observable, from } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-upload-visa',
@@ -15,7 +15,7 @@ export class UploadVisaComponent implements OnInit{
 
   constructor(
     private dataService: DataServicService,
-    private route: ActivatedRoute,  
+    private route: ActivatedRoute,
     ){}
 
 
@@ -52,7 +52,7 @@ export class UploadVisaComponent implements OnInit{
       next: n =>{
         console.log(n);
         form.reset();
-        alert("Upload SuccessFul")
+        alert("Upload SuccessFul");
         
       },
       error: err =>{

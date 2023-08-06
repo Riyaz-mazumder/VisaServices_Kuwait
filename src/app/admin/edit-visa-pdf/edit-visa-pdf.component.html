@@ -1,7 +1,12 @@
 <h1 style="text-align: center; margin: 30px;">Update Visa Form</h1>
     <div class="container w-60 border mt-5" id="form" *ngIf="storedValue">
       <h2 style="text-align: center; padding: 10px;" >Details Visa. <span style="width: 20px;"></span>  <span>   ﺑﻴﺎﻧﺎت اﻟﺘﺄﺷﻴﺮة </span></h2>
-      <form class="mt-5" (ngSubmit)="submit(f)" #f="ngForm">
+      <form class="mt-5"
+      [formGroup]="myForm"
+      (ngSubmit)="submit()"
+      name="myForm">
+       
+       
         <div class="mb-3">
           <div class="line">
           <div>
@@ -9,18 +14,16 @@
           </div>
          <div>
           <input
-            ngModel
-            name="visaNumber"
+           
+          formControlName="visaNumber"
             type="number"
             class="form-control"
             id="UrunAdi"
             required
-            #visaNumber="ngModel"
+           
             placeholder="Visa Number"
           />
-          <div style="color: red;" *ngIf="!visaNumber.valid && visaNumber.touched" class="error-message">
-            Visa Number Field Can Not Be Empty! 
-          </div> 
+         
         </div>
         </div>
         </div>
@@ -33,18 +36,16 @@
             </div>
         <div>
           <input
-            ngModel
-            name="visaTypeInArabic"
+          
+          formControlName="visaTypeInArabic"
             type="text"
             class="form-control"
             id="UrunID"
             required
-            #visaTypeInArabic="ngModel"
+           
             placeholder="ﻧﻮع اﻟﺘﺄﺷﻴﺮة"
           />
-          <div style="color: red;" *ngIf="!visaTypeInArabic.valid && visaTypeInArabic.touched" class="error-message">
-            Visa Type In Arabic Field Can Not Be Empty! 
-          </div> 
+          
         </div>
           </div>
         </div>
@@ -55,18 +56,16 @@
             </div>
         <div>
           <input
-          ngModel
-          name="visaType"
+         
+          formControlName="visaType"
           type="text"
           class="form-control"
           id="UrunID"
           required
-          #visaType="ngModel"
+        
           placeholder="Visa Type"
         />
-        <div style="color: red;" *ngIf="!visaType.valid && visaType.touched" class="error-message">
-          Visa Type Field Can Not Be Empty! 
-        </div> 
+         
         </div>
      
           </div>
@@ -82,18 +81,18 @@
               </div>
          <div>
           <input
-            ngModel
-            name="visaPurposeInArabic"
+           
+          formControlName="visaPurposeInArabic"
             type="text"
             class="form-control"
             id="UrunID"
             required
-            #visaPurposeInArabic="ngModel"
+           
             placeholder="اﻟﻐﺮض"
           />
-          <div style="color: red;" *ngIf="!visaPurposeInArabic.valid && visaPurposeInArabic.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!visaPurposeInArabic.valid && visaPurposeInArabic.touched" class="error-message">
             Visa Purpose In Arabic Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
             </div>
         </div>
@@ -104,18 +103,18 @@
             </div>
          <div>
           <input
-          ngModel
-          name="visaPurpose"
+         
+          formControlName="visaPurpose"
           type="text"
           class="form-control"
           id="UrunID"
           required
-          #visaPurpose="ngModel"
+         
           placeholder="Visa Purpose"
         />
-        <div style="color: red;" *ngIf="!visaPurpose.valid && visaPurpose.touched" class="error-message">
+        <!-- <div style="color: red;" *ngIf="!visaPurpose.valid && visaPurpose.touched" class="error-message">
           Visa Purpose Field Can Not Be Empty! 
-        </div> 
+        </div>  -->
       </div>
           </div>
       </div>
@@ -127,17 +126,17 @@
             </div>
          <div>
           <input
-            ngModel
-            name="dateOfIssue"
+          
+          formControlName="dateOfIssue"
             type="date"
             class="form-control"
             id="UrunID"
             required
-            #dateOfIssue="ngModel"
+           
           />
-          <div style="color: red;" *ngIf="!dateOfIssue.valid && dateOfIssue.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!dateOfIssue.valid && dateOfIssue.touched" class="error-message">
             Date Of Issue Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
          </div>
           </div>
         </div>
@@ -148,17 +147,17 @@
             </div>
          <div>
           <input
-            ngModel
-            name="dateOfExpiry"
+            
+          formControlName="dateOfExpiry"
             type="date"
             class="form-control"
             id="UrunID"
             required
-            #dateOfExpiry="ngModel"
+           
           />
-          <div style="color: red;" *ngIf="!dateOfExpiry.valid && dateOfExpiry.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!dateOfExpiry.valid && dateOfExpiry.touched" class="error-message">
             Date Of Expiry Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
         </div>
@@ -172,18 +171,18 @@
 
        
           <input
-            ngModel
-            name="placeOfIssue"
+           
+          formControlName="placeOfIssue"
             type="text"
             class="form-control"
             id="UrunID"
             required
-            #placeOfIssue="ngModel"
+           
             placeholder="Place Of Issue In Arabic ex: ادارة ﻋﻤﻞ ﻣﺤﺎﻓﻈﺔ اﻟﻔﺮواﻧﻴﺔ"
           />
-          <div style="color: red;" *ngIf="!placeOfIssue.valid && placeOfIssue.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!placeOfIssue.valid && placeOfIssue.touched" class="error-message">
             Place Of Issue Of Expiry Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
           
@@ -203,18 +202,18 @@
               </div>
          <div>
           <input
-            ngModel
-            name="holderFullNameInArabic"
+            
+          formControlName="holderFullNameInArabic"
             type="text"
             class="form-control"
             id="UrunMiktar"
             required
-            #holderFullNameInArabic="ngModel"
+           
             placeholder="اﻻﺳﻢ اﻟﻜﺎﻣﻞ"
           />
-          <div style="color: red;" *ngIf="!holderFullNameInArabic.valid && holderFullNameInArabic.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderFullNameInArabic.valid && holderFullNameInArabic.touched" class="error-message">
             Full Name In Arabic Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
             </div>
         </div>
@@ -225,18 +224,18 @@
               </div>
          <div>
           <input
-            ngModel
-            name="holderFullName"
+           
+          formControlName="holderFullName"
             type="text"
             class="form-control"
             id="UrunMiktar"
             required
-            #holderFullName="ngModel"
+           
             placeholder="Full Name"
           />
-          <div style="color: red;" *ngIf="!holderFullName.valid && holderFullName.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderFullName.valid && holderFullName.touched" class="error-message">
             Full Name Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
             </div>
         </div>
@@ -251,18 +250,18 @@
 
         
           <input
-            ngModel
-            name="holderMOIReference"
+           
+          formControlName="holderMOIReference"
             type="text"
             class="form-control"
             id="UrunID"
-            #holderMOIReference="ngModel"
+          
             required
             placeholder="Enter MOI Reference"
           />
-          <div style="color: red;" *ngIf="!holderMOIReference.valid && holderMOIReference.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderMOIReference.valid && holderMOIReference.touched" class="error-message">
             MOI Reference Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
         </div>
@@ -272,22 +271,16 @@
               <label for="Kategori" class="form-label">Nationality: </label>
             </div>
         <div>
-          <select [(ngModel)]="selectedCountry"
-            ngModel
-            name="holderNationality"
+          <select
+           
+          formControlName="holderNationality"
             id="Kategori"
             class="ms-1 d-block w-100"
             required
-            #holderNationality="ngModel"
+           
           >
           <option *ngFor="let country of countries" [value]="country.name + ' ' +  country.arabic">{{ country.name }}  {{ country.arabic }}</option>
           </select>
-
-          
-
-          <div style="color: red;" *ngIf="!holderNationality.valid && holderNationality.touched" class="error-message">
-            Nationality Field Can Not Be Empty! 
-          </div> 
         </div>
           </div>
         </div>
@@ -298,16 +291,16 @@
             </div>
          <div>
           <input
-          ngModel
-          name="holderDateOfIssue"
+        
+          formControlName="holderDateOfIssue"
           type="date"
           class="form-control"
           id="UrunID"
-          #holderDateOfIssue="ngModel"
+         
         />
-          <div style="color: red;" *ngIf="!holderDateOfIssue.valid && holderDateOfIssue.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderDateOfIssue.valid && holderDateOfIssue.touched" class="error-message">
             Date Of Issue Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
          </div>
           </div>
         </div>
@@ -321,20 +314,20 @@
             <div>
 
             
-          <select [(ngModel)]="selectedGender"
-             ngModel
-             name="holderGender"
+          <select
+            
+          formControlName="holderGender"
              id="Kategori"
              class="ms-1 d-block w-100"
              required
-             #holderGender="ngModel"
+           
           
           >
             <option *ngFor="let gender of genders" [value]="gender + ' ' + genderTranslations[gender]" >{{ gender }}  {{ genderTranslations[gender] }}</option>
           </select>
-          <div style="color: red;" *ngIf="!holderGender.valid && holderGender.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderGender.valid && holderGender.touched" class="error-message">
             Gender Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
 
@@ -349,18 +342,18 @@
               </div>
            <div>
             <input
-            ngModel
-            name="holderOccupationInArabic"
+            
+            formControlName="holderOccupationInArabic"
             type="text"
             class="form-control"
             id="UrunID"
             required
-            #holderOccupationInArabic="ngModel"
+           
             placeholder="أدخل المهنة"
           />
-          <div style="color: red;" *ngIf="!holderOccupationInArabic.valid && holderOccupationInArabic.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderOccupationInArabic.valid && holderOccupationInArabic.touched" class="error-message">
             Occupation In Arabic Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
         </div>
         
@@ -373,18 +366,18 @@
             </div>
          <div>
           <input
-            ngModel
-            name="holderOccupation"
+          
+          formControlName="holderOccupation"
             type="text"
             class="form-control"
             id="UrunID"
             required
-            #holderOccupation="ngModel"
+        
             placeholder="Enter Occupation"
           />
-          <div style="color: red;" *ngIf="!holderOccupation.valid && holderOccupation.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderOccupation.valid && holderOccupation.touched" class="error-message">
             Occupation Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
             </div>
 
@@ -401,17 +394,17 @@
             </div>
         <div>
           <input
-            ngModel
-            name="holderDateOfBirth"
+          
+          formControlName="holderDateOfBirth"
             type="date"
             class="form-control"
             id="UrunID"
             required
-            #holderDateOfBirth="ngModel"
+           
           />
-          <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderDateOfBirth.valid && holderDateOfBirth.touched" class="error-message">
             Date Of Birth Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
         </div>
@@ -425,18 +418,18 @@
 
         
           <input
-            ngModel
-            name="holderPassportNo"
+           
+          formControlName="holderPassportNo"
             type="text"
             class="form-control"
             id="UrunAdi"
             required
-            #holderPassportNo="ngModel"
+          
             placeholder="Enter Passport No"
           />
-          <div style="color: red;" *ngIf="!holderPassportNo.valid && holderPassportNo.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderPassportNo.valid && holderPassportNo.touched" class="error-message">
             Passport Number Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
         </div>
@@ -452,17 +445,17 @@
          <div>
          <input
           type="text"
-          ngModel
-          name="holderPlaceOfIssue"
+         
+          formControlName="holderPlaceOfIssue"
           class="form-control"
           id="UrunAdi"
           required
-         #holderPlaceOfIssue="ngModel"
+        
          placeholder="Enter Place Of Issue"
           >
-          <div style="color: red;" *ngIf="!holderPlaceOfIssue.valid && holderPlaceOfIssue.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderPlaceOfIssue.valid && holderPlaceOfIssue.touched" class="error-message">
             Place Of Issue Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
         </div>
@@ -475,19 +468,19 @@
               <label for="UrunID" class="form-label">Passport Type: </label>
             </div>
          <div>
-          <select [(ngModel)]="selectedStatus"
-          ngModel
-          name="holderPassportType"
+          <select 
+          
+          formControlName="holderPassportType"
           class="form-control"
           id="UrunAdi"
           required
-         #holderPassportType="ngModel"
+       
           >
             <option *ngFor="let status of statuses" [value]="status + ' ' + statusTranslations[status]">{{ status }}  {{ statusTranslations[status] }}</option>
           </select>
-          <div style="color: red;" *ngIf="!holderPassportType.valid && holderPassportType.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderPassportType.valid && holderPassportType.touched" class="error-message">
             Passport Type Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
         </div>
@@ -500,17 +493,17 @@
         </div>
         <div>
           <input
-            ngModel
-            name="holderExpiryDate"
+           
+          formControlName="holderExpiryDate"
             type="date"
             class="form-control"
             id="UrunID"
             required
-            #holderExpiryDate="ngModel"
+           
           />
-          <div style="color: red;" *ngIf="!holderExpiryDate.valid && holderExpiryDate.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!holderExpiryDate.valid && holderExpiryDate.touched" class="error-message">
             Expiry Date Field Can Not Be Empty! 
-          </div> 
+          </div>  -->
         </div>
           </div>
         </div>
@@ -520,8 +513,8 @@
 
       
           <input
-            ngModel
-            name="employerFullName"
+          
+          formControlName="employerFullName"
             type="hidden"
             class="form-control"
             id="UrunID" 
@@ -535,18 +528,18 @@
           </div>
         <div>
           <input
-            ngModel
-            name="employerFullNameinArabic"
+          
+          formControlName="employerFullNameinArabic"
             type="text"
             class="form-control"
             id="UrunID"
             required
-            #employerFullNameinArabic="ngModel"
+            
             placeholder="Enter  Full Name Of Company In Arabic"
           />
-          <div style="color: red;" *ngIf="!employerFullNameinArabic.valid && employerFullNameinArabic.touched" class="error-message">
+          <!-- <div style="color: red;" *ngIf="!employerFullNameinArabic.valid && employerFullNameinArabic.touched" class="error-message">
             Full Name Of Company In Arabic Field Can Not Be Empty! 
-          </div>
+          </div> -->
         </div>
           </div>
         </div>
@@ -557,19 +550,21 @@
                 <label for="UrunID" class="form-label">MOI Reference: </label>
               </div>
           <div>
+
+        
             <input
-              ngModel
-              name="employerMOIReference"
+            
+            formControlName="employerMOIReference"
               type="text"
               class="form-control"
               id="UrunID"
-              #employerMOIReference="ngModel"
+           
               required
               placeholder="Enter MOI Reference"
             />
-            <div style="color: red;" *ngIf="!employerMOIReference.valid && employerMOIReference.touched" class="error-message">
+            <!-- <div style="color: red;" *ngIf="!employerMOIReference.valid && employerMOIReference.touched" class="error-message">
               MOI Reference Field Can Not Be Empty! 
-            </div> 
+            </div>  -->
           </div>
             </div>
           </div>
@@ -581,23 +576,25 @@
               </div>
            <div>
             <input
-              ngModel
-              name="employerMobileNumber"
+              
+            formControlName="employerMobileNumber"
               type="text"
               class="form-control"
               id="UrunID"
-              #employerMobileNumber="ngModel"
+           
               required
               placeholder="Enter Mobile Number"
             />
-            <div style="color: red;" *ngIf="!employerMobileNumber.valid && employerMobileNumber.touched" class="error-message">
+            <!-- <div style="color: red;" *ngIf="!employerMobileNumber.valid && employerMobileNumber.touched" class="error-message">
               Mobile Number Field Can Not Be Empty! 
-            </div> 
+            </div>  -->
           </div>
             </div>
           </div>  
           <div>
-            <input type="hidden" ngModel name="active">
+            <input type="hidden" formControlName="active">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" createdDateTime="id">
           </div>  
           <hr>
            <div>
@@ -608,30 +605,30 @@
                   <label for="UrunID" class="form-label">Message</label>
                 </div>
              <div>
-              <input
-                ngModel
-                name="message"
-                type="text"
-                class="form-control"
-                id="UrunID"
-                #message="ngModel"
-                placeholder="Enter Message"
-              />
-              <div style="color: red;" *ngIf="!message.valid && message.touched" class="error-message">
-                Message Field Can Not Be Empty! 
-              </div> 
+              <select
+              formControlName="message"
+              type="text"
+              class="form-control"
+              id="UrunID"
+              placeholder="Enter Message"
+              >
+              <option value="Visa Application Received">Visa Application Received</option>
+              <option value="Visa Application Approved">Visa Application Approved</option>
+              <option value="Waiting for issue the Employment Visa">Waiting for issue the Employment Visa</option>
+              </select>
+              
             </div>
               </div>
             </div>  
            </div>
            <hr>
         <div class="d-flex justify-content-center">
-          <button [disabled]="!f.valid"
+          <button
             type="submit"
             class="btn btn-success text-white btn-outline-success form-control w-50 m-3"
             id="ekleButton"
           >
-            Update
+            Update Visa
           </button>
         </div>
       </form>

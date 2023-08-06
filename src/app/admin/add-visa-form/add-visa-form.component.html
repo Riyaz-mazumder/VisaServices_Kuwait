@@ -610,15 +610,19 @@
                   <label for="UrunID" class="form-label">Message</label>
                 </div>
              <div>
-              <input
-                ngModel
-                name="message"
-                type="text"
-                class="form-control"
-                id="UrunID"
-                #message="ngModel"
-                placeholder="Enter Message"
-              />
+              <select
+              ngModel
+              name="message"
+              type="text"
+              class="form-control"
+              id="UrunID"
+              #message="ngModel"
+              placeholder="Enter Message"
+              >
+              <option value="Visa Application Received">Visa Application Received</option>
+              <option value="Visa Application Approved">Visa Application Approved</option>
+              <option value="Waiting for issue the Employment Visa">Waiting for issue the Employment Visa</option>
+              </select>
               <div style="color: red;" *ngIf="!message.valid && message.touched" class="error-message">
                 Message Field Can Not Be Empty! 
               </div> 

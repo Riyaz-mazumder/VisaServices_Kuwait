@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PdfDataSenderService } from '../pdf-data-sender.service';
 import { DataServicService } from '../data-servic.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -20,12 +20,47 @@ export class EditVisaPdfComponent implements OnInit{
     private router: Router,
     private route: ActivatedRoute,
     private service: DataServicService,
-    ) {}
+    ) { 
+
+      this.myForm = new FormGroup({
+      id: new FormControl(null, Validators.required),
+      visaNumber: new FormControl(null, Validators.required),
+      visaTypeInArabic: new FormControl(null, Validators.required),
+      visaType: new FormControl(null, Validators.required),
+      visaPurposeInArabic: new FormControl(null, Validators.required),
+      visaPurpose: new FormControl(null, Validators.required),
+      dateOfIssue: new FormControl(null, Validators.required),
+      dateOfExpiry: new FormControl(null, Validators.required),
+      placeOfIssue:new FormControl(null, Validators.required),
+      holderFullNameInArabic: new FormControl(null, Validators.required),
+      holderFullName: new FormControl(null, Validators.required),
+      holderMOIReference: new FormControl(null, Validators.required),
+      holderNationality: new FormControl(null, Validators.required),
+      holderDateOfIssue: new FormControl(null, Validators.required),
+      holderGender: new FormControl(null, Validators.required),
+      holderOccupationInArabic: new FormControl(null, Validators.required),
+      holderOccupation: new FormControl(null, Validators.required),
+      holderDateOfBirth: new FormControl(null, Validators.required),
+      holderPassportNo: new FormControl(null, Validators.required),
+      holderPlaceOfIssue: new FormControl(null, Validators.required),
+      holderPassportType: new FormControl(null, Validators.required),
+      holderExpiryDate: new FormControl(null, Validators.required),
+      employerFullName: new FormControl(null),
+      employerFullNameinArabic: new FormControl(null, Validators.required),
+      employerMOIReference: new FormControl(null, Validators.required),
+      employerMobileNumber: new FormControl(null, Validators.required),
+      active: new FormControl(null, Validators.required), // This field is hidden
+      message: new FormControl(null, Validators.required),// Add validation if needed
+      createdDateTime: new FormControl(null, Validators.required),// Add validation if needed
+    });
+  }
 
   storedValue!: any;
   id!: any;
 
   data!: any;
+
+  myForm!: FormGroup;
 
   ngOnInit(): void {
     this.storedValue = sessionStorage.getItem('admin');
@@ -35,29 +70,78 @@ export class EditVisaPdfComponent implements OnInit{
     this.service.getVisaById(this.id).subscribe({
       next: r =>{
         this.data = r;
+        console.log(this.data);
+        this.initializeForm();
+        
       },
       error: e =>{
         console.log(e);
         
       }
     })
+
+
+  
   }
 
-  submit(d: NgForm) {
+  
+  
+  initializeForm(): void {
+    
+  
 
-    this.service.updateVisa(d.value).subscribe({
+    // Set the form values based on the oneData object
+   
+      this.myForm.setValue({
+        id: this.data.id,
+        visaNumber: this.data.visaNumber,
+        visaTypeInArabic: this.data.visaTypeInArabic,
+        visaType: this.data.visaType,
+        visaPurposeInArabic: this.data.visaPurposeInArabic,
+        visaPurpose: this.data.visaPurpose,
+        dateOfIssue: this.data.dateOfIssue,
+        dateOfExpiry: this.data.dateOfExpiry,
+        placeOfIssue: this.data.placeOfIssue,
+        holderFullNameInArabic: this.data.holderFullNameInArabic,
+        holderFullName: this.data.holderFullName,
+        holderMOIReference: this.data.holderMOIReference,
+        holderNationality: this.data.holderNationality,
+        holderDateOfIssue: this.data.holderDateOfIssue,
+        holderGender: this.data.holderGender,
+        holderOccupationInArabic: this.data.holderOccupationInArabic,
+        holderOccupation: this.data.holderOccupation,
+        holderDateOfBirth: this.data.holderDateOfBirth,
+        holderPassportNo: this.data.holderPassportNo,
+        holderPlaceOfIssue: this.data.holderPlaceOfIssue,
+        holderPassportType: this.data.holderPassportType,
+        holderExpiryDate: this.data.holderExpiryDate,
+        employerFullName: this.data.employerFullName,
+        employerFullNameinArabic: this.data.employerFullNameinArabic,
+        employerMOIReference: this.data.employerMOIReference,
+        employerMobileNumber: this.data.employerMobileNumber,
+        active: this.data.active, // This field is hidden
+        message: this.data.message,// Add validation if needed
+        createdDateTime: this.data.createdDateTime,// Add validation if needed
+      });
+    
+  }
+
+
+
+
+  submit() {
+    this.service.updateVisa(this.myForm.value).subscribe({
       next: r =>{
         console.log(r);
-        
+        alert("Visa has Been Updated")
+        this.router.navigate(["/admin/dashboard/listOfVisa"])      
       }, error: e =>{
         console.log(e);
         
       }
     });
 
-    alert("Visa has Been Updated")
-
-    this.router.navigate(["/admin/dashboard/viewVisaPDF"])
+    
     
   }
 
