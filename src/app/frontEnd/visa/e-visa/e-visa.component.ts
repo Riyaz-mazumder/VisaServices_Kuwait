@@ -23,7 +23,7 @@ export class EVisaComponent implements OnInit{
     private pdfDataService: PdfDataSenderService,
   
     ){
-      this.selectedDate = '2000-12-01';
+      this.selectedDate = '1995-12-01';
     }
      fonts: string[] = ["cursive"];
      captchaValue: string = "";

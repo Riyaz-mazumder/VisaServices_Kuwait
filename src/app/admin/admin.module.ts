@@ -15,6 +15,7 @@ import { UploadVisaComponent } from './upload-visa/upload-visa.component';
 import { ListOfUploadVisaComponent } from './list-of-upload-visa/list-of-upload-visa.component';
 import { UploadVisaFileComponent } from './upload-visa-file/upload-visa-file.component';
 import { ChangeStatusComponent } from './change-status/change-status.component';
+import { ChangeStatusManualComponent } from './change-status-manual/change-status-manual.component';
 
 
 
@@ -31,6 +32,7 @@ import { ChangeStatusComponent } from './change-status/change-status.component';
     ListOfUploadVisaComponent,
     UploadVisaFileComponent,
     ChangeStatusComponent,
+    ChangeStatusManualComponent,
   ],
   imports: [
     CommonModule,

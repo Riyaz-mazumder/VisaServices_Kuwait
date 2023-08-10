@@ -25,7 +25,7 @@ export class ManualVisaComponent implements OnInit{
      private pdfDataService: PdfDataSenderService,
      private http: HttpClient,
      ){
-      this.selectedDate = '2000-12-01';
+      this.selectedDate = '1995-12-01';
      }
       fonts: string[] = ["cursive"];
       captchaValue: string = "";
@@ -103,7 +103,11 @@ export class ManualVisaComponent implements OnInit{
  
      if(this.searchedData.length <1){
        alert("Wrong Input Data!")
-     }else{
+     }
+     else if (this.searchedData[0].active == false){
+      alert("This Visa is InValid!");
+    }
+     else{
       console.log(this.searchedData);
 
 

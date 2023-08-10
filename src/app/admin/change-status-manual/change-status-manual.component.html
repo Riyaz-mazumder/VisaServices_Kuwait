@@ -1,0 +1,23 @@
+
+<div style="margin-top: 50px;"></div>
+<div class="container w-50 border mt-5" id="form">
+    <h2 style="text-align: center; padding: 10px;">Change Status <span style="width: 20px;"></span></h2>
+    <form class="mt-5" (ngSubmit)="submit(f)" #f="ngForm" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="UrunAdi" class="form-label">Change Status</label>
+      
+        <select ngModel name="active" id="">
+            <option value="true">Valid</option>
+            <option value="false">InValid</option>
+        </select>
+
+      </div>
+      <div class="d-flex justify-content-center">
+        <button [disabled]="!f.valid" type="submit" class="btn btn-success text-white btn-outline-success form-control w-50 m-3"
+          id="ekleButton">
+          Upload
+        </button>
+      </div>
+    </form>
+  </div>
+  

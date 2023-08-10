@@ -14,6 +14,7 @@
         <td>{{ i.holderPassportNo }}</td>
         <td>{{ i.holderDateOfBirth }}</td>
         <td>{{ i.holderNationality }}</td>
+        <td>{{ i.active }}</td>
         <td>{{ i.createdDateTime }}</td>
         <td>
           <button class="btn btn-success" (click)="openPdf(i)">DownLoad File</button>
@@ -30,6 +31,11 @@
 
          
         </td>
+
+        <td>
+          <button class="btn btn-warning" (click)="changeStatus(i)">Change Status</button>
+        </td>
+        
         <td>
            <button class="btn btn-danger" (click)="onDelete(i.id)">Delete From DataBase</button>
         </td>

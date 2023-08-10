@@ -81,4 +81,10 @@ export class ListOfUploadVisaComponent {
     a.click();
     window.URL.revokeObjectURL(url);
   }
+
+
+  changeStatus(value: any){
+    this.router.navigate(["/admin/dashboard/changeStatusMalual/" + value.id]);
+  }
+
 }
