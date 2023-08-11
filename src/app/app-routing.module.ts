@@ -34,7 +34,11 @@ const routes: Routes = [
   { path: 'eVisa/print', component: ViewVisaPdfUserComponent},
   { path: 'manualVisa', component: ManualVisaComponent},
   { path: 'manualVisa/message/:id', component: ManualVisaMessageComponent},
-  { path: 'companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu/:id', component: UserVisaVerifyComponent},
+  {
+     path: 'companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu/:id',
+    component: UserVisaVerifyComponent
+  
+  },
 
 
   { path: 'admin', component: AdminLoginComponent },
