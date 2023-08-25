@@ -13,16 +13,16 @@ import { ChangeStatusManualComponent } from './change-status-manual/change-statu
 
 
 const routes: Routes = [
-    { path: 'addVisa', component: AddVisaFormComponent },
-    { path: 'updateVisa/:id', component: EditVisaPdfComponent},
-    { path: 'listOfVisa', component: ListOfVisaComponent },
-    { path: 'listOfUploadedFile', component: ListOfUploadVisaComponent},
-    { path: 'viewMessages', component: ViewMessageComponent },
-    { path: 'viewVisaPDF', component: ViewVisaPdfComponent },
-    { path: 'upload', component: UploadVisaFileComponent },
-    { path: 'uploadVisa/:id', component: UploadVisaComponent },
-    { path: 'changeStatus/:id', component: ChangeStatusComponent },
-    { path: 'changeStatusMalual/:id', component: ChangeStatusManualComponent },
+    { path: 'addVisa', title: 'Add Visa', component: AddVisaFormComponent },
+    { path: 'updateVisa/:id', title: 'Update Visa', component: EditVisaPdfComponent},
+    { path: 'listOfVisa', title: 'List Of Visa', component: ListOfVisaComponent },
+    { path: 'listOfUploadedFile', title: 'list Of Uploaded File', component: ListOfUploadVisaComponent},
+    { path: 'viewMessages', title: 'View Messages', component: ViewMessageComponent },
+    { path: 'viewVisaPDF', title: 'View Visa PDF', component: ViewVisaPdfComponent },
+    { path: 'upload', title: 'Upload', component: UploadVisaFileComponent },
+    { path: 'uploadVisa/:id', title: 'Upload Visa', component: UploadVisaComponent },
+    { path: 'changeStatus/:id', title: 'Change Status', component: ChangeStatusComponent },
+    { path: 'changeStatusMalual/:id', title: 'Change Status Malual Visa', component: ChangeStatusManualComponent },
 ];
 
 

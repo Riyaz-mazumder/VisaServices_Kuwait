@@ -20,30 +20,32 @@ import { UserInqueryViewMessageComponent } from './frontEnd/visa/user-inquery-vi
 const routes: Routes = [
   // { path: '', component: LandingPageComponent },
   // { path: '', redirectTo: 'home', pathMatch: 'full' },  // Redirect to HomeComponent when the path is empty
-  { path: '', component: HomePageComponent},
-  { path: 'aboutUs', component: AboutUsComponent },
-  { path: 'kuwaitVisaServices', component: KuwaitVisaServicesComponent},
-  { path: 'contactUs', component: ContactComponent},
-  { path: 'FAQ', component: LandingPageComponent },
-  { path: 'visaApprovalAndTracking', component: VisaApprovalAndTrackingComponent},
-  { path: 'visaInqueryAndPrinting', component: VisaInqueryAndPrintingComponent},
-  { path: 'visaRelatedInformationAndTracking', component: UserInqueryViewComponent},
-  { path: 'visaRelatedInformationAndTracking/message/:id', component: UserInqueryViewMessageComponent},
-
-  { path: 'eVisa', component: EVisaComponent},
-  { path: 'eVisa/print', component: ViewVisaPdfUserComponent},
-  { path: 'manualVisa', component: ManualVisaComponent},
-  { path: 'manualVisa/message/:id', component: ManualVisaMessageComponent},
   {
-     path: 'companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu/:id',
-    component: UserVisaVerifyComponent
-  
-  },
+    path: 'companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu/:id',
+    title: '-Ministry of Interior - Kuwait',
+   component: UserVisaVerifyComponent
+ 
+ },
+  { path: '',  title: 'Home Page', component: HomePageComponent},
+  { path: 'aboutUs',  title: 'About Us', component: AboutUsComponent },
+  { path: 'kuwaitVisaServices',  title: 'Kuwait Visa Services',  component: KuwaitVisaServicesComponent},
+  { path: 'contactUs', title: 'Contact Us',  component: ContactComponent},
+  { path: 'FAQ',  title: 'FAQ', component: LandingPageComponent },
+  { path: 'visaApprovalAndTracking', title: 'Visa Approval And Tracking', component: VisaApprovalAndTrackingComponent},
+  { path: 'visaInqueryAndPrinting', title: 'Visa Inquery And Printing', component: VisaInqueryAndPrintingComponent},
+  { path: 'visaRelatedInformationAndTracking', title: 'Visa Related Information And Tracking', component: UserInqueryViewComponent},
+  { path: 'visaRelatedInformationAndTracking/message/:id', title: 'Visa Related Information And Tracking Message', component: UserInqueryViewMessageComponent},
+
+  { path: 'eVisa', title: 'eVisa', component: EVisaComponent},
+  { path: 'eVisa/print', title: 'eVisa Printing', component: ViewVisaPdfUserComponent},
+  { path: 'manualVisa', title: 'Manual Visa', component: ManualVisaComponent},
+  { path: 'manualVisa/message/:id', title: 'Manual Visa Message', component: ManualVisaMessageComponent},
 
 
-  { path: 'admin', component: AdminLoginComponent },
 
-  { path: 'admin/dashboard', component: DashbordComponent, loadChildren:() => import('./admin/admin.module').then(x=>x.AdminModule),},
+  { path: 'admin', title: 'Admin', component: AdminLoginComponent },
+
+  { path: 'admin/dashboard', title: 'Admin Dashbord', component: DashbordComponent, loadChildren:() => import('./admin/admin.module').then(x=>x.AdminModule),},
 ];
 
 @NgModule({

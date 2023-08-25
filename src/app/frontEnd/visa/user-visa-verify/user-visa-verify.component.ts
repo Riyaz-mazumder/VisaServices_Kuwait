@@ -14,8 +14,10 @@ export class UserVisaVerifyComponent implements OnInit{
     private dataService: DataServicService,
     private router: Router,
     private route: ActivatedRoute,
-    private readonly titleService: Title
-    ){}
+    private titleService: Title
+    ){
+      titleService.setTitle("-Ministry of Interior - Kuwait");
+    }
 
     id!: any;
 

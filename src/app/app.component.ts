@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'visaCheckKuwait';
+  // title = 'visaCheckKuwait';
 
   link: string = '';
 
@@ -14,9 +16,22 @@ export class AppComponent implements OnInit{
     return this.link.includes('/admin') || this.link.includes('companies/e-visa/verify/');
   }
 
+  // ngOnInit(): void {
+  //   console.log(window.location.href);
+
+  //   this.link = window.location.href;
+  // }
+
+
+  
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
   ngOnInit(): void {
+
     console.log(window.location.href);
 
     this.link = window.location.href;
+    
   }
 }
