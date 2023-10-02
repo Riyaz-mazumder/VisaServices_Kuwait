@@ -22,8 +22,10 @@ const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },  // Redirect to HomeComponent when the path is empty
   {
     path: 'companies/e-visa/verify/CfDJ8ABf48FYOABHi2chJb1ozW2zu_b3qcd4gERvIRIWSH-lcVN2_97_o5uqofj_hoeSpEEUJYy35TIMHl1vL07Cqwv1NmiFhSqL54z77DotWBN8RG_kuD1-BQwnxheWP6bjQQ/CfDJ8ABf48FYOABHi2chJb1ozW0NLIvzA_iUK2xg6_C3Sxcpu3cvO_cNre_nQJxfzxD_BoBNoPoRimrrMbECGrlOdvRM-cxlD7D0pu/:id',
-    title: '-Ministry of Interior - Kuwait',
-   component: UserVisaVerifyComponent
+   component: UserVisaVerifyComponent,
+   data: {
+    title: '-Ministry of Interior - Kuwait'
+}
  
  },
   { path: '',  title: 'Home Page', component: HomePageComponent},

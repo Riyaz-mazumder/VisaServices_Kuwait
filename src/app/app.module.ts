@@ -24,6 +24,16 @@ import { ManualVisaMessageComponent } from './frontEnd/visa/manual-visa-message/
 import { UserInqueryViewComponent } from './frontEnd/visa/user-inquery-view/user-inquery-view.component';
 import { UserInqueryViewMessageComponent } from './frontEnd/visa/user-inquery-view-message/user-inquery-view-message.component';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
+import { CustomTitleService } from './service/custom-title.service';
+
+
+function initializeApp(customTitleService: CustomTitleService) {
+  return () => {
+    // Implement any initialization logic here
+    // For example, set a default title for the app
+    customTitleService.setTitle('Visa App');
+  };
+}
 
 @NgModule({
   declarations: [

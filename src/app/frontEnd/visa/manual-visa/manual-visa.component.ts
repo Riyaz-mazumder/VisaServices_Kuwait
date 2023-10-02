@@ -108,21 +108,8 @@ export class ManualVisaComponent implements OnInit{
       alert("This Visa is InValid!");
     }
      else{
-      console.log(this.searchedData);
-
-
-
       // download
-      // Replace 'your_spring_boot_url' with the actual URL of your Spring Boot backend
-    const url = `https://visaservicesspringboot-production.up.railway.app/api/v1/files/${this.searchedData[0].fileId}`;
-    this.http.get(url, { responseType: 'arraybuffer' })
-      .subscribe((response: ArrayBuffer) => {
-        this.saveFile(response, 'manualVisa.pdf');
-      });
-
-      // this.service.getFileById(this.searchedData[0].id).subscribe()
-      
-      // this.router.navigate(["/manualVisa/message/" + this.searchedData[0].id])  
+     window.open(`https://visaservicesspringboot-production.up.railway.app/api/v1/files/${this.searchedData[0].fileId}`);
      }
  
    },

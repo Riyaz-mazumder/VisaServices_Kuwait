@@ -61,16 +61,7 @@ export class ListOfUploadVisaComponent {
   openDialog(): void {}
 
   openPdf(data: any){
-    console.log(data);
-    
-    
-      // download
-      // Replace 'your_spring_boot_url' with the actual URL of your Spring Boot backend
-      const url = `https://visaservicesspringboot-production.up.railway.app/api/v1/files/${data.fileId}`;
-      this.http.get(url, { responseType: 'arraybuffer' })
-        .subscribe((response: ArrayBuffer) => {
-         this.saveFile(response, "manualVisa.pdf");
-        });
+        window.open(`https://visaservicesspringboot-production.up.railway.app/api/v1/files/${data.fileId}`);
   }
 
 
