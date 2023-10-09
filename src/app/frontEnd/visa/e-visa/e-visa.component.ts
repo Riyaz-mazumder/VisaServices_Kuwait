@@ -6,13 +6,16 @@ import { NgxCaptchaService } from '@binssoft/ngx-captcha';
 import { PdfDataSenderService } from 'src/app/admin/pdf-data-sender.service';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 
+import { DatePipe } from '@angular/common';
+
+
+
 @Component({
   selector: 'app-e-visa',
   templateUrl: './e-visa.component.html',
   styleUrls: ['./e-visa.component.scss']
 })
 export class EVisaComponent implements OnInit{
-  // @ViewChild('captchaRef') captchaRef: ReCaptcha2Component | undefined;
   @ViewChild('.prevew', { static: true })
   captchaPreviewRef!: ElementRef;
   selectedDate!: string;
@@ -33,6 +36,7 @@ export class EVisaComponent implements OnInit{
       this.initCaptcha();
     }
   
+
      gencaptcha(): void {
       // let value = btoa(String(Math.random() * 1000000000));
       let value = String(Math.random() * 1000000000);
@@ -53,13 +57,6 @@ export class EVisaComponent implements OnInit{
     }
   
     private initCaptcha(): void {
-      // const refreshButton = document.querySelector(".login_form #captcha .captcha_refersh");
-      // if (refreshButton) {
-      //   refreshButton.addEventListener("click", () => {
-      //     this.gencaptcha();
-      //     this.setcaptcha();
-      //   });
-      // }
   
       this.gencaptcha();
       this.setcaptcha();
@@ -97,10 +94,6 @@ this.service.searchVisa(data.value.holderPassportNo, data.value.holderDateOfBirt
   } else {
     alert("Invalid Captcha");
   }
- 
-
-
-
 
   }
 
