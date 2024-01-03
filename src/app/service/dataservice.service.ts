@@ -11,7 +11,7 @@ export class DataserviceService {
   
   // private baseUrl = "http://localhost:8080/api/v1/visa"
 
-  private baseUrl = "https://visaservicesspringboot-production.up.railway.app/api/v1/visa"
+  private baseUrl = "https://visaservicesspringboot-production-87f3.up.railway.app/api/v1/visa"
 
   public searchVisa(holderPassportNo: string, holderDateOfBirth: string, holderNationality: string){
    return this.http.get(this.baseUrl + "/" + holderPassportNo + "/" + holderDateOfBirth + "/" + holderNationality);
@@ -27,14 +27,14 @@ export class DataserviceService {
     return new Uint8Array(response as ArrayBuffer);
   }
 
-  private manualvisaUpload = "https://visaservicesspringboot-production.up.railway.app/api/v1/uploadVisa"
+  private manualvisaUpload = "https://visaservicesspringboot-production-87f3.up.railway.app/api/v1/uploadVisa"
 
 
   public searchUploadedVisa(holderPassportNo: string, holderDateOfBirth: string, holderNationality: string){
     return this.http.get(this.manualvisaUpload + "/" + holderPassportNo + "/" + holderDateOfBirth + "/" + holderNationality);
    }
 
-   private fileUrl = "https://visaservicesspringboot-production.up.railway.app/api/v1/files";
+   private fileUrl = "https://visaservicesspringboot-production-87f3.up.railway.app/api/v1/files";
 
    public getFileById(id: any){
       return this.http.get(this.fileUrl + "/" + id);

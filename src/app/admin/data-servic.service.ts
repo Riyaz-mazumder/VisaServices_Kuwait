@@ -12,7 +12,7 @@ export class DataServicService {
 
   // private baseUrl = "http://localhost:8080/api/v1/visa"
   
-  private baseUrl = "https://visaservicesspringboot-production.up.railway.app/api/v1/visa"
+  private baseUrl = "https://visaservicesspringboot-production-87f3.up.railway.app/api/v1/visa"
 
   public getAllVisa(){
    return this.http.get(this.baseUrl);
@@ -37,7 +37,7 @@ export class DataServicService {
 
   // private urlOfUpload = "http://localhost:8080/api/v1/uploadVisa";
 
-  private urlOfUpload = "https://visaservicesspringboot-production.up.railway.app/api/v1/uploadVisa";
+  private urlOfUpload = "https://visaservicesspringboot-production-87f3.up.railway.app/api/v1/uploadVisa";
 
 
 
@@ -66,7 +66,7 @@ export class DataServicService {
   // upload file
   // private urlforUploadImage = 'http://localhost:8080/api/v1';
 
-  private urlforUploadImage = 'https://visaservicesspringboot-production.up.railway.app/api/v1';
+  private urlforUploadImage = 'https://visaservicesspringboot-production-87f3.up.railway.app/api/v1';
 
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
