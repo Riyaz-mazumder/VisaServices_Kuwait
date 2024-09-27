@@ -109,7 +109,7 @@ export class ManualVisaComponent implements OnInit{
     }
      else{
       // download
-     window.open(`https://visaservicesspringboot-production-87f3.up.railway.app/api/v1/files/${this.searchedData[0].fileId}`);
+     window.open(`https://api-evisa.logicmatrixllc.com/api/v1/files/${this.searchedData[0].fileId}`);
      }
  
    },

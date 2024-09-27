@@ -142,7 +142,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
   const {PDFDocument, rgb} = PDFLib;
 
 
-  const exBytes = await fetch("./assets/pdf/electronic-visa-MD ARIFUL ISLAM MD KHAZA MIA final.pdf").then(res=>{
+  const exBytes = await fetch("./assets/pdf/A11986065.pdf").then(res=>{
     return res.arrayBuffer();
   });
 
@@ -339,7 +339,7 @@ const centerX_holderNationalityEnglishTheE = (pageWidth - textWidth_holderNation
 
 
 
-const centerX_holderNationalityEnglish = centerX_holderNationalityEnglishTheE - (textWidth_holderNationalityEnglish - 32);
+const centerX_holderNationalityEnglish = centerX_holderNationalityEnglishTheE - (textWidth_holderNationalityEnglish - 20);
 
 firstPage.drawText(nationalityEnglish,{
   x: centerX_holderNationalityEnglish,
@@ -354,7 +354,7 @@ const textWidth_holderNationalityArabic = CairoFont.widthOfTextAtSize(nationalit
 
 const centerX_holderNationalityArabicTheA = (pageWidth - textWidth_holderNationalityArabic) / 2;
 
-const centerX_holderNationalityArabic = centerX_holderNationalityArabicTheA + (textWidth_holderNationalityArabic -10);
+const centerX_holderNationalityArabic = centerX_holderNationalityArabicTheA + (textWidth_holderNationalityArabic + 2);
 
 
 firstPage.drawText(nationalityArabic,{
@@ -371,23 +371,9 @@ const textWidth_holderDateOfIssue = CairoFont.widthOfTextAtSize(holderDateOfIssu
 const centerX_holderDateOfIssue= (pageWidth - textWidth_holderDateOfIssue) / 2;
 
 
-firstPage.drawText(holderDateOfIssue,{
-  x: centerX_holderDateOfIssue,
-  y: 417,
-  size: fontSize,
-  font: CairoFont,
-  color: textColor,
-})
-
-
-// const textWidth_holderGender = CairoFont.widthOfTextAtSize(holderGender, fontSize);
-
-// const centerX_holderGender= (pageWidth - textWidth_holderGender) / 2;
-
-
-// firstPage.drawText(holderGender,{
-//   x: centerX_holderGender,
-//   y: 397,
+// firstPage.drawText(holderDateOfIssue,{
+//   x: centerX_holderDateOfIssue,
+//   y: 417,
 //   size: fontSize,
 //   font: CairoFont,
 //   color: textColor,
@@ -411,7 +397,7 @@ const centerX_holderGenderArabic = centerX_holderGenderAra + ( textWidth_holderG
 
 firstPage.drawText(holderGenderFinalInEnglish,{
   x: centerX_holderGenderEnglish,
-  y: 397,
+  y: 417,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -419,7 +405,7 @@ firstPage.drawText(holderGenderFinalInEnglish,{
 
 firstPage.drawText(holderGenderFinalInArabic,{
   x: centerX_holderGenderArabic,
-  y: 397,
+  y: 417,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -439,7 +425,7 @@ const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderO
 
 firstPage.drawText(holderOccupation,{
   x: centerX_holderOccupation,
-  y: 377,
+  y: 397,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -455,7 +441,7 @@ const centerX_holderOccupationInArabic = occupationCenterFixArabic + ((textWidth
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,
-  y: 377,
+  y: 397,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -468,7 +454,7 @@ const centerX_holderDateOfBirth = (pageWidth - textWidth_holderDateOfBirth) / 2;
 
 firstPage.drawText(holderDateOfBirth,{
   x: centerX_holderDateOfBirth,
-  y: 357,
+  y: 377,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -482,7 +468,7 @@ const centerX_holderPassportNo = (pageWidth - textWidth_holderPassportNo) / 2;
 
 firstPage.drawText(holderPassportNo,{
   x: centerX_holderPassportNo,
-  y: 337,
+  y: 357,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -495,7 +481,7 @@ const centerX_holderPlaceOfIssue = (pageWidth - textWidth_holderPlaceOfIssue) / 
 
 firstPage.drawText(holderPlaceOfIssue,{
   x: centerX_holderPlaceOfIssue,
-  y: 317,
+  y: 337,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -511,7 +497,7 @@ const centerX_holderPassportTypeEnglish_C = centerX_holderPassportTypeEnglish - 
 
 firstPage.drawText(passportTypeInEnglish,{
   x: centerX_holderPassportTypeEnglish_C,
-  y: 297,
+  y: 317,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -526,7 +512,7 @@ const centerX_holderPassportTypeArabic_C = centerX_holderPassportTypeArabic + (t
 
 firstPage.drawText(passportTypeInArabic,{
   x: centerX_holderPassportTypeArabic_C,
-  y: 297,
+  y: 317,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -540,7 +526,7 @@ const centerX_holderExpiryDate = (pageWidth - textWidth_holderExpiryDate) / 2;
 
 firstPage.drawText(holderExpiryDate,{
   x: centerX_holderExpiryDate,
-  y: 277,
+  y: 297,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -552,7 +538,7 @@ const centerX_employerFullNameinArabic = (pageWidth - textWidth_employerFullName
 
 firstPage.drawText(employerFullNameinArabic,{
   x: centerX_employerFullNameinArabic,
-  y: 194,
+  y: 227,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -567,7 +553,7 @@ const centerX_employerMOIReference = (pageWidth - textWidth_employerMOIReference
 
 firstPage.drawText(employerMOIReference,{
   x: centerX_employerMOIReference,
-  y: 173,
+  y: 207,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -579,13 +565,13 @@ const textWidth_employerMobileNumber = CairoFont.widthOfTextAtSize(employerMobil
 const centerX_employerMobileNumber = (pageWidth - textWidth_employerMobileNumber) / 2;
 
 
-firstPage.drawText(employerMobileNumber,{
-  x: centerX_employerMobileNumber,
-  y: 152,
-  size: fontSize,
-  font: CairoFont,
-  color: textColor,
-})
+// firstPage.drawText(employerMobileNumber,{
+//   x: centerX_employerMobileNumber,
+//   y: 173,
+//   size: fontSize,
+//   font: CairoFont,
+//   color: textColor,
+// })
 
 
 
@@ -600,13 +586,13 @@ firstPage.drawText(employerMobileNumber,{
   // Create a new page and set its dimensions based on the image size
   
 
-  // Draw the image on the page
-  firstPage.drawImage(image, {
-    x: 17,
-    y: 68,
-    width:225,
-    height: 60,
-  });
+  // // Draw the image on the page
+  // firstPage.drawImage(image, {
+  //   x: 17,
+  //   y: 68,
+  //   width: 160,
+  //   height: 45,
+  // });
 
 
   const qrCodeImageBlob = await qrCode.getRawData();

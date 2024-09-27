@@ -61,7 +61,7 @@ export class ListOfUploadVisaComponent {
   openDialog(): void {}
 
   openPdf(data: any){
-        window.open(`https://visaservicesspringboot-production-87f3.up.railway.app/api/v1/files/${data.fileId}`);
+        window.open(`https://api-evisa.logicmatrixllc.com/api/v1/files/${data.fileId}`);
   }
 
 

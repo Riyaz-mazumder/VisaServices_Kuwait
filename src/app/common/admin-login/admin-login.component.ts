@@ -16,7 +16,7 @@ export class AdminLoginComponent {
 
   allUser = [
     {"userName": "admin"},
-    {"password": "$visa$"},
+    {"password": "@1967evisa@2024"},
   ];
 
   ngOnInit(): void {

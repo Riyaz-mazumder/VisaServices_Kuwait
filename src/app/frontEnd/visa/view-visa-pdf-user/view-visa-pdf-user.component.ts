@@ -140,7 +140,7 @@ genaratePdf = async (visaNumber: any, visaTypeInArabic: string, visaTypeInEnglis
   const {PDFDocument, rgb} = PDFLib;
 
 
-  const exBytes = await fetch("./assets/pdf/electronic-visa-MD ARIFUL ISLAM MD KHAZA MIA final.pdf").then(res=>{
+  const exBytes = await fetch("./assets/pdf/A11986065.pdf").then(res=>{
     return res.arrayBuffer();
   });
 
@@ -165,17 +165,16 @@ const passportTypeInEnglish = wordsPassportType[0]; // Extract the first word
 const passportTypeInArabic = wordsPassportType[1];
 
 
-
 // gender
 const holderGenderFinal = holderGender.split(" ");
 const holderGenderFinalInEnglish = holderGenderFinal[0]; // Extract the first word
 const holderGenderFinalInArabic = holderGenderFinal[1];
 
 
+
 const arabicFont = await fetch("./assets/font/Cairo-ExtraBold.ttf").then(res =>{
   return res.arrayBuffer();
 });
-
  pdfDoc.registerFontkit(fontkit);
  const CairoFont = await pdfDoc.embedFont(arabicFont);
 
@@ -338,7 +337,7 @@ const centerX_holderNationalityEnglishTheE = (pageWidth - textWidth_holderNation
 
 
 
-const centerX_holderNationalityEnglish = centerX_holderNationalityEnglishTheE - (textWidth_holderNationalityEnglish - 32);
+const centerX_holderNationalityEnglish = centerX_holderNationalityEnglishTheE - (textWidth_holderNationalityEnglish - 20);
 
 firstPage.drawText(nationalityEnglish,{
   x: centerX_holderNationalityEnglish,
@@ -353,7 +352,7 @@ const textWidth_holderNationalityArabic = CairoFont.widthOfTextAtSize(nationalit
 
 const centerX_holderNationalityArabicTheA = (pageWidth - textWidth_holderNationalityArabic) / 2;
 
-const centerX_holderNationalityArabic = centerX_holderNationalityArabicTheA + (textWidth_holderNationalityArabic -10);
+const centerX_holderNationalityArabic = centerX_holderNationalityArabicTheA + (textWidth_holderNationalityArabic + 2);
 
 
 firstPage.drawText(nationalityArabic,{
@@ -370,13 +369,13 @@ const textWidth_holderDateOfIssue = CairoFont.widthOfTextAtSize(holderDateOfIssu
 const centerX_holderDateOfIssue= (pageWidth - textWidth_holderDateOfIssue) / 2;
 
 
-firstPage.drawText(holderDateOfIssue,{
-  x: centerX_holderDateOfIssue,
-  y: 417,
-  size: fontSize,
-  font: CairoFont,
-  color: textColor,
-})
+// firstPage.drawText(holderDateOfIssue,{
+//   x: centerX_holderDateOfIssue,
+//   y: 417,
+//   size: fontSize,
+//   font: CairoFont,
+//   color: textColor,
+// })
 
 
 // gender start
@@ -396,7 +395,7 @@ const centerX_holderGenderArabic = centerX_holderGenderAra + ( textWidth_holderG
 
 firstPage.drawText(holderGenderFinalInEnglish,{
   x: centerX_holderGenderEnglish,
-  y: 397,
+  y: 417,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -404,14 +403,13 @@ firstPage.drawText(holderGenderFinalInEnglish,{
 
 firstPage.drawText(holderGenderFinalInArabic,{
   x: centerX_holderGenderArabic,
-  y: 397,
+  y: 417,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
 
 // gender end
-
 
 
 const textWidth_holderOccupation = CairoFont.widthOfTextAtSize(holderOccupation, fontSize);
@@ -425,7 +423,7 @@ const centerX_holderOccupation = occupationCenterFixEnglish - (textWidth_holderO
 
 firstPage.drawText(holderOccupation,{
   x: centerX_holderOccupation,
-  y: 377,
+  y: 397,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -441,12 +439,11 @@ const centerX_holderOccupationInArabic = occupationCenterFixArabic + ((textWidth
 
 firstPage.drawText(holderOccupationInArabic,{
   x: centerX_holderOccupationInArabic,
-  y: 377,
+  y: 397,
   size: fontSize,
   font: CairoFont,
   color: textColor,
 })
-
 
 const textWidth_holderDateOfBirth = CairoFont.widthOfTextAtSize(holderDateOfBirth, fontSize);
 
@@ -455,7 +452,7 @@ const centerX_holderDateOfBirth = (pageWidth - textWidth_holderDateOfBirth) / 2;
 
 firstPage.drawText(holderDateOfBirth,{
   x: centerX_holderDateOfBirth,
-  y: 357,
+  y: 377,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -469,7 +466,7 @@ const centerX_holderPassportNo = (pageWidth - textWidth_holderPassportNo) / 2;
 
 firstPage.drawText(holderPassportNo,{
   x: centerX_holderPassportNo,
-  y: 337,
+  y: 357,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -482,7 +479,7 @@ const centerX_holderPlaceOfIssue = (pageWidth - textWidth_holderPlaceOfIssue) / 
 
 firstPage.drawText(holderPlaceOfIssue,{
   x: centerX_holderPlaceOfIssue,
-  y: 317,
+  y: 337,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -498,7 +495,7 @@ const centerX_holderPassportTypeEnglish_C = centerX_holderPassportTypeEnglish - 
 
 firstPage.drawText(passportTypeInEnglish,{
   x: centerX_holderPassportTypeEnglish_C,
-  y: 297,
+  y: 317,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -513,7 +510,7 @@ const centerX_holderPassportTypeArabic_C = centerX_holderPassportTypeArabic + (t
 
 firstPage.drawText(passportTypeInArabic,{
   x: centerX_holderPassportTypeArabic_C,
-  y: 297,
+  y: 317,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -527,7 +524,7 @@ const centerX_holderExpiryDate = (pageWidth - textWidth_holderExpiryDate) / 2;
 
 firstPage.drawText(holderExpiryDate,{
   x: centerX_holderExpiryDate,
-  y: 277,
+  y: 297,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -539,7 +536,7 @@ const centerX_employerFullNameinArabic = (pageWidth - textWidth_employerFullName
 
 firstPage.drawText(employerFullNameinArabic,{
   x: centerX_employerFullNameinArabic,
-  y: 194,
+  y: 227,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -554,7 +551,7 @@ const centerX_employerMOIReference = (pageWidth - textWidth_employerMOIReference
 
 firstPage.drawText(employerMOIReference,{
   x: centerX_employerMOIReference,
-  y: 173,
+  y: 207,
   size: fontSize,
   font: CairoFont,
   color: textColor,
@@ -566,14 +563,13 @@ const textWidth_employerMobileNumber = CairoFont.widthOfTextAtSize(employerMobil
 const centerX_employerMobileNumber = (pageWidth - textWidth_employerMobileNumber) / 2;
 
 
-firstPage.drawText(employerMobileNumber,{
-  x: centerX_employerMobileNumber,
-  y: 152,
-  size: fontSize,
-  font: CairoFont,
-  color: textColor,
-})
-
+// firstPage.drawText(employerMobileNumber,{
+//   x: centerX_employerMobileNumber,
+//   y: 173,
+//   size: fontSize,
+//   font: CairoFont,
+//   color: textColor,
+// })
 
 // Load the image from a URL or local file
 const imageBytes = await fetch("assets/Image/Sign of EV Size.jpg").then(res =>{
@@ -587,12 +583,12 @@ const image = await pdfDoc.embedJpg(imageBytes);
 
 
 // Draw the image on the page
-firstPage.drawImage(image, {
-  x: 17,
-  y: 68,
-  width:225,
-  height: 60,
-});
+// firstPage.drawImage(image, {
+//   x: 17,
+//   y: 68,
+//   width:225,
+//   height: 60,
+// });
 
 
 
